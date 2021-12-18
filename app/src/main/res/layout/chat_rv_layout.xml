@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profilePictureContainer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp">
+
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/user_profile_picture_txt"
+                android:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/chatTitleAndLastTimeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/profilePictureContainer">
+
+            <TextView
+                android:id="@+id/chatTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/lastMessageTime"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/chat_title_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="RelativeOverlap"
+                tools:text="You are my Love"
+                tools:textColor="#000" />
+
+            <TextView
+                android:id="@+id/lastMessageTime"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:textAlignment="textEnd"
+                android:textSize="12sp"
+                tools:text="Yesterday" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatTitleAndLastTimeContainer"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/profilePictureContainer">
+
+            <ImageView
+                android:id="@+id/messageSeenStatusTick"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/message_status_tick_text"
+                android:src="@drawable/double_tick" />
+
+            <TextView
+                android:id="@+id/chatMessagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/messageSeenStatusTick"
+                android:ellipsize="end"
+                android:maxLines="1"
+                tools:text="This is the sample message which is used to check the overflow of content" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

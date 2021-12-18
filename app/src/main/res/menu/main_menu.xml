@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/searchMenuItem"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="New Group"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="New Broadcast"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Linked Devices"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Starred messages"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Payments"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/settingMenuItem"
+        android:title="Setting"
+        tools:ignore="HardcodedText" />
+
+    <item android:title="@string/theme_menu_item_txt">
+        <menu>
+            <item
+                android:id="@+id/light_theme_menu_item"
+                android:title="@string/light_theme_menu_item" />
+
+            <item
+                android:id="@+id/dark_theme_menu_item"
+                android:title="@string/dark_theme_menu_item" />
+
+            <item
+                android:id="@+id/system_theme_menu_item"
+                android:title="@string/system_theme_menu_item" />
+        </menu>
+    </item>
+
+</menu>
