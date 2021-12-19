@@ -39,12 +39,11 @@
                 android:layout_toStartOf="@id/lastMessageTime"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/chat_title_color"
+                android:textColor="@color/chat_title_text_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:ignore="RelativeOverlap"
-                tools:text="You are my Love"
-                tools:textColor="#000" />
+                tools:text="Chat Title" />
 
             <TextView
                 android:id="@+id/lastMessageTime"
@@ -66,11 +65,13 @@
             android:layout_toEndOf="@id/profilePictureContainer">
 
             <ImageView
-                android:id="@+id/messageSeenStatusTick"
+                android:id="@+id/messageStatusTick"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_centerVertical="true"
+                android:layout_marginTop="4dp"
                 android:contentDescription="@string/message_status_tick_text"
+                android:rotationY="10"
                 android:src="@drawable/double_tick" />
 
             <TextView
@@ -78,9 +79,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_toEndOf="@id/messageSeenStatusTick"
+                android:layout_toEndOf="@id/messageStatusTick"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:textColor="@color/chat_message_text_preview"
                 tools:text="This is the sample message which is used to check the overflow of content" />
         </RelativeLayout>
     </RelativeLayout>

@@ -5,4 +5,10 @@
     <color name="tab_layout_text_color">#ffffff</color>
     <color name="tab_layout_indicator_color">#00a884</color>
     <color name="chat_title_color">#ffffff</color>
+    <color name="settings_page_action_bar_bg">#202c33</color>
+    <color name="chat_title_text_color">#ffffff</color>
+    <color name="main_fragments_bg_color">#152026</color>
+    <color name="chat_message_text_preview">#8696a0</color>
+    <color name="settings_page_header_color">#ffffff</color>
+    <color name="settings_page_horizontal_line">#222d34</color>
 </resources>

@@ -31,11 +31,8 @@
         tools:ignore="HardcodedText" />
 
     <item
-        android:id="@+id/settingMenuItem"
-        android:title="Setting"
-        tools:ignore="HardcodedText" />
-
-    <item android:title="@string/theme_menu_item_txt">
+        android:id="@+id/app_theme_menu_item"
+        android:title="@string/theme_menu_item_txt">
         <menu>
             <item
                 android:id="@+id/light_theme_menu_item"
@@ -50,5 +47,10 @@
                 android:title="@string/system_theme_menu_item" />
         </menu>
     </item>
+
+    <item
+        android:id="@+id/setting_menu_item"
+        android:title="Setting"
+        tools:ignore="HardcodedText" />
 
 </menu>

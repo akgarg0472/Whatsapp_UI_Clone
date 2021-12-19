@@ -3,13 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#152026">
+    android:background="@color/main_fragments_bg_color">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        tools:itemCount="4"
         tools:listitem="@layout/chat_rv_layout" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recyclerView"
+        android:layout_marginTop="16dp"
+        android:text="@string/tap_and_hold_on_a_chat_for_more_options"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

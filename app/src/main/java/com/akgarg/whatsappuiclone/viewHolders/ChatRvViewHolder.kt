@@ -11,4 +11,5 @@ class ChatRvViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var chatMessage: TextView = itemView.findViewById(R.id.chatMessagePreview)
     var lastMessageTime: TextView = itemView.findViewById(R.id.lastMessageTime)
     var profilePicture: ImageView = itemView.findViewById(R.id.profilePicture)
+    var messageStatusTick: ImageView = itemView.findViewById(R.id.messageStatusTick)
 }

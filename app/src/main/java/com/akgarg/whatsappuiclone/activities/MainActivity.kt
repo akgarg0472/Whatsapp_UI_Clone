@@ -1,14 +1,18 @@
-package com.akgarg.whatsappuiclone
+package com.akgarg.whatsappuiclone.activities
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager.widget.ViewPager
+import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.FragmentViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +23,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.tab_layout_bg_color)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                resources.getColor(
+                    R.color.tab_layout_bg_color,
+                    theme
+                )
+            )
+        )
+        supportActionBar?.elevation = 0F
 
         viewPager = this.findViewById(R.id.viewPager)
         tabLayout = this.findViewById(R.id.tabLayout)
@@ -44,20 +56,37 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.light_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            R.id.dark_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            R.id.system_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            R.id.setting_menu_item -> {
+                val settingActivityIntent = Intent(this, SettingsActivity::class.java)
+                startActivity(settingActivityIntent)
+            }
+            R.id.app_theme_menu_item -> super.onOptionsItemSelected(item)
+            else -> Toast.makeText(
+                this, "503 Unavailable", Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        return true
+    }
+
+
     private fun setCameraTab() {
         val layout =
             (tabLayout.getChildAt(0) as LinearLayout).getChildAt(0) as LinearLayout
         val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
         layoutParams.weight = 0.41f
         layout.layoutParams = layoutParams
-
-        tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_baseline_photo_camera_24)
-    }
-
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
     }
 
 }

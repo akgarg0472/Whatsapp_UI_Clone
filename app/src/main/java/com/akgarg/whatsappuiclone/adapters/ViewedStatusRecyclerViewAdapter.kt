@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.model.StatusDataModel
 import com.akgarg.whatsappuiclone.viewHolders.StatusRvViewHolder
 
 @Suppress("unused")
-class ViewedStatusRecyclerViewAdapter(private val context: Context) :
+class ViewedStatusRecyclerViewAdapter(
+    private val context: Context,
+    private val viewedStatusData: ArrayList<StatusDataModel>
+) :
     RecyclerView.Adapter<StatusRvViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatusRvViewHolder {
@@ -19,27 +23,14 @@ class ViewedStatusRecyclerViewAdapter(private val context: Context) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: StatusRvViewHolder, position: Int) {
-
-        when (position) {
-            0 -> {
-                holder.statusUserName.text = "Shubham"
-                holder.statusUploadTime.text = "Today, 01:18 pm"
-                holder.profilePicture.setImageResource(R.drawable.shubham)
-            }
-            1 -> {
-                holder.statusUserName.text = "Paras"
-                holder.statusUploadTime.text = "Today, 04:18 am"
-                holder.profilePicture.setImageResource(R.drawable.paras)
-            }
-            else -> {
-                holder.statusUserName.text = "Guruji"
-                holder.statusUploadTime.text = "Yesterday, 11:18 pm"
-                holder.profilePicture.setImageResource(R.drawable.guruji)
-            }
-        }
+        val data = viewedStatusData[position]
+        holder.statusUserName.text = data.getStatusTitle()
+        holder.statusUploadTime.text = data.getStatusTime()
+        holder.profilePicture.setImageResource(data.getStatusProfilePicture())
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return viewedStatusData.size
     }
+
 }

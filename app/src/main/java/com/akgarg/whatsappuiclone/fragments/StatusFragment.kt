@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.RecentStatusRecyclerViewAdapter
 import com.akgarg.whatsappuiclone.adapters.ViewedStatusRecyclerViewAdapter
+import com.akgarg.whatsappuiclone.utils.StatusDataUtil
 
 class StatusFragment : Fragment() {
 
@@ -31,8 +32,9 @@ class StatusFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        recentStatusRecyclerViewAdapter = RecentStatusRecyclerViewAdapter(requireContext())
-        viewedStatusRecyclerViewAdapter = ViewedStatusRecyclerViewAdapter(requireContext())
+        recentStatusRecyclerViewAdapter =
+            RecentStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
+        viewedStatusRecyclerViewAdapter = ViewedStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
 
         recentStatusRecyclerView.layoutManager = LinearLayoutManager(context)
         viewedStatusRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -41,8 +43,8 @@ class StatusFragment : Fragment() {
         viewedStatusRecyclerView.adapter = viewedStatusRecyclerViewAdapter
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         recentStatusRecyclerView.adapter = null
         viewedStatusRecyclerView.adapter = null
     }

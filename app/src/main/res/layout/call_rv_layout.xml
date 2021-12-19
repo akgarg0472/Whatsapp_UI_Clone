@@ -12,13 +12,13 @@
         tools:ignore="UselessParent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/profilePictureContainer"
+            android:id="@+id/callProfilePictureContainer"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:cardCornerRadius="25dp">
 
             <ImageView
-                android:id="@+id/statusProfilePicture"
+                android:id="@+id/callProfilePicture"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:contentDescription="@string/user_profile_picture_txt"
@@ -30,10 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/profilePictureContainer">
+            android:layout_toStartOf="@id/callIconImage"
+            android:layout_toEndOf="@id/callProfilePictureContainer">
 
             <TextView
-                android:id="@+id/statusUploaderUserName"
+                android:id="@+id/callProfileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -42,25 +43,37 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:ignore="RelativeOverlap"
-                tools:text="Status Name" />
-        </RelativeLayout>
+                tools:text="Name" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/chatTitleAndLastTimeContainer"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_toEndOf="@id/profilePictureContainer">
+            <ImageView
+                android:id="@+id/callDirectionIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/callProfileName"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/call_status_icon"
+                android:src="@drawable/received_call_rejected" />
 
             <TextView
-                android:id="@+id/statusUploadTime"
-                android:layout_width="wrap_content"
+                android:id="@+id/callDateAndTime"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                tools:text="Today, 04:45 pm" />
+                android:layout_below="@id/callProfileName"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/callDirectionIcon"
+                tools:text="16 December, 12:36 pm" />
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/callIconImage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/call_icon"
+            android:src="@drawable/ic_baseline_call_24" />
     </RelativeLayout>
 
 </RelativeLayout>

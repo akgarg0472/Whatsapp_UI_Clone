@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_fragments_bg_color">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
         tools:ignore="UselessParent">
 
         <RelativeLayout
@@ -30,7 +32,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:contentDescription="@string/user_profile_picture_txt"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/me" />
             </androidx.cardview.widget.CardView>
 
             <RelativeLayout
@@ -46,11 +48,10 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/my_status_text"
-                    android:textColor="@color/chat_title_color"
+                    android:textColor="@color/chat_title_text_color"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    tools:ignore="RelativeOverlap"
-                    tools:textColor="#000" />
+                    tools:ignore="RelativeOverlap" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -94,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recentStatusUpdatesTextView"
+                android:nestedScrollingEnabled="false"
                 tools:itemCount="3"
                 tools:listitem="@layout/status_rv_layout" />
         </RelativeLayout>
@@ -121,10 +123,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/viewedStatusUpdatesTextView"
+                android:nestedScrollingEnabled="false"
                 tools:itemCount="3"
                 tools:listitem="@layout/status_rv_layout" />
         </RelativeLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

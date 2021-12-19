@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -12,15 +12,15 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/tab_layout_bg_color"
         app:tabIndicatorAnimationDuration="@android:integer/config_mediumAnimTime"
-        app:tabIndicatorAnimationMode="elastic"
         app:tabIndicatorColor="@color/tab_layout_indicator_color"
-        app:tabMode="fixed"
+        app:tabIndicatorHeight="2.8dp"
         app:tabSelectedTextColor="@color/tab_layout_indicator_color"
         app:tabTextColor="@color/tab_layout_text_color">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="📷" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

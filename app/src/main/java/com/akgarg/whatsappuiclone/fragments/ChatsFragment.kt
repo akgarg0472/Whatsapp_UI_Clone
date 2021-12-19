@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.ChatRecyclerViewAdapter
+import com.akgarg.whatsappuiclone.utils.ChatDataUtil
 
 class ChatsFragment : Fragment() {
 
@@ -28,12 +29,12 @@ class ChatsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = ChatRecyclerViewAdapter(requireContext())
+        recyclerView.adapter = ChatRecyclerViewAdapter(requireContext(), ChatDataUtil.getChatData())
     }
 
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         recyclerView.layoutManager = null
         recyclerView.adapter = null
     }

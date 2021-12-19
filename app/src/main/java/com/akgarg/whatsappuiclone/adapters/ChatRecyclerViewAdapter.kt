@@ -3,13 +3,21 @@ package com.akgarg.whatsappuiclone.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.model.ChatDataModel
+import com.akgarg.whatsappuiclone.utils.ChatDataUtil
 import com.akgarg.whatsappuiclone.viewHolders.ChatRvViewHolder
 
+
 @Suppress("unused")
-class ChatRecyclerViewAdapter(private val context: Context) :
+class ChatRecyclerViewAdapter(
+    private val context: Context,
+    private val chatData: ArrayList<ChatDataModel>
+) :
     RecyclerView.Adapter<ChatRvViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatRvViewHolder {
@@ -19,36 +27,28 @@ class ChatRecyclerViewAdapter(private val context: Context) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ChatRvViewHolder, position: Int) {
+        val data = chatData[position]
+        holder.chatTitle.text = data.getChatTitle()
+        holder.chatMessage.text = data.getChatMessage()
+        holder.lastMessageTime.text = data.getLastMessageTime()
+        holder.profilePicture.setImageResource(data.getProfilePictureUrl())
 
-        when (position) {
-            0 -> {
-                holder.chatTitle.text = "Shubham"
-                holder.chatMessage.text = "Hello beero"
-                holder.lastMessageTime.text = "02:55 am"
-                holder.profilePicture.setImageResource(R.drawable.shubham)
-            }
-            1 -> {
-                holder.chatTitle.text = "Paras"
-                holder.chatMessage.text = "Hey, Wassap?"
-                holder.lastMessageTime.text = "02:55 am"
-                holder.profilePicture.setImageResource(R.drawable.paras)
-            }
-            2 -> {
-                holder.chatTitle.text = "Guruji"
-                holder.chatMessage.text = "Pranam Guruji"
-                holder.lastMessageTime.text = "02:55 am"
-                holder.profilePicture.setImageResource(R.drawable.guruji)
-            }
-            else -> {
-                holder.chatTitle.text = "Akhilesh"
-                holder.chatMessage.text = "Hey, this is me"
-                holder.lastMessageTime.text = "02:55 am"
-                holder.profilePicture.setImageResource(R.drawable.me)
-            }
+        if (data.getIsMessageSend()) {
+            holder.messageStatusTick.setImageResource(ChatDataUtil.getMessageStatusTick(data))
+        } else {
+            holder.messageStatusTick.visibility = View.GONE
+            val params = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.marginStart = 0
+            holder.chatMessage.layoutParams = params
         }
+
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return chatData.size
     }
+
 }

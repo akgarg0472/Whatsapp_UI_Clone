@@ -18,4 +18,22 @@
     <string name="recent_updates_text">Recent updates</string>
     <string name="my_status_text">My Status</string>
     <string name="tap_to_add_status_update_text">Tap to add status update</string>
+    <string name="don_t_be_a_css_to_my_html_be_javascript">Don\'t be a CSS to my HTML, be JavaScript</string>
+    <string name="akhilesh_garg">Akhilesh Garg</string>
+    <string name="account">Account</string>
+    <string name="privacy_security_change_number">Privacy, security, change number</string>
+    <string name="chats">Chats</string>
+    <string name="theme_wallpaper_chat_history">Theme, wallpaper, chat history</string>
+    <string name="notifications">Notifications</string>
+    <string name="message_group_call_tones"><![CDATA[Message, group & call tones]]></string>
+    <string name="storage_and_data">Storage and data</string>
+    <string name="network_usage_auto_download">Network usage, auto-download</string>
+    <string name="help_centre_contact_us_privacy_policy">Help centre, contact us, privacy policy</string>
+    <string name="help">Help</string>
+    <string name="invite_a_friend">Invite a friend</string>
+    <string name="settings_from_akhilesh_garg">∞ Akhil</string>
+    <string name="made_with_by">Made with ❤️ by</string>
+    <string name="call_status_icon">Call Status</string>
+    <string name="call_icon">Call Icon</string>
+    <string name="tap_and_hold_on_a_chat_for_more_options">Tap and hold on a chat for more options</string>
 </resources>
