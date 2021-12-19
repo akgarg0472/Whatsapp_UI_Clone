@@ -14,6 +14,7 @@ import com.akgarg.whatsappuiclone.utils.CallDataUtil
 class CallsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CallsRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,13 +23,16 @@ class CallsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.calls_fragment, container, false)
         recyclerView = view.findViewById(R.id.callRecyclerView)
+        adapter = CallsRecyclerViewAdapter(requireContext(), CallDataUtil.getCallData())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
         return view
     }
 
 
     override fun onResume() {
         super.onResume()
-        val adapter = CallsRecyclerViewAdapter(requireContext(), CallDataUtil.getCallData())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }

@@ -9,11 +9,13 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat
 import androidx.viewpager.widget.ViewPager
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.FragmentViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout
@@ -87,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
         layoutParams.weight = 0.41f
         layout.layoutParams = layoutParams
+
+        val drawable =
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_photo_camera_24, theme)
+        drawable?.setTint(ResourcesCompat.getColor(resources, R.color.tab_layout_text_color, theme))
+        tabLayout.getTabAt(0)?.icon = drawable
     }
 
 }

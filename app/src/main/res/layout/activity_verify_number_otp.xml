@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/enter_phone_setup_bg"
+    tools:context=".activities.VerifyNumberOtpActivity">
+
+    <RelativeLayout
+        android:id="@+id/verifyNumberHeaderContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/verify_phone_header_text"
+            android:textAlignment="center"
+            android:textColor="@color/verify_your_number_title_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/verificationStatusMessageAndWrongNumberContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verifyNumberHeaderContainer"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/waiting_detect_sms_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/waiting_to_automatically_detect_an_sms_sent_to"
+            android:textAlignment="center"
+            android:textColor="@color/country_code_number_text_color"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/waiting_detect_sms_textView"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/mobileNumberUndergoingVerification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 1234567890."
+                android:textColor="@color/country_code_number_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/wrongNumberTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/mobileNumberUndergoingVerification"
+                android:text="@string/wrong_number"
+                android:textColor="#35afe4"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/otpInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verificationStatusMessageAndWrongNumberContainer"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/otpInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/otpET1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/otpET2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/otpET3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/otpET4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/otpET5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/otpET6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="20sp"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otpInput"
+            android:layout_marginTop="8dp"
+            android:text="@string/enter_6_digit_code"
+            android:textAlignment="center"
+            android:textColor="#878787" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/resendMessageButtonVerifyNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otpInputContainer"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="16dp"
+        android:text="@string/resend_sms_txt"
+        android:textSize="15sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_sms_24" />
+
+    <View
+        android:id="@+id/resendSmsAndCallMeSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="0.75dp"
+        android:layout_below="@id/resendMessageButtonVerifyNumber"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/settings_page_horizontal_line" />
+
+    <TextView
+        android:id="@+id/callMeButtonVerifyNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resendSmsAndCallMeSeparator"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="16dp"
+        android:text="@string/call_me"
+        android:textSize="15sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_call_disabled_24" />
+
+</RelativeLayout>

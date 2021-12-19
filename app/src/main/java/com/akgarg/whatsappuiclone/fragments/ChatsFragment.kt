@@ -14,6 +14,7 @@ import com.akgarg.whatsappuiclone.utils.ChatDataUtil
 class ChatsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ChatRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,14 +23,19 @@ class ChatsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.chat_fragment, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
+        adapter = ChatRecyclerViewAdapter(requireContext(), ChatDataUtil.getChatData())
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
+
         return view
     }
 
 
     override fun onResume() {
         super.onResume()
+        adapter = ChatRecyclerViewAdapter(requireContext(), ChatDataUtil.getChatData())
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = ChatRecyclerViewAdapter(requireContext(), ChatDataUtil.getChatData())
+        recyclerView.adapter = adapter
     }
 
 

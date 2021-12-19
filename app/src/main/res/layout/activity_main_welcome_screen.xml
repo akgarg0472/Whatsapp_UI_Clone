@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/welcome_screen_bg_color"
+    tools:context=".activities.MainWelcomeScreenActivity">
+
+    <TextView
+        android:id="@+id/welcomeScreenWelcomeToWhatsApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/welcome_to_whatsapp"
+        android:textAlignment="center"
+        android:textColor="@color/welcome_to_whatsapp_color"
+        android:textSize="28sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/welcomeScreenPrivacyPolicyContainer"
+        android:layout_below="@id/welcomeScreenWelcomeToWhatsApp"
+        android:layout_margin="48dp"
+        android:contentDescription="@string/welcome_screen_logo"
+        android:src="@drawable/welcome_screen_logo" />
+
+    <RelativeLayout
+        android:id="@+id/welcomeScreenPrivacyPolicyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/welcomeScreenFrom"
+        android:layout_marginBottom="64dp">
+
+        <TextView
+            android:id="@+id/termsAndConditionsText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/read_our_privacy_policy_tap_agree_and_continue_to"
+            android:textAlignment="center"
+            android:textColor="#7c8387" />
+
+        <TextView
+            android:id="@+id/termsAndConditionsText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/termsAndConditionsText1"
+            android:text="@string/accept_the_terms_of_service"
+            android:textAlignment="center"
+            android:textColor="#7c8387" />
+
+        <Button
+            android:id="@+id/welcomeScreenAgreeAndContinueButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/termsAndConditionsText2"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="48dp"
+            android:backgroundTint="@color/agree_and_continue_btn_bg"
+            android:text="@string/agree_and_continue_btn_text"
+            android:textColor="@color/agree_and_continue_btn_text_color" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/welcomeScreenByName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:letterSpacing="0.15"
+        android:text="@string/settings_from_akhilesh_garg"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/welcome_page_infinity_name_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/welcomeScreenFrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/welcomeScreenByName"
+        android:layout_marginBottom="2dp"
+        android:text="@string/welcome_screen_from"
+        android:textAlignment="center"
+        android:textColor="@color/welcome_screen_from_text_color" />
+
+</RelativeLayout>

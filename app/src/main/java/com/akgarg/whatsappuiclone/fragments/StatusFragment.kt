@@ -27,24 +27,30 @@ class StatusFragment : Fragment() {
         val view = inflater.inflate(R.layout.status_fragment, container, false)
         recentStatusRecyclerView = view.findViewById(R.id.recentStatusRecyclerView)
         viewedStatusRecyclerView = view.findViewById(R.id.viewedStatusRecyclerView)
+        recentStatusRecyclerViewAdapter =
+            RecentStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
+        viewedStatusRecyclerViewAdapter =
+            ViewedStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
+        recentStatusRecyclerView.layoutManager = LinearLayoutManager(context)
+        viewedStatusRecyclerView.layoutManager = LinearLayoutManager(context)
+        recentStatusRecyclerView.adapter = recentStatusRecyclerViewAdapter
+        viewedStatusRecyclerView.adapter = viewedStatusRecyclerViewAdapter
+
         return view
     }
 
     override fun onResume() {
         super.onResume()
-        recentStatusRecyclerViewAdapter =
-            RecentStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
-        viewedStatusRecyclerViewAdapter = ViewedStatusRecyclerViewAdapter(requireContext(), StatusDataUtil.getRecentStatusData())
-
         recentStatusRecyclerView.layoutManager = LinearLayoutManager(context)
         viewedStatusRecyclerView.layoutManager = LinearLayoutManager(context)
-
         recentStatusRecyclerView.adapter = recentStatusRecyclerViewAdapter
         viewedStatusRecyclerView.adapter = viewedStatusRecyclerViewAdapter
     }
 
     override fun onStop() {
         super.onStop()
+        recentStatusRecyclerView.layoutManager = null
+        viewedStatusRecyclerView.layoutManager = null
         recentStatusRecyclerView.adapter = null
         viewedStatusRecyclerView.adapter = null
     }

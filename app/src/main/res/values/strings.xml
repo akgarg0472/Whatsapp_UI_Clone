@@ -36,4 +36,31 @@
     <string name="call_status_icon">Call Status</string>
     <string name="call_icon">Call Icon</string>
     <string name="tap_and_hold_on_a_chat_for_more_options">Tap and hold on a chat for more options</string>
+    <string name="welcome_to_whatsapp">Welcome To WhatsApp</string>
+    <string name="welcome_screen_logo_image">Welcome Screen Logo Image</string>
+    <string name="read_our_privacy_policy_tap_agree_and_continue_to">Read our Privacy Policy. Tap "Agree and continue" to</string>
+    <string name="accept_the_terms_of_service">accept the Terms of Service.</string>
+    <string name="welcome_screen_from">from</string>
+    <string name="agree_and_continue_btn_text">Agree And Continue</string>
+    <string name="welcome_screen_logo">Welcome Screen Logo</string>
+    <string name="verify_your_phone_number">Verify your phone number</string>
+    <string name="whatsapp_sms_rate_message">App will send an SMS message to verify your phone number. <a href="#">What\'s my number?</a></string>
+    <string name="enter_your_country_code_and_phone_number">Enter your country code and phone number:</string>
+    <string name="enter_phone_country_code">+ %d</string>
+    <string name="next_btn_text">Next</string>
+    <string name="phone_number_placeholder">Phone Number</string>
+    <string name="carrier_sms_charges_may_apply">Carrier SMS charges may apply</string>
+    <string name="verify_phone_header_text">Verify %d</string>
+    <string name="waiting_to_automatically_detect_an_sms_sent_to">Waiting to automatically detect an SMS sent to</string>
+    <string name="wrong_number">\u0020Wrong Number?</string>
+    <string name="enter_6_digit_code">Enter 6-digit code</string>
+    <string name="resend_sms_txt">Resend SMS</string>
+    <string name="sms_icon">SMS Icon</string>
+    <string name="call_me">Call me</string>
+
+    <string-array name="countries">
+        <item>India</item>
+        <item>Dubai</item>
+        <item>United States</item>
+    </string-array>
 </resources>

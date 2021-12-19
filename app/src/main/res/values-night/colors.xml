@@ -11,4 +11,16 @@
     <color name="chat_message_text_preview">#8696a0</color>
     <color name="settings_page_header_color">#ffffff</color>
     <color name="settings_page_horizontal_line">#222d34</color>
+    <color name="welcome_to_whatsapp_color">#CACACA</color>
+    <color name="welcome_screen_bg_color">#101d24</color>
+    <color name="agree_and_continue_btn_bg">#00af9c</color>
+    <color name="agree_and_continue_btn_text_color">#101e25</color>
+    <color name="welcome_page_infinity_name_color">#BDBDBD</color>
+    <color name="welcome_screen_from_text_color">#BDBDBD</color>
+    <color name="enter_phone_setup_bg">#131d23</color>
+    <color name="sms_rate_msg_color">#cdcfd1</color>
+    <color name="verify_your_number_title_color">#cdcfd1</color>
+    <color name="country_code_number_text_color">#cdcfd1</color>
+    <color name="country_spinner_underline_color">#4dac9c</color>
+    <color name="enter_number_next_btn_bg">#4dac9c</color>
 </resources>

@@ -8,14 +8,14 @@ import com.akgarg.whatsappuiclone.fragments.CameraFragment
 import com.akgarg.whatsappuiclone.fragments.ChatsFragment
 import com.akgarg.whatsappuiclone.fragments.StatusFragment
 
-@Suppress("unused")
+@Suppress("unused", "deprecation")
 class FragmentViewPagerAdapter(fm: FragmentManager, behavior: Int) :
-    FragmentPagerAdapter(fm, behavior) {
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val itemsCount: Int = behavior
 
     override fun getCount(): Int {
-        return itemsCount;
+        return itemsCount
     }
 
     override fun getItem(position: Int): Fragment {

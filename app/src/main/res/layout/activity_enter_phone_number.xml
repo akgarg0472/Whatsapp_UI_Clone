@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/enter_phone_setup_bg"
+    tools:context=".activities.EnterPhoneNumberActivity">
+
+    <RelativeLayout
+        android:id="@+id/enter_phone_top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/verify_your_phone_number"
+            android:textAlignment="center"
+            android:textColor="@color/verify_your_number_title_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/enter_phone_number_code_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_phone_top_container"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp">
+
+        <TextView
+            android:id="@+id/whatsapp_sms_rate_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:lines="2"
+            android:text="@string/whatsapp_sms_rate_message"
+            android:textAlignment="center"
+            android:textColor="@color/sms_rate_msg_color"
+            android:textSize="16sp" />
+
+
+        <Spinner
+            android:id="@+id/countryCode_picker_enter_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/whatsapp_sms_rate_message"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.75dp"
+            android:layout_below="@id/countryCode_picker_enter_phone"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="-8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/country_spinner_underline_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countryCode_picker_enter_phone"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp">
+
+            <EditText
+                android:id="@+id/enterPhoneCountryCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:enabled="false"
+                android:focusable="false"
+                android:importantForAutofill="no"
+                android:inputType="none"
+                android:textAlignment="center"
+                android:textColor="@color/country_code_number_text_color"
+                tools:ignore="LabelFor,TextFields" />
+
+            <EditText
+                android:id="@+id/enterNumberInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:hint="@string/phone_number_placeholder"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="10"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/enterNumberNextButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/enter_number_next_btn_bg"
+            android:gravity="center"
+            android:text="@string/next_btn_text" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/carrier_sms_charges_may_apply"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
