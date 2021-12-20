@@ -1,4 +1,4 @@
-package com.akgarg.whatsappuiclone.enums
+package com.akgarg.whatsappuiclone.constants
 
 @Suppress("unused")
 class SharedPreferenceConstants {
@@ -9,6 +9,7 @@ class SharedPreferenceConstants {
         const val THEME_LIGHT = "THEME_LIGHT"
         const val THEME_DARK = "THEME_DARK"
         const val THEME_SYSTEM = "THEME_SYSTEM"
+        const val REGISTERED_USER_NAME = "REGISTERED_USER_NAME"
     }
 
 }

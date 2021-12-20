@@ -20,6 +20,23 @@ class StatusDataUtil {
 
             recentStatusDataList.add(
                 StatusDataModel(
+                    "Rishabh",
+                    "Today, 10:35 pm",
+                    R.drawable.user
+                )
+            )
+
+
+            recentStatusDataList.add(
+                StatusDataModel(
+                    "Rinney",
+                    "Today, 3:35 pm",
+                    R.drawable.user
+                )
+            )
+
+            recentStatusDataList.add(
+                StatusDataModel(
                     "Shubham",
                     "Today, 1:10 am",
                     R.drawable.shubham
@@ -30,7 +47,7 @@ class StatusDataUtil {
                 StatusDataModel(
                     "Akash",
                     "Today, 1:08 am",
-                    R.drawable.akash
+                    R.drawable.user
                 )
             )
 
@@ -46,15 +63,7 @@ class StatusDataUtil {
                 StatusDataModel(
                     "Paras",
                     "Yesterday, 9:59 pm",
-                    R.drawable.paras
-                )
-            )
-
-            recentStatusDataList.add(
-                StatusDataModel(
-                    "Rishabh",
-                    "Yesterday, 3:12 pm",
-                    R.drawable.rishabh
+                    R.drawable.user
                 )
             )
 

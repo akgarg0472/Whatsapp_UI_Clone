@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
-import com.akgarg.whatsappuiclone.enums.AuthenticationConstants
+import com.akgarg.whatsappuiclone.constants.AuthenticationConstants
 import com.akgarg.whatsappuiclone.utils.OtpUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException

@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
+import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 
@@ -36,7 +38,6 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             progressBar.visibility = View.VISIBLE
             nextButton.isEnabled = false
-
             val name = nameInput.text.toString()
 
             when {
@@ -71,6 +72,11 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             progressBar.visibility = View.INVISIBLE
                             nextButton.isEnabled = true
+                            SharedPreferenceUtil.setStringPreference(
+                                this,
+                                SharedPreferenceConstants.REGISTERED_USER_NAME,
+                                name
+                            )
                             val mainActivityIntent = Intent(this, MainActivity::class.java)
                             startActivity(mainActivityIntent)
                             finish()

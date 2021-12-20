@@ -1,7 +1,7 @@
 package com.akgarg.whatsappuiclone.utils
 
 import android.content.Context
-import com.akgarg.whatsappuiclone.enums.SharedPreferenceConstants
+import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 
 @Suppress("unused")
 class SharedPreferenceUtil {

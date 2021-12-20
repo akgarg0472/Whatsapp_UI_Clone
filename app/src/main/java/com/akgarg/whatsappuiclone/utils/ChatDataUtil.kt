@@ -12,6 +12,18 @@ class ChatDataUtil {
 
             chatDataList.add(
                 ChatDataModel(
+                    "Rishabh",
+                    "Hi bro",
+                    "Just now",
+                    R.drawable.user,
+                    isMessageSend = true,
+                    isMessageDelivered = true,
+                    isMessageSeen = true
+                )
+            )
+
+            chatDataList.add(
+                ChatDataModel(
                     "Sachin Tendulkar",
                     "You need more practice, there is some problem with your front foot",
                     "11:18 pm",
@@ -25,12 +37,24 @@ class ChatDataUtil {
             chatDataList.add(
                 ChatDataModel(
                     "Virat Kohli",
-                    "Waiting for your 100th century 🏏",
+                    "Waiting for your firing 🔥 century 🏏",
                     "04:45 pm",
                     R.drawable.virat_kohli,
                     isMessageSend = true,
                     isMessageDelivered = true,
                     isMessageSeen = true
+                )
+            )
+
+            chatDataList.add(
+                ChatDataModel(
+                    "Rinney",
+                    "Hi, Can you please help me to solve this question?",
+                    "03:57 pm",
+                    R.drawable.user,
+                    isMessageSend = true,
+                    isMessageDelivered = true,
+                    isMessageSeen = false
                 )
             )
 
@@ -60,10 +84,10 @@ class ChatDataUtil {
 
             chatDataList.add(
                 ChatDataModel(
-                    "Rishabh",
-                    "Hi, How are you? I need some help from you🥺",
+                    "Rishabh 2",
+                    "Hi, How are you?",
                     "Yesterday",
-                    R.drawable.rishabh,
+                    R.drawable.user,
                     isMessageSend = true,
                     isMessageDelivered = true,
                     isMessageSeen = false
@@ -73,7 +97,7 @@ class ChatDataUtil {
             chatDataList.add(
                 ChatDataModel(
                     "Shubham",
-                    "Hey, let's catch up at XYZ",
+                    "Hey, let's catch up at PizzaHut",
                     "Yesterday",
                     R.drawable.shubham,
                     isMessageSend = true,
@@ -87,7 +111,7 @@ class ChatDataUtil {
                     "Paras",
                     "Let's go for a ride on sunday",
                     "17-12-2021",
-                    R.drawable.paras,
+                    R.drawable.user,
                     isMessageSend = true,
                     isMessageDelivered = true,
                     isMessageSeen = true
@@ -99,7 +123,7 @@ class ChatDataUtil {
                     "Akash",
                     "I'm at my office, I'll call you later",
                     "16-12-2021",
-                    R.drawable.akash,
+                    R.drawable.user,
                     isMessageSend = false,
                     isMessageDelivered = false,
                     isMessageSeen = false

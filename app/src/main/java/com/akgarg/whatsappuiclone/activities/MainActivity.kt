@@ -13,7 +13,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.viewpager.widget.ViewPager
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.FragmentViewPagerAdapter
-import com.akgarg.whatsappuiclone.enums.SharedPreferenceConstants
+import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.android.material.tabs.TabLayout
 
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         setAppTheme()
     }
 
-    
+
     private fun setAppTheme() {
         val appTheme =
             SharedPreferenceUtil.getStringPreference(this, SharedPreferenceConstants.APP_THEME)

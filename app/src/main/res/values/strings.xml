@@ -63,6 +63,7 @@
     <string name="optional_profile_photo">Optional Profile Photo</string>
     <string name="type_your_name_here">Type your name here</string>
     <string name="shared_preference_file_key">com.akgarg.whatsappuiclone.SHARED_PREFERENCE_FILE_KEY</string>
+    <string name="registered_user_name">%s</string>
 
     <string-array name="countries">
         <item>India</item>

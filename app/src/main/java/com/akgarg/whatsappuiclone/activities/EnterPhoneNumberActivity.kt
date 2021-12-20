@@ -10,7 +10,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
-import com.akgarg.whatsappuiclone.enums.AuthenticationConstants
+import com.akgarg.whatsappuiclone.constants.AuthenticationConstants
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth

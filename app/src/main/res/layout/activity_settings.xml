@@ -31,7 +31,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:contentDescription="@string/user_profile_picture_txt"
-                    android:src="@drawable/me" />
+                    android:src="@drawable/user" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -50,12 +50,11 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@string/akhilesh_garg"
+                    android:text="@string/registered_user_name"
                     android:textColor="@color/chat_title_text_color"
                     android:textSize="18sp"
                     android:textStyle="normal"
-                    tools:ignore="RelativeOverlap"
-                    tools:text="Akhilesh Garg" />
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:id="@+id/settingsPageStatus"

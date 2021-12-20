@@ -1,4 +1,4 @@
-package com.akgarg.whatsappuiclone.enums
+package com.akgarg.whatsappuiclone.constants
 
 enum class AuthenticationConstants {
 

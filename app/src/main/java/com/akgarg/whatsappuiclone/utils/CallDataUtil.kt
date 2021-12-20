@@ -13,8 +13,36 @@ class CallDataUtil {
             callDataList.add(
                 CallDataModel(
                     "Rishabh",
+                    "20 December, 10:40 am",
+                    R.drawable.user,
+                    isReceived = false,
+                    isReceivedAccepted = false,
+                    isReceivedRejected = false,
+                    isTransmitted = true,
+                    isTransmittedAccepted = true,
+                    isTransmittedRejected = false
+                )
+            )
+
+            callDataList.add(
+                CallDataModel(
+                    "Rinney",
+                    "19 December, 8:32 am",
+                    R.drawable.user,
+                    isReceived = false,
+                    isReceivedAccepted = false,
+                    isReceivedRejected = false,
+                    isTransmitted = true,
+                    isTransmittedAccepted = false,
+                    isTransmittedRejected = true
+                )
+            )
+
+            callDataList.add(
+                CallDataModel(
+                    "Rishabh",
                     "18 December, 3:32 am",
-                    R.drawable.rishabh,
+                    R.drawable.user,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -70,7 +98,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Rishabh",
                     "13 December, 5:37 am",
-                    R.drawable.rishabh,
+                    R.drawable.user,
                     isReceived = true,
                     isReceivedAccepted = false,
                     isReceivedRejected = true,
@@ -84,7 +112,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Akash",
                     "7 December, 10:45 am",
-                    R.drawable.akash,
+                    R.drawable.user,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -96,9 +124,9 @@ class CallDataUtil {
 
             callDataList.add(
                 CallDataModel(
-                    "Akash, Paras & 2 others",
+                    "Rinney, Rishabh & 2 others",
                     "3 December, 7:28 pm",
-                    R.drawable.paras,
+                    R.drawable.user,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -112,7 +140,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Paras",
                     "18 November, 11:30 am",
-                    R.drawable.paras,
+                    R.drawable.user,
                     isReceived = true,
                     isReceivedAccepted = true,
                     isReceivedRejected = false,
@@ -168,7 +196,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Paras",
                     "13 September, 5:37 am",
-                    R.drawable.paras,
+                    R.drawable.user,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -182,7 +210,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Akash",
                     "7 September, 10:45 am",
-                    R.drawable.akash,
+                    R.drawable.user,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -194,9 +222,9 @@ class CallDataUtil {
 
             callDataList.add(
                 CallDataModel(
-                    "Akash, Paras & 2 others",
+                    "Shubham, Paras & 2 others",
                     "15 August, 7:28 pm",
-                    R.drawable.sachin_tendulkar,
+                    R.drawable.shubham,
                     isReceived = true,
                     isReceivedAccepted = true,
                     isReceivedRejected = false,
@@ -208,6 +236,7 @@ class CallDataUtil {
 
             return callDataList
         }
+
 
         fun getCallDirectionIcon(data: CallDataModel): Int {
             // if we made a call
