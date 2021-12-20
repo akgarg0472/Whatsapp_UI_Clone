@@ -13,6 +13,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.viewpager.widget.ViewPager
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.FragmentViewPagerAdapter
+import com.akgarg.whatsappuiclone.enums.SharedPreferenceConstants
+import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.android.material.tabs.TabLayout
 
 @Suppress("DEPRECATION")
@@ -55,6 +57,29 @@ class MainActivity : AppCompatActivity() {
         // swipe on page fragment changer
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         setCameraTab()
+        setAppTheme()
+    }
+
+    
+    private fun setAppTheme() {
+        val appTheme =
+            SharedPreferenceUtil.getStringPreference(this, SharedPreferenceConstants.APP_THEME)
+
+        if (appTheme != null) {
+            when (appTheme) {
+                SharedPreferenceConstants.THEME_DARK -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+
+                SharedPreferenceConstants.THEME_LIGHT -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+
+                SharedPreferenceConstants.THEME_SYSTEM -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
+        }
     }
 
 
@@ -66,17 +91,45 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.light_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            R.id.dark_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            R.id.system_theme_menu_item -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            R.id.light_theme_menu_item -> {
+                SharedPreferenceUtil.setStringPreference(
+                    this,
+                    SharedPreferenceConstants.APP_THEME,
+                    SharedPreferenceConstants.THEME_LIGHT
+                )
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+
+            R.id.dark_theme_menu_item -> {
+                SharedPreferenceUtil.setStringPreference(
+                    this,
+                    SharedPreferenceConstants.APP_THEME,
+                    SharedPreferenceConstants.THEME_DARK
+                )
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+
+            R.id.system_theme_menu_item -> {
+                SharedPreferenceUtil.setStringPreference(
+                    this,
+                    SharedPreferenceConstants.APP_THEME,
+                    SharedPreferenceConstants.THEME_SYSTEM
+                )
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+
             R.id.setting_menu_item -> {
                 val settingActivityIntent = Intent(this, SettingsActivity::class.java)
                 startActivity(settingActivityIntent)
             }
-            R.id.app_theme_menu_item -> super.onOptionsItemSelected(item)
-            else -> Toast.makeText(
-                this, "503 Unavailable", Toast.LENGTH_SHORT
-            ).show()
+
+            R.id.app_theme_menu_item -> {
+                super.onOptionsItemSelected(item)
+            }
+
+            else -> {
+                Toast.makeText(this, "503 Unavailable", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return true

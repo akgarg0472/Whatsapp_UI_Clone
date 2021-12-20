@@ -16,6 +16,7 @@
         tools:ignore="UselessParent">
 
         <TextView
+            android:id="@+id/verifyNumberHeaderText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -205,5 +206,20 @@
         android:text="@string/call_me"
         android:textSize="15sp"
         app:drawableLeftCompat="@drawable/ic_baseline_call_disabled_24" />
+
+
+    <RelativeLayout
+        android:id="@+id/verifyNumberOtpProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
 
 </RelativeLayout>

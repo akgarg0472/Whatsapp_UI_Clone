@@ -15,4 +15,5 @@
     <string name="tap_to_add_status_update_text">Tap to add status update</string>
     <string name="don_t_be_a_css_to_my_html_be_javascript">Don\'t be a CSS to my HTML, be JavaScript, Don\'t be a CSS to my HTML, be JavaScript</string>
     <string name="call_status_icon">Call Status</string>
+    <string name="mobile_number_ongoing_verification">+%s %s.</string>
 </resources>

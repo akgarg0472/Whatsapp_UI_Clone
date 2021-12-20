@@ -15,5 +15,11 @@ class OtpUtils {
 
             return otpBuilder.toString()
         }
+
+
+        fun generateRandomOtp(): String {
+            return (100000..999999).random().toString()
+        }
+
     }
 }

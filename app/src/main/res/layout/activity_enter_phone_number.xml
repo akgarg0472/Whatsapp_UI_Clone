@@ -132,8 +132,19 @@
             android:text="@string/carrier_sms_charges_may_apply"
             android:textAlignment="center"
             android:textSize="15sp" />
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/enterPhoneNumberProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

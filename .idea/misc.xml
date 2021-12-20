@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/app_icon_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_disabled_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_received_missed_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_sms_24.xml" value="0.26614583333333336" />
@@ -14,6 +16,7 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_main_welcome_screen.xml" value="0.264" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_profile_info_setup.xml" value="0.264" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_verify_number.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_verify_number_otp.xml" value="0.25" />
@@ -26,6 +29,7 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_fragment.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_rv_layout.xml" value="0.4" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AppData/Local/Android/Sdk/platforms/android-31-2/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25" />
       </map>
     </option>
