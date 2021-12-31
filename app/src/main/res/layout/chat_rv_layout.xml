@@ -21,8 +21,8 @@
                 android:id="@+id/profilePicture"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:contentDescription="@string/user_profile_picture_txt"
+                android:scaleType="centerCrop"
                 android:src="@drawable/user" />
         </androidx.cardview.widget.CardView>
 

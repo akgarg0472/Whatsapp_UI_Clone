@@ -10,6 +10,8 @@ class SharedPreferenceConstants {
         const val THEME_DARK = "THEME_DARK"
         const val THEME_SYSTEM = "THEME_SYSTEM"
         const val REGISTERED_USER_NAME = "REGISTERED_USER_NAME"
+        const val REGISTERED_COUNTRY_CODE = "REGISTERED_COUNTRY_CODE"
+        const val REGISTERED_PHONE_NUMBER = "REGISTERED_PHONE_NUMBER"
     }
 
 }

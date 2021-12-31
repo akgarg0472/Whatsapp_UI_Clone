@@ -22,10 +22,9 @@ class StatusDataUtil {
                 StatusDataModel(
                     "Rishabh",
                     "Today, 10:35 pm",
-                    R.drawable.user
+                    R.mipmap.ic_launcher_round
                 )
             )
-
 
             recentStatusDataList.add(
                 StatusDataModel(

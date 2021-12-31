@@ -14,7 +14,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Rishabh",
                     "20 December, 10:40 am",
-                    R.drawable.user,
+                    R.mipmap.ic_launcher_round,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -42,7 +42,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Rishabh",
                     "18 December, 3:32 am",
-                    R.drawable.user,
+                    R.mipmap.ic_launcher_round,
                     isReceived = false,
                     isReceivedAccepted = false,
                     isReceivedRejected = false,
@@ -98,7 +98,7 @@ class CallDataUtil {
                 CallDataModel(
                     "Rishabh",
                     "13 December, 5:37 am",
-                    R.drawable.user,
+                    R.mipmap.ic_launcher_round,
                     isReceived = true,
                     isReceivedAccepted = false,
                     isReceivedRejected = true,

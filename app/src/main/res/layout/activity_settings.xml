@@ -17,21 +17,26 @@
             android:id="@+id/settingsPagePersonalInformationContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
             tools:ignore="UselessParent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/settingsPageProfilePictureContainer"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:cardCornerRadius="30dp">
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="4dp"
+                app:cardCornerRadius="32dp">
 
                 <ImageView
                     android:id="@+id/settingsPageProfilePicture"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:layout_marginTop="10dp"
                     android:contentDescription="@string/user_profile_picture_txt"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/user" />
             </androidx.cardview.widget.CardView>
 
@@ -41,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
                 android:layout_toStartOf="@id/settingsPageQrCodeContainer"
                 android:layout_toEndOf="@id/settingsPageProfilePictureContainer"
                 android:orientation="vertical">
@@ -75,16 +81,20 @@
 
             <RelativeLayout
                 android:id="@+id/settingsPageQrCodeContainer"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:elevation="0dp"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
+                    android:layout_gravity="center"
                     android:src="@drawable/ic_baseline_qr_code_24"
                     app:tint="#00a884"
                     tools:ignore="ContentDescription" />
@@ -114,6 +124,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -127,6 +140,7 @@
                     android:rotation="90"
                     android:rotationY="180"
                     android:src="@drawable/ic_baseline_vpn_key_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
@@ -155,6 +169,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -166,6 +183,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_baseline_chat_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
@@ -194,6 +212,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -205,6 +226,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_baseline_notifications_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
@@ -233,6 +255,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -244,6 +269,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_baseline_data_usage_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
@@ -272,6 +298,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -283,6 +312,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_baseline_help_outline_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
@@ -312,6 +342,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-8dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp">
 
                 <ImageView
@@ -323,6 +356,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_baseline_group_24"
+                    app:tint="#8696a0"
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout

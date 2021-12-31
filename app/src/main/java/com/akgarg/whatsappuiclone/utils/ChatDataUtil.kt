@@ -15,7 +15,7 @@ class ChatDataUtil {
                     "Rishabh",
                     "Hi bro",
                     "Just now",
-                    R.drawable.user,
+                    R.mipmap.ic_launcher_round,
                     isMessageSend = true,
                     isMessageDelivered = true,
                     isMessageSeen = true

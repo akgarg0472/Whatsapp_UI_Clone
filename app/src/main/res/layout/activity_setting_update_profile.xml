@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_fragments_bg_color"
+    tools:context=".activities.SettingUpdateProfileActivity">
+
+
+    <!-- Image Section -->
+    <RelativeLayout
+        android:id="@+id/settingUpdateProfileImageUpdateContainer"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/settingProfileSectionImageContainer"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="80dp">
+
+            <ImageView
+                android:id="@+id/settingProfileUpdateImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/user_profile_picture"
+                android:scaleType="centerCrop"
+                android:src="@drawable/me" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/newProfilePictureSettingFab"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-48dp"
+            android:layout_toEndOf="@id/settingProfileSectionImageContainer"
+            android:backgroundTint="#00a884"
+            android:contentDescription="@string/select_new_profile_picture_button"
+            android:src="@drawable/small_camera"
+            app:fabCustomSize="48dp"
+            app:fabSize="auto"
+            app:tint="#ffffff" />
+    </RelativeLayout>
+
+
+    <!-- Details Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settingUpdateProfileImageUpdateContainer"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <!-- Name -->
+        <RelativeLayout
+            android:id="@+id/updateProfileUpdateNameRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="16dp">
+
+            <RelativeLayout
+                android:id="@+id/settingUpdateProfileImageUpdateContainerChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/profileSettingUserIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/user"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@id/settingUpdateProfileNameEdit"
+                    android:layout_toEndOf="@id/profileSettingUserIcon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_setting_name"
+                        android:textColor="#8696a0" />
+
+                    <TextView
+                        android:id="@+id/settingUpdateProfileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        tools:ignore="HardcodedText"
+                        tools:text="Akhilesh Garg" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/settingUpdateProfileNameEdit"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    app:tint="#00a884"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
+
+            <!-- Name lecture -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/settingUpdateProfileImageUpdateContainerChild"
+                android:layout_marginStart="73dp"
+                android:layout_marginTop="-8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/this_is_not_your_username_or_pin_this_name_will_be_visible_to_your_contacts"
+                android:textColor="#8696a0" />
+
+        </RelativeLayout>
+
+
+        <!-- Horizontal Line 1 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.66dp"
+            android:layout_marginStart="73dp"
+            android:background="@color/settings_page_horizontal_line" />
+
+
+        <!-- About -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/profileSettingAboutIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_baseline_info_24"
+                app:tint="#8696a0"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/settingUpdateProfileAboutEdit"
+                android:layout_toEndOf="@id/profileSettingAboutIcon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_setting_about"
+                    android:textColor="#8696a0" />
+
+                <TextView
+                    android:id="@+id/settingUpdateProfileAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textColor="@color/settings_page_header_color"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText"
+                    tools:text="Don't be a CSS to my HTML, be JavaScript" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/settingUpdateProfileAboutEdit"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:tint="#00a884"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+
+        <!-- Horizontal Line 2 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.66dp"
+            android:layout_marginStart="73dp"
+            android:background="@color/settings_page_horizontal_line" />
+
+
+        <!-- Phone -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/profileSettingPhoneIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_baseline_call_24"
+                app:tint="#8696a0"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@id/profileSettingPhoneIcon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_setting_phone"
+                    android:textColor="#8696a0" />
+
+                <TextView
+                    android:id="@+id/settingUpdateProfilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="+91 9643454500"
+                    android:textColor="@color/settings_page_header_color"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

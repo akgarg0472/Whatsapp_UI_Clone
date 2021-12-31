@@ -2,6 +2,7 @@ package com.akgarg.whatsappuiclone.activities
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -15,11 +16,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.view.setMargins
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -36,7 +42,9 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
     private lateinit var profilePicture: ImageView
     private lateinit var imageChooserAction: ActivityResultLauncher<Intent>
     private lateinit var storageRef: StorageReference
+    private lateinit var addPhotoProfileInfoSetupProgressBar: ProgressBar
     private var currentUser: FirebaseUser? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,10 +59,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         nameInput = findViewById(R.id.profileInfoNameInput)
         nextButton = findViewById(R.id.profileInfoNextButton)
         progressBar = findViewById(R.id.profileInfoProgressBar)
-
-        if (currentUser != null && currentUser?.displayName != null) {
-            nameInput.text = Editable.Factory.getInstance().newEditable(currentUser?.displayName)
-        }
+        addPhotoProfileInfoSetupProgressBar = findViewById(R.id.addPhotoProfileInfoSetupProgressBar)
 
         profilePictureSelector = findViewById(R.id.profilePictureSelectorProfileInfo)
         profilePicture = findViewById(R.id.addPhotoProfileInfoSetup)
@@ -78,6 +83,52 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             nextButtonClickHandler(profilePictureUri)
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        if (currentUser != null && currentUser?.displayName != null) {
+            nameInput.text = Editable.Factory.getInstance().newEditable(currentUser?.displayName)
+        }
+
+        if (currentUser != null && currentUser?.photoUrl != null) {
+            addPhotoProfileInfoSetupProgressBar.visibility = View.VISIBLE
+            profilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            profilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            profilePicture.imageTintMode = null
+            profilePicture.scaleType = ImageView.ScaleType.CENTER_CROP
+            val layoutParams = FrameLayout.LayoutParams(profilePicture.layoutParams)
+            layoutParams.setMargins(0)
+            profilePicture.layoutParams = layoutParams
+
+            Glide.with(this)
+                .load(currentUser?.photoUrl)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        addPhotoProfileInfoSetupProgressBar.visibility = View.INVISIBLE
+                        return true
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        addPhotoProfileInfoSetupProgressBar.visibility = View.INVISIBLE
+                        return false
+                    }
+                })
+                .into(profilePicture)
         }
     }
 
@@ -126,14 +177,14 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         }
     }
 
+
     private fun updateProfileAndProceed(name: String, profilePictureUri: Uri?) {
         progressBar.visibility = View.VISIBLE
         nextButton.isEnabled = false
+        val updateProfileRequestBuilder = UserProfileChangeRequest
+            .Builder().setDisplayName(name)
 
         if (currentUser != null) {
-            val updateProfileRequestBuilder = UserProfileChangeRequest
-                .Builder().setDisplayName(name)
-
             if (profilePictureUri != null) {
                 Log.d(
                     ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
@@ -163,6 +214,12 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                         )
                         updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
                     }
+            } else {
+                Log.d(
+                    ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
+                    "No Profile Picture Selected"
+                )
+                updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
             }
         } else {
             Toast.makeText(

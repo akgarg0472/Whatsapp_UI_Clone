@@ -182,7 +182,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             else -> {
-                Toast.makeText(this, "503 Unavailable", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Not Available Right Now", Toast.LENGTH_SHORT).show()
             }
         }
 

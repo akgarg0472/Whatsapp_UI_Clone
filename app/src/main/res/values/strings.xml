@@ -66,10 +66,20 @@
     <string name="registered_user_name">%s</string>
     <string name="entered_phone_number"><b>%s %s</b></string>
     <string name="show_all_contacts_fab">Show All Contacts Fab</string>
+    <string name="user_profile_picture">User Profile Picture</string>
+    <string name="select_new_profile_picture_button">Select New Profile Picture Button</string>
+    <string name="profile_setting_name">Name</string>
+    <string name="this_is_not_your_username_or_pin_this_name_will_be_visible_to_your_contacts">This is not your username or pin. This name will be visible to your contacts</string>
+    <string name="profile_setting_about">About</string>
+    <string name="profile_setting_phone">Phone</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="share_profile_picture">Share Profile Picture</string>
+    <string name="profile_update_phone">+%s %s</string>
 
     <string-array name="countries">
         <item>India</item>
         <item>Dubai</item>
         <item>United States</item>
     </string-array>
+    
 </resources>

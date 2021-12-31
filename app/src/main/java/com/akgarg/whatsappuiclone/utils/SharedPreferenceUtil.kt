@@ -31,6 +31,7 @@ class SharedPreferenceUtil {
                 SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
                 Context.MODE_PRIVATE
             )
+
             val editor = sharedPreference.edit()
             editor.putString(key, value)
             editor.apply()

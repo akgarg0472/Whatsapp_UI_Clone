@@ -52,6 +52,13 @@
             android:contentDescription="@string/optional_profile_photo"
             android:src="@drawable/ic_baseline_add_a_photo_24"
             app:tint="@color/profile_info_camera_icon_color" />
+
+        <ProgressBar
+            android:id="@+id/addPhotoProfileInfoSetupProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_gravity="center" />
     </androidx.cardview.widget.CardView>
 
     <EditText

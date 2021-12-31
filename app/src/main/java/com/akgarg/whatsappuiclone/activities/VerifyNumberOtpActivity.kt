@@ -13,7 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.AuthenticationConstants
+import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.OtpUtils
+import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -131,6 +133,17 @@ class VerifyNumberOtpActivity : AppCompatActivity() {
     private fun signinUser(verificationCredentials: PhoneAuthCredential) {
         auth.signInWithCredential(verificationCredentials).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+                SharedPreferenceUtil.setStringPreference(
+                    this,
+                    SharedPreferenceConstants.REGISTERED_COUNTRY_CODE,
+                    countryCode
+                )
+                SharedPreferenceUtil.setStringPreference(
+                    this,
+                    SharedPreferenceConstants.REGISTERED_PHONE_NUMBER,
+                    phoneNumber
+                )
+
                 val profileInfoActivityIntent =
                     Intent(this, ProfileInfoSetupActivity::class.java)
                 startActivity(profileInfoActivityIntent)
