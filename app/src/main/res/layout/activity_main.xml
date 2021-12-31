@@ -44,4 +44,19 @@
         android:layout_below="@id/tabLayout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainActivityFab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/show_all_contacts_fab"
+        android:elevation="0dp"
+        android:src="@drawable/ic_baseline_chat_24"
+        app:backgroundTint="#00a884"
+        app:tint="#ffffff" />
+
 </RelativeLayout>

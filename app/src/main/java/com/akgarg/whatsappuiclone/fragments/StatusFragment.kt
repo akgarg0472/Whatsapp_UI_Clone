@@ -47,12 +47,4 @@ class StatusFragment : Fragment() {
         viewedStatusRecyclerView.adapter = viewedStatusRecyclerViewAdapter
     }
 
-    override fun onStop() {
-        super.onStop()
-        recentStatusRecyclerView.layoutManager = null
-        viewedStatusRecyclerView.layoutManager = null
-        recentStatusRecyclerView.adapter = null
-        viewedStatusRecyclerView.adapter = null
-    }
-
 }

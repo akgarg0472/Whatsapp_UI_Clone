@@ -44,12 +44,12 @@
     <string name="agree_and_continue_btn_text">Agree And Continue</string>
     <string name="welcome_screen_logo">Welcome Screen Logo</string>
     <string name="verify_your_phone_number">Verify your phone number</string>
-    <string name="whatsapp_sms_rate_message">App will send an SMS message to verify your phone number. <a href="#">What\'s my number?</a></string>
+    <string name="whatsapp_sms_rate_message">App will need to verify your phone number. <a href="#">What\'s my number?</a></string>
     <string name="enter_your_country_code_and_phone_number">Enter your country code and phone number:</string>
-    <string name="enter_phone_country_code">+ %d</string>
+    <string name="enter_phone_country_code">+%d</string>
     <string name="next_btn_text">Next</string>
     <string name="phone_number_placeholder">Phone Number</string>
-    <string name="carrier_sms_charges_may_apply">Carrier SMS charges may apply</string>
+    <string name="carrier_sms_charges_may_apply">Carrier charges may apply</string>
     <string name="verify_phone_header_text">Verify +%s %s</string>
     <string name="waiting_to_automatically_detect_an_sms_sent_to">Waiting to automatically detect an SMS sent to</string>
     <string name="wrong_number">\u0020Wrong Number?</string>
@@ -64,6 +64,8 @@
     <string name="type_your_name_here">Type your name here</string>
     <string name="shared_preference_file_key">com.akgarg.whatsappuiclone.SHARED_PREFERENCE_FILE_KEY</string>
     <string name="registered_user_name">%s</string>
+    <string name="entered_phone_number"><b>%s %s</b></string>
+    <string name="show_all_contacts_fab">Show All Contacts Fab</string>
 
     <string-array name="countries">
         <item>India</item>

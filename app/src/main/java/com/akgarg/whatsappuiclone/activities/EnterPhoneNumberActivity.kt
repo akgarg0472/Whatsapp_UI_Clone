@@ -3,6 +3,7 @@ package com.akgarg.whatsappuiclone.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -118,7 +119,7 @@ class EnterPhoneNumberActivity : AppCompatActivity(), AdapterView.OnItemSelected
         nextButton.setOnClickListener {
             val number: String = phoneNumber.text.toString().trim()
 
-            if (countryCode.text.toString() != "+ 91") {
+            if (countryCode.text.toString() != "+91") {
                 Toast.makeText(
                     this,
                     "This app currently supports only Indian numbers",
@@ -156,10 +157,10 @@ class EnterPhoneNumberActivity : AppCompatActivity(), AdapterView.OnItemSelected
                 }
 
                 else -> {
+                    val enteredPhoneNumber = getString(R.string.entered_phone_number, countryCode.text, number)
                     val alertDialog = AlertDialog.Builder(this)
-                        .setTitle("Please Confirm")
-                        .setMessage("Are yu sure want to continue with\n${countryCode.text} $number?")
-                        .setPositiveButton("Confirm") { _, _ ->
+                        .setMessage("You entered the phone number\n\n${enteredPhoneNumber}\n\nIs this OK, or would you like to edit the number?")
+                        .setPositiveButton("OK") { _, _ ->
                             try {
                                 val imm: InputMethodManager =
                                     getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

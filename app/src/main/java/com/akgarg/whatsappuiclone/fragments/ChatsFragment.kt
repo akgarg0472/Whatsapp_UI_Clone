@@ -38,12 +38,4 @@ class ChatsFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-
-    override fun onStop() {
-        super.onStop()
-        recyclerView.layoutManager = null
-        recyclerView.adapter = null
-    }
-
-
 }

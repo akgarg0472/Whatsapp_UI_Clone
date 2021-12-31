@@ -63,8 +63,6 @@ class VerifyNumberOtpActivity : AppCompatActivity() {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    println("$p1 $p2 $p3")
-
                     if (editText.text.toString().length == 1 && index < otpInputs.size - 1) {
                         editText.clearFocus()
                         otpInputs[index + 1].requestFocus()
@@ -141,6 +139,12 @@ class VerifyNumberOtpActivity : AppCompatActivity() {
                 progressBar.visibility = View.INVISIBLE
                 if (task.exception is FirebaseAuthInvalidCredentialsException) {
                     Toast.makeText(this, "Invalid OTP", Toast.LENGTH_SHORT).show()
+                    otpInputs.forEach {
+                        it.text = Editable.Factory.getInstance().newEditable("")
+                        it.clearFocus()
+                    }
+                    otpInputs[0].requestFocus()
+                    otpInputs[0].isCursorVisible = true
                 } else {
                     println(task.exception?.javaClass)
                     println(task.exception?.message)

@@ -37,11 +37,4 @@ class CallsFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-
-    override fun onStop() {
-        super.onStop()
-        recyclerView.adapter = null
-        recyclerView.layoutManager = null
-    }
-
 }
