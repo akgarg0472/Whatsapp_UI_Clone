@@ -18,7 +18,13 @@ class RecentStatusRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatusRvViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.status_rv_layout, parent, false)
-        return StatusRvViewHolder(view)
+        val viewHolder = StatusRvViewHolder(view)
+
+        view.setOnClickListener {
+            println("Status clicked ${viewHolder.adapterPosition}")
+        }
+
+        return viewHolder
     }
 
     @SuppressLint("SetTextI18n")

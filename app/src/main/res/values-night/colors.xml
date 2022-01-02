@@ -35,4 +35,6 @@
     <color name="link_device_text_color">#8696a0</color>
     <color name="payment_disclaimer_bg">#2d383e</color>
     <color name="payment_history_icon_bg">#ffffff</color>
+    <color name="chat_new_message_container_bg">#202C33</color>
+    <color name="chat_message_scroll_color">#495E6C</color>
 </resources>

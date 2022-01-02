@@ -43,4 +43,6 @@
     <color name="payment_disclaimer_bg">#e2f2ef</color>
     <color name="payment_history_icon_bg">#d1d7db</color>
     <color name="app_info_title_color">#112d2e</color>
+    <color name="chat_new_message_container_bg">#FFFFFF</color>
+    <color name="chat_message_scroll_color">#C3C3C3</color>
 </resources>

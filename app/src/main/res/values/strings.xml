@@ -136,7 +136,16 @@
     <string name="app_logo">App Logo</string>
     <string name="_2019_2022_akhil_inc">© 2019—2022 Akhil Inc.</string>
     <string name="licenses"><a href="#">LICENSES</a></string>
-    <string name="app_info_version">Version 1.23.45.78</string>
+    <string name="app_info_version">Version %d.%s</string>
+    <string name="back_to_all_chats_image">Back To All Chats Image</string>
+    <string name="chat_profile_picture">Chat Profile Picture</string>
+    <string name="chat_name">%s</string>
+    <string name="video_call_icon">Video Call Icon</string>
+    <string name="audio_call_icon">Audio Call Icon</string>
+    <string name="extra_chat_options_icon">Extra Chat Options Icon</string>
+    <string name="message">Message</string>
+    <string name="emoji_icon">Emoji Icon</string>
+    <string name="send_message_button">Send Message Button</string>
 
     <string-array name="countries">
         <item>India</item>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_info_bg"
+    tools:context=".activities.SingleChatActivity">
+
+
+    <!-- Top Level -->
+    <RelativeLayout
+        android:id="@+id/topChatPane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_layout_bg_color"
+        android:padding="8dp"
+        android:weightSum="10"
+        tools:ignore="UselessParent">
+
+        <!-- Back Button and chat Profile Picture container Layout -->
+        <LinearLayout
+            android:id="@+id/backToAllChats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/back_to_all_chats_image"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:id="@+id/chatProfilePicture"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/chat_profile_picture"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/me" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+        <!-- Chat name -->
+        <TextView
+            android:id="@+id/chatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_toStartOf="@id/chatOptionsContainer"
+            android:layout_toEndOf="@id/backToAllChats"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Akhilesh Garg" />
+
+
+        <!-- Chat Option Icons -->
+        <LinearLayout
+            android:id="@+id/chatOptionsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/chatVideoCallIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/video_call_icon"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_videocam_24" />
+
+            <ImageView
+                android:id="@+id/chatVoiceCallIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/audio_call_icon"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_chat_call_24" />
+
+            <ImageView
+                android:id="@+id/chatVerticalOptionsIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/extra_chat_options_icon"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_more_vert_24"
+                app:tint="#ffffff" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/centerChatPane"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topChatPane">
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/bottomChatPane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@id/sendMessageButtonContainer"
+        android:background="@drawable/new_chat_message_bg"
+        android:minHeight="48dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/messageEmojiIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/emoji_icon"
+            android:focusable="true"
+            android:padding="1dp"
+            android:src="@drawable/ic_baseline_emoji_emotions_24"
+            app:tint="#8496a0" />
+
+        <EditText
+            android:id="@+id/newMessageEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/chatMessageIconsContainer"
+            android:layout_toEndOf="@id/messageEmojiIcon"
+            android:background="@android:color/transparent"
+            android:hint="@string/message"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="6"
+            android:minLines="1"
+            android:paddingStart="0dp"
+            android:paddingEnd="2dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@color/chat_message_scroll_color"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:id="@+id/chatMessageIconsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:animateLayoutChanges="true">
+
+            <ImageView
+                android:id="@+id/chatMessageAttachmentIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="2dp"
+                android:rotation="-45"
+                android:src="@drawable/ic_baseline_attach_file_24"
+                app:tint="#8496a0"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/chatMessageCurrencyIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_currency_rupee_24"
+                app:tint="#8496a0"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/chatMessageCameraIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_photo_camera_24"
+                app:tint="#8496a0"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sendMessageButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/recordVoiceButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#00a884"
+            android:contentDescription="@string/send_message_button"
+            android:src="@drawable/ic_baseline_microphone_voice_24"
+            app:fabCustomSize="48dp"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sendMessageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#00a884"
+            android:contentDescription="@string/send_message_button"
+            android:src="@drawable/ic_baseline_send_24"
+            android:visibility="gone"
+            app:fabCustomSize="48dp"
+            app:tint="@android:color/white" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

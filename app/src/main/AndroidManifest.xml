@@ -15,6 +15,11 @@
         android:theme="@style/Theme.WhatsappUIClone"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
+
+        <activity
+            android:name=".activities.SingleChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.AppInfoActivity"
             android:exported="false" />
