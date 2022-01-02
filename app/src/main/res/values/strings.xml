@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WhatsApp UI</string>
+    <string name="app_name">WhatsApp Clone</string>
     <string name="calls_tab_txt">Calls</string>
     <string name="status_tab_txt">Status</string>
     <string name="chats_tab_txt">Chats</string>
@@ -11,9 +11,6 @@
     <string name="reel_tab_txt">Status</string>
     <string name="igtv_tab_txt">Calls</string>
     <string name="theme_menu_item_txt">Theme</string>
-    <string name="light_theme_menu_item">Light</string>
-    <string name="dark_theme_menu_item">Dark</string>
-    <string name="system_theme_menu_item">System</string>
     <string name="user_profile_picture_status_txt">User Profile Picture</string>
     <string name="recent_updates_text">Recent updates</string>
     <string name="my_status_text">My Status</string>
@@ -75,11 +72,39 @@
     <string name="change_profile_picture">Change Profile Picture</string>
     <string name="share_profile_picture">Share Profile Picture</string>
     <string name="profile_update_phone">+%s %s</string>
+    <string name="privacy">Privacy</string>
+    <string name="security">Security</string>
+    <string name="two_step_verification">Two-step verification</string>
+    <string name="change_number">Change number</string>
+    <string name="request_account_info">Request account info</string>
+    <string name="delete_my_account">Delete my account</string>
+    <string name="logout">Logout</string>
+    <string name="display">Display</string>
+    <string name="theme">Theme</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="chat_settings">Chat settings</string>
+    <string name="enter_is_send">Enter is send</string>
+    <string name="enter_key_will_send_your_message">Enter key will send your message</string>
+    <string name="media_visibility">Media visibility</string>
+    <string name="media_visibility_footer">Show newly downloaded media in your phone\'s gallery</string>
+    <string name="font_size">Font size</string>
+    <string name="archive_chats">Archive chats</string>
+    <string name="keep_chats_archived">Keep chats archived</string>
+    <string name="keep_chats_archive_footer">Archive chats will remain archived when you received a new message</string>
+    <string name="app_language">App Language</string>
+    <string name="chat_backup">Chat backup</string>
+    <string name="chat_history">Chat history</string>
+    <string name="system_theme_text">System default</string>
+    <string name="light_theme_text">Light</string>
+    <string name="dark_theme_text">Dark</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
 
     <string-array name="countries">
         <item>India</item>
         <item>Dubai</item>
         <item>United States</item>
     </string-array>
-    
+
 </resources>

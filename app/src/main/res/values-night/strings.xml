@@ -6,9 +6,6 @@
     <string name="user_profile_picture_txt">User Profile Picture</string>
     <string name="message_status_tick_text">Message Status Tick</string>
     <string name="theme_menu_item_txt">Theme</string>
-    <string name="light_theme_menu_item">Light</string>
-    <string name="dark_theme_menu_item">Dark</string>
-    <string name="system_theme_menu_item">System</string>
     <string name="user_profile_picture_status_txt">User Profile Picture</string>
     <string name="recent_updates_text">Recent updates</string>
     <string name="my_status_text">My Status</string>

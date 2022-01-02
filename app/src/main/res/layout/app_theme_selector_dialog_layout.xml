@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appThemeRadioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp">
+
+    <RadioButton
+        android:id="@+id/appThemeSystemDefault"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/system_theme_text"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/appThemeLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/light_theme_text"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/appThemeDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/dark_theme_text"
+        android:textSize="18sp" />
+
+</RadioGroup>

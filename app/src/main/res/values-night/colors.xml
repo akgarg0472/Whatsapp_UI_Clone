@@ -7,7 +7,7 @@
     <color name="chat_title_color">#ffffff</color>
     <color name="settings_page_action_bar_bg">#202c33</color>
     <color name="chat_title_text_color">#ffffff</color>
-    <color name="main_fragments_bg_color">#152026</color>
+    <color name="main_fragments_bg_color">#111b21</color>
     <color name="chat_message_text_preview">#8696a0</color>
     <color name="settings_page_header_color">#ffffff</color>
     <color name="settings_page_horizontal_line">#222d34</color>
@@ -25,4 +25,6 @@
     <color name="enter_number_next_btn_bg">#4dac9c</color>
     <color name="profile_info_camera_icon_color">#30847a</color>
     <color name="profile_info_camera_icon_bg__color">#20313b</color>
+    <color name="chat_settings_grey_color">#8696a0</color>
+    <color name="app_theme_selector_bg">#2b3545</color>
 </resources>

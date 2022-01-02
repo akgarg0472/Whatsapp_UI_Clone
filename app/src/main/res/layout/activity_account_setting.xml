@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_fragments_bg_color"
+    tools:context=".activities.AccountSettingActivity">
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPagePrivacyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPagePrivacyIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_privacy_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPagePrivacyIcon"
+            android:text="@string/privacy"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageSecurityContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPagePrivacyContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageSecurityIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_security_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageSecurityIcon"
+            android:text="@string/security"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageTwoStepVerificationContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPageSecurityContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageTwoStepVerificationIcon"
+            android:layout_width="28dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="21dp"
+            android:background="#8696a0"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            app:tint="@color/main_fragments_bg_color"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageTwoStepVerificationIcon"
+            android:text="@string/two_step_verification"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageChangeNumberContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPageTwoStepVerificationContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageChangeNumberIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_change_number_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageChangeNumberIcon"
+            android:text="@string/change_number"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageRequestAccountInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPageChangeNumberContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageRequestAccountInfoIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_account_info_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageRequestAccountInfoIcon"
+            android:text="@string/request_account_info"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageDeleteAccountContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPageRequestAccountInfoContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageDeleteAccountIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageDeleteAccountIcon"
+            android:text="@string/delete_my_account"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountSettingsPageLogoutContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSettingsPageDeleteAccountContainer"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/accountSettingsPageLogoutIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_baseline_logout_24"
+            app:tint="#8696a0"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/accountSettingsPageLogoutIcon"
+            android:text="@string/logout"
+            android:textColor="@color/settings_page_header_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

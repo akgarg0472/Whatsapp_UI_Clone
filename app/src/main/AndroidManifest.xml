@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".activities.ChatSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AccountSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.FullScreenProfilePicture"
             android:exported="false" />
         <activity

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setMargins
 import com.akgarg.whatsappuiclone.R
@@ -17,10 +16,13 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var settingsPageProfileName: TextView
-    private lateinit var settingsPageProfilePicture: ImageView
-    private lateinit var settingsPagePersonalInformationContainer: RelativeLayout
-    private lateinit var settingsPageQrCodeContainer: RelativeLayout
+    private lateinit var profileName: TextView
+    private lateinit var profilePicture: ImageView
+    private lateinit var personalInformationContainer: RelativeLayout
+    private lateinit var qrCodeContainer: RelativeLayout
+    private lateinit var mainSettingAccountContainer: RelativeLayout
+    private lateinit var mainSettingChatContainer: RelativeLayout
+    private lateinit var mainSettingInviteFriendContainer: RelativeLayout
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,50 +41,61 @@ class SettingsActivity : AppCompatActivity() {
         )
         auth = FirebaseAuth.getInstance()
 
-        settingsPageProfileName = findViewById(R.id.settingsPageProfileName)
-        settingsPageProfilePicture = findViewById(R.id.settingsPageProfilePicture)
-        settingsPagePersonalInformationContainer =
-            findViewById(R.id.settingsPagePersonalInformationContainer)
-        settingsPageQrCodeContainer = findViewById(R.id.settingsPageQrCodeContainer)
+        profileName = findViewById(R.id.settingsPageProfileName)
+        profilePicture = findViewById(R.id.settingsPageProfilePicture)
+        personalInformationContainer = findViewById(R.id.settingsPagePersonalInformationContainer)
+        qrCodeContainer = findViewById(R.id.settingsPageQrCodeContainer)
+        mainSettingAccountContainer = findViewById(R.id.mainSettingAccountContainer)
+        mainSettingChatContainer = findViewById(R.id.mainSettingChatContainer)
+        mainSettingInviteFriendContainer = findViewById(R.id.mainSettingInviteFriendContainer)
 
-        val username: String? = SharedPreferenceUtil.getStringPreference(
-            this,
-            SharedPreferenceConstants.REGISTERED_USER_NAME
+        qrCodeContainer.setOnClickListener {
+            qrCodeClickHandler()
+        }
+
+        personalInformationContainer.setOnClickListener {
+            startActivity(Intent(this, SettingUpdateProfileActivity::class.java))
+        }
+
+        mainSettingAccountContainer.setOnClickListener {
+            startActivity(Intent(this, AccountSettingActivity::class.java))
+        }
+
+        mainSettingChatContainer.setOnClickListener {
+            startActivity(Intent(this, ChatSettingActivity::class.java))
+        }
+
+        mainSettingInviteFriendContainer.setOnClickListener {
+            inviteFriendClickHandler()
+        }
+    }
+
+
+    private fun inviteFriendClickHandler() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            "Hey, Please checkout this awesome WhatsApp Clone"
         )
+        shareIntent.type = "text/plain"
+        val chooserIntent = Intent.createChooser(shareIntent, "Share App using..")
+        startActivity(chooserIntent)
+    }
 
-        settingsPageQrCodeContainer.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("Please Confirm")
-                .setMessage("Wanna use this feature?")
-                .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, _ ->
-                    dialog.dismiss()
-                    Toast.makeText(
-                        this,
-                        "Please share your bank information to +91 9643454500 to use this feature!!!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss()
-                    Toast.makeText(this, "As Your wish 😒😒", Toast.LENGTH_SHORT).show()
-                }
-                .show()
-        }
 
-        settingsPagePersonalInformationContainer.setOnClickListener {
-            val updateProfileActivityIntent = Intent(this, SettingUpdateProfileActivity::class.java)
-            startActivity(updateProfileActivityIntent)
-        }
-
-        settingsPageProfileName.text = getString(R.string.registered_user_name, username.toString())
+    private fun qrCodeClickHandler() {
+        Toast.makeText(
+            this,
+            "This feature is only available for Premium Users!!",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
 
     override fun onResume() {
         super.onResume()
         updateSettingPageProfilePicture()
-        settingsPageProfileName.text = getString(
+        profileName.text = getString(
             R.string.registered_user_name,
             SharedPreferenceUtil.getStringPreference(
                 this,
@@ -93,13 +106,13 @@ class SettingsActivity : AppCompatActivity() {
 
 
     private fun updateSettingPageProfilePicture() {
-        settingsPageProfilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        settingsPageProfilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-        settingsPageProfilePicture.imageTintMode = null
-        val layoutParams = FrameLayout.LayoutParams(settingsPageProfilePicture.layoutParams)
+        profilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        profilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+        profilePicture.imageTintMode = null
+        val layoutParams = FrameLayout.LayoutParams(profilePicture.layoutParams)
         layoutParams.setMargins(0)
-        settingsPageProfilePicture.layoutParams = layoutParams
-        Glide.with(this).load(auth.currentUser?.photoUrl).into(settingsPageProfilePicture)
+        profilePicture.layoutParams = layoutParams
+        Glide.with(this).load(auth.currentUser?.photoUrl).into(profilePicture)
     }
 
 

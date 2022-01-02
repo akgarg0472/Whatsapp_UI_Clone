@@ -26,6 +26,17 @@ class SharedPreferenceUtil {
             return sharedPreference.getInt(key, Int.MAX_VALUE)
         }
 
+
+        fun getBooleanPreference(context: Context, key: String): Boolean {
+            val sharedPreference = context.getSharedPreferences(
+                SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
+                Context.MODE_PRIVATE
+            )
+
+            return sharedPreference.getBoolean(key, false)
+        }
+
+
         fun setStringPreference(context: Context, key: String, value: String) {
             val sharedPreference = context.getSharedPreferences(
                 SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
@@ -36,6 +47,31 @@ class SharedPreferenceUtil {
             editor.putString(key, value)
             editor.apply()
         }
+
+
+        fun setBooleanPreference(context: Context, key: String, value: Boolean) {
+            val sharedPreference = context.getSharedPreferences(
+                SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
+                Context.MODE_PRIVATE
+            )
+
+            val editor = sharedPreference.edit()
+            editor.putBoolean(key, value)
+            editor.apply()
+        }
+
+
+        fun clearAllSharedPreferences(context: Context) {
+            val sharedPreference = context.getSharedPreferences(
+                SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
+                Context.MODE_PRIVATE
+            )
+
+            val editor = sharedPreference.edit()
+            editor.clear()
+            editor.apply()
+        }
+
     }
 
 }

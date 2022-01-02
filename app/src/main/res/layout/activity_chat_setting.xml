@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_fragments_bg_color"
+    android:scrollbarThumbVertical="@color/tab_layout_bg_color"
+    tools:context=".activities.ChatSettingActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Display Settings -->
+        <LinearLayout
+            android:id="@+id/chatSettingDisplaySettingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/display"
+                android:textColor="@color/chat_settings_grey_color"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/chatSettingsPageThemeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/chatSettingsPageThemeIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_theme_24"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/chatSettingsPageThemeIcon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingThemeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/theme"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/currentThemeTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/chat_settings_grey_color"
+                        tools:ignore="HardcodedText"
+                        tools:text="System Default" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chatSettingsPageWallpaperContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/chatSettingsPageWallpaperIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_wallpaper_24"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/chatSettingsPageWallpaperIcon"
+                    android:text="@string/wallpaper"
+                    android:textColor="@color/settings_page_header_color"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <!-- Horizontal Line 1 -->
+        <RelativeLayout
+            android:id="@+id/chatSettingPageHorizontalLine1"
+            android:layout_width="match_parent"
+            android:layout_height="0.66dp"
+            android:layout_below="@+id/chatSettingDisplaySettingsContainer"
+            android:background="@color/settings_page_horizontal_line" />
+
+
+        <!-- Chat Settings -->
+        <LinearLayout
+            android:id="@+id/chatSettingChatSettingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chatSettingPageHorizontalLine1"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/chat_settings"
+                android:textColor="@color/chat_settings_grey_color"
+                android:textStyle="bold" />
+
+            <!-- Enter key ss send container -->
+            <RelativeLayout
+                android:id="@+id/chatSettingsEnterKeySendContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="59dp"
+                    android:layout_toStartOf="@id/enterKeyIsSendSwitch"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingEnterSendText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enter_is_send"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enter_key_will_send_your_message"
+                        android:textColor="@color/chat_settings_grey_color" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/enterKeyIsSendSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <!-- Media visibility container -->
+            <RelativeLayout
+                android:id="@+id/chatSettingsMediaVisibilityContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="59dp"
+                    android:layout_toStartOf="@id/mediaVisibilitySwitch"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingMediaVisibilityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/media_visibility"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/media_visibility_footer"
+                        android:textColor="@color/chat_settings_grey_color" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/mediaVisibilitySwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <!-- Font Size container -->
+            <RelativeLayout
+                android:id="@+id/chatSettingsFontSizeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="59dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingFontSizeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/font_size"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/currentChatFontSizeTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Small"
+                        android:textColor="@color/chat_settings_grey_color"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <!-- Horizontal Line 2 -->
+        <RelativeLayout
+            android:id="@+id/chatSettingPageHorizontalLine2"
+            android:layout_width="match_parent"
+            android:layout_height="0.66dp"
+            android:layout_below="@+id/chatSettingChatSettingsContainer"
+            android:background="@color/settings_page_horizontal_line" />
+
+
+        <!-- Chat Settings -->
+        <LinearLayout
+            android:id="@+id/chatSettingChatArchiveContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chatSettingPageHorizontalLine2"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/archive_chats"
+                android:textColor="@color/chat_settings_grey_color"
+                android:textStyle="bold" />
+
+            <!-- Enter key ss send container -->
+            <RelativeLayout
+                android:id="@+id/chatSettingsKeepChatsArchiveContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="59dp"
+                    android:layout_toStartOf="@id/keepChatsArchiveSwitch"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingChatsArchiveText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/keep_chats_archived"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/keep_chats_archive_footer"
+                        android:textColor="@color/chat_settings_grey_color" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/keepChatsArchiveSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <!-- Horizontal Line 3 -->
+        <RelativeLayout
+            android:id="@+id/chatSettingPageHorizontalLine3"
+            android:layout_width="match_parent"
+            android:layout_height="0.66dp"
+            android:layout_below="@+id/chatSettingChatArchiveContainer"
+            android:background="@color/settings_page_horizontal_line" />
+
+
+        <!-- Other Settings -->
+        <LinearLayout
+            android:id="@+id/chatSettingOtherSettingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatSettingPageHorizontalLine3"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <RelativeLayout
+                android:id="@+id/chatSettingsPageAppLanguageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/chatSettingsPageAppLanguageIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_language_24"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/chatSettingsPageAppLanguageIcon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingAppLanguageText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_language"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone's Language (English)"
+                        android:textColor="@color/chat_settings_grey_color"
+                        tools:ignore="HardcodedText"
+                        tools:text="Phone's Language (English)" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/chatSettingsPageChatBackupContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/chatSettingsPageChatBackupIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_backup_24"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/chatSettingsPageChatBackupIcon"
+                    android:text="@string/chat_backup"
+                    android:textColor="@color/settings_page_header_color"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chatSettingsPageChatHistoryContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/chatSettingsPageChatHistoryIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_history_24"
+                    app:tint="#8696a0"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/chatSettingsPageChatHistoryIcon"
+                    android:text="@string/chat_history"
+                    android:textColor="@color/settings_page_header_color"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

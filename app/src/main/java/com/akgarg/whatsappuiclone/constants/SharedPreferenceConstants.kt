@@ -12,6 +12,13 @@ class SharedPreferenceConstants {
         const val REGISTERED_USER_NAME = "REGISTERED_USER_NAME"
         const val REGISTERED_COUNTRY_CODE = "REGISTERED_COUNTRY_CODE"
         const val REGISTERED_PHONE_NUMBER = "REGISTERED_PHONE_NUMBER"
+        const val ENTER_KEY_IS_SEND = "ENTER_KEY_IS_SEND"
+        const val MEDIA_VISIBILITY = "MEDIA_VISIBILITY"
+        const val KEEP_CHATS_ARCHIVED = "KEEP_CHATS_ARCHIVED"
+        const val CHAT_FONT_SIZE = "CHAT_FONT_SIZE"
+        const val SMALL_CHAT_FONT_SIZE = "SMALL_CHAT_FONT_SIZE"
+        const val MEDIUM_CHAT_FONT_SIZE = "MEDIUM_CHAT_FONT_SIZE"
+        const val LARGE_CHAT_FONT_SIZE = "LARGE_CHAT_FONT_SIZE"
     }
 
 }

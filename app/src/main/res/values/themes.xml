@@ -11,6 +11,17 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenuDay</item>
     </style>
+
+    <style name="CMOptionsMenuDay" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">#ffffff</item>
+    </style>
+
+    <style name="appThemeChooserDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:background">@color/app_theme_selector_bg</item>
+    </style>
+
 </resources>

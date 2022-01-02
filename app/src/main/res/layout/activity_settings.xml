@@ -37,6 +37,7 @@
                     android:layout_marginTop="10dp"
                     android:contentDescription="@string/user_profile_picture_txt"
                     android:scaleType="centerCrop"
+                    tools:src="@drawable/me"
                     android:src="@drawable/user" />
             </androidx.cardview.widget.CardView>
 
@@ -76,7 +77,7 @@
                     android:textSize="14sp"
                     tools:ignore="RelativeOverlap"
                     tools:text="Don't be a CSS to my HTML, be JavaScript"
-                    tools:textColor="#000" />
+                    tools:textColor="#fff" />
             </LinearLayout>
 
             <RelativeLayout
@@ -122,6 +123,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/mainSettingAccountContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
@@ -167,6 +169,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mainSettingChatContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
@@ -339,6 +342,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mainSettingInviteFriendContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-8dp"
