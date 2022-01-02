@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/linked_devices_bg"
+    tools:context=".activities.LinkedDevicesActivity">
+
+    <LinearLayout
+        android:id="@+id/paymentHistoryContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/linked_device_container_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/history"
+            android:textColor="#00a884"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/payment_logo_image"
+            android:src="@drawable/payment_image"
+            app:tint="@color/payment_history_icon_bg" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/no_payment_history"
+            android:textAlignment="center"
+            android:textColor="@color/link_device_text_color" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/paymentMethodsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/paymentHistoryContainer"
+        android:layout_marginTop="10dp"
+        android:background="@color/linked_device_container_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/payment_methods"
+            android:textColor="#00a884"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/payment_disclaimer_bg"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/moderator_icon_image"
+                android:src="@drawable/moderator_icon_image" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/payment_disclaimer_msg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:text="@string/all_payment_method"
+                android:textColor="@color/use_on_other_text"
+                app:drawableLeftCompat="@drawable/ic_baseline_add_circle_outline_24"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/paymentHelpContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/paymentMethodsContainer"
+        android:layout_marginTop="10dp"
+        android:background="@color/linked_device_container_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="@string/all_payment_method"
+            android:textColor="@color/use_on_other_text"
+            app:drawableLeftCompat="@drawable/ic_baseline_help_outline_24_1"
+            tools:ignore="RtlSymmetry" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/paymentHelpContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/upi_logo_image"
+        android:src="@drawable/upi_logo" />
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/link_device_button_tint"
+        android:contentDescription="@string/new_payment_fab"
+        android:text="@string/new_payment"
+        android:textColor="#fff"
+        app:icon="@drawable/ic_baseline_currency_rupee_24"
+        app:iconSize="18sp"
+        app:iconTint="#ffffff"
+        app:iconTintMode="multiply" />
+    
+</RelativeLayout>

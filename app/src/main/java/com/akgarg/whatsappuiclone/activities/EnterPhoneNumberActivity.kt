@@ -3,7 +3,6 @@ package com.akgarg.whatsappuiclone.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -31,6 +30,7 @@ class EnterPhoneNumberActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var auth: FirebaseAuth
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,7 +157,8 @@ class EnterPhoneNumberActivity : AppCompatActivity(), AdapterView.OnItemSelected
                 }
 
                 else -> {
-                    val enteredPhoneNumber = getString(R.string.entered_phone_number, countryCode.text, number)
+                    val enteredPhoneNumber =
+                        getString(R.string.entered_phone_number, countryCode.text, number)
                     val alertDialog = AlertDialog.Builder(this)
                         .setMessage("You entered the phone number\n\n${enteredPhoneNumber}\n\nIs this OK, or would you like to edit the number?")
                         .setPositiveButton("OK") { _, _ ->
@@ -222,6 +223,7 @@ class EnterPhoneNumberActivity : AppCompatActivity(), AdapterView.OnItemSelected
             }
         }
     }
+
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 

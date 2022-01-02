@@ -393,7 +393,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/chatSettingAppLanguageText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/app_language"
@@ -401,11 +400,11 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/chatSettingAppLanguageText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Phone's Language (English)"
+                        android:text="@string/lan_device"
                         android:textColor="@color/chat_settings_grey_color"
-                        tools:ignore="HardcodedText"
                         tools:text="Phone's Language (English)" />
                 </LinearLayout>
 

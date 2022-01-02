@@ -34,4 +34,13 @@
     <color name="profile_info_camera_icon_bg__color">#ebebeb</color>
     <color name="chat_settings_grey_color">#667781</color>
     <color name="app_theme_selector_bg">#ffffff</color>
+    <color name="linked_devices_bg">#f7f8fa</color>
+    <color name="linked_device_container_bg">#ffffff</color>
+    <color name="linked_devices_image_tint">#d9d9d9</color>
+    <color name="link_device_button_tint">#008069</color>
+    <color name="use_on_other_text">#000000</color>
+    <color name="link_device_text_color">#667781</color>
+    <color name="payment_disclaimer_bg">#e2f2ef</color>
+    <color name="payment_history_icon_bg">#d1d7db</color>
+    <color name="app_info_title_color">#112d2e</color>
 </resources>

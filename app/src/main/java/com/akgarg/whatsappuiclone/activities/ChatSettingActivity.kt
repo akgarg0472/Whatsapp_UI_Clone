@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -12,11 +13,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.view.forEach
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
+import java.util.*
 
 class ChatSettingActivity : AppCompatActivity() {
 
@@ -25,11 +28,16 @@ class ChatSettingActivity : AppCompatActivity() {
     private lateinit var mediaVisibilityContainer: RelativeLayout
     private lateinit var keepChatsArchiveContainer: RelativeLayout
     private lateinit var fontSizeContainer: RelativeLayout
+    private lateinit var appLanguageContainer: RelativeLayout
+
     private lateinit var currentThemeTextView: TextView
     private lateinit var currentChatFontSizeTextView: TextView
+    private lateinit var chatSettingAppLanguageTextView: TextView
+
     private lateinit var enterKeySendSwitch: SwitchCompat
     private lateinit var mediaVisibilitySwitch: SwitchCompat
     private lateinit var keepChatsArchiveSwitch: SwitchCompat
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +59,10 @@ class ChatSettingActivity : AppCompatActivity() {
         mediaVisibilityContainer = findViewById(R.id.chatSettingsMediaVisibilityContainer)
         keepChatsArchiveContainer = findViewById(R.id.chatSettingsKeepChatsArchiveContainer)
         fontSizeContainer = findViewById(R.id.chatSettingsFontSizeContainer)
+        appLanguageContainer = findViewById(R.id.chatSettingsPageAppLanguageContainer)
         currentThemeTextView = findViewById(R.id.currentThemeTextView)
         currentChatFontSizeTextView = findViewById(R.id.currentChatFontSizeTextView)
+        chatSettingAppLanguageTextView = findViewById(R.id.chatSettingAppLanguageText)
         enterKeySendSwitch = findViewById(R.id.enterKeyIsSendSwitch)
         mediaVisibilitySwitch = findViewById(R.id.mediaVisibilitySwitch)
         keepChatsArchiveSwitch = findViewById(R.id.keepChatsArchiveSwitch)
@@ -62,10 +72,141 @@ class ChatSettingActivity : AppCompatActivity() {
         mediaVisibilityContainer.setOnClickListener { mediaVisibilityContainerClickHandler() }
         keepChatsArchiveContainer.setOnClickListener { keepChatsArchiveContainerClickHandler() }
         fontSizeContainer.setOnClickListener { fontSizeContainerClickHandler() }
+        appLanguageContainer.setOnClickListener { appLanguageContainerClickHandler() }
 
-        enterKeySendSwitch.setOnClickListener { enterKeySendContainerClickHandler() }
-        mediaVisibilitySwitch.setOnClickListener { mediaVisibilityContainerClickHandler() }
-        keepChatsArchiveSwitch.setOnClickListener { keepChatsArchiveContainerClickHandler() }
+        enterKeySendSwitch.setOnClickListener { enterKeySendSwitchClickHandler() }
+        mediaVisibilitySwitch.setOnClickListener { mediaVisibilitySwitchClickHandler() }
+        keepChatsArchiveSwitch.setOnClickListener { keepChatsArchiveSwitchClickHandler() }
+    }
+
+
+    @SuppressLint("InflateParams")
+    private fun appLanguageContainerClickHandler() {
+        val alertDialogBuilder = AlertDialog.Builder(this, R.style.appThemeChooserDialogTheme)
+        alertDialogBuilder.setTitle("App Language")
+
+        val deviceLanguage = Locale.getDefault().displayLanguage
+        val view = layoutInflater.inflate(R.layout.app_language_selector_dialog_layout, null)
+        view.findViewById<RadioButton>(R.id.deviceLanguage).text =
+            getString(R.string.lan_device, deviceLanguage)
+        val radioGroup = view.findViewById<RadioGroup>(R.id.appLanguageRadioGroup)
+        radioGroup.check(getCurrentAppLanguageId())
+
+        alertDialogBuilder.setView(view)
+        val alertDialog = alertDialogBuilder.create()
+
+        radioGroup.setOnCheckedChangeListener { group, _ ->
+            group.forEach { rb ->
+                val radioButton = rb as RadioButton
+                if (radioGroup.checkedRadioButtonId == radioButton.id) {
+                    chatSettingAppLanguageTextView.text = radioButton.text
+                    SharedPreferenceUtil.setStringPreference(
+                        this,
+                        SharedPreferenceConstants.CURRENT_APP_LANGUAGE,
+                        radioButton.text.toString()
+                    )
+                    updateCurrentAppLanguageText()
+                }
+            }
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+
+    private fun getCurrentAppLanguageId(): Int {
+        val currentAppLanguage = SharedPreferenceUtil.getStringPreference(
+            this,
+            SharedPreferenceConstants.CURRENT_APP_LANGUAGE
+        )
+
+        return when (currentAppLanguage) {
+            getString(R.string.lan_english) -> R.id.englishLanguage
+            getString(R.string.lan_hindi) -> R.id.hindiLanguage
+            getString(R.string.lan_gujarati) -> R.id.gujaratiLanguage
+            getString(R.string.lan_marathi) -> R.id.marathiLanguage
+            getString(R.string.lan_punjabi) -> R.id.punjabiLanguage
+            else -> R.id.deviceLanguage
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        chatSettingAppLanguageTextView.text =
+            getString(R.string.lan_device, Locale.getDefault().displayLanguage)
+        updateCurrentThemeText()
+        updateAllSwitches()
+        updateCurrentChatFontSizeText()
+        updateCurrentAppLanguageText()
+    }
+
+
+    private fun updateCurrentAppLanguageText() {
+        val currentAppLanguage = SharedPreferenceUtil.getStringPreference(
+            this,
+            SharedPreferenceConstants.CURRENT_APP_LANGUAGE
+        )
+
+        if (currentAppLanguage != null) {
+            chatSettingAppLanguageTextView.text = currentAppLanguage
+        } else {
+            println(Locale.getDefault().displayLanguage)
+            chatSettingAppLanguageTextView.text =
+                getString(R.string.lan_device, Locale.getDefault().displayLanguage)
+        }
+    }
+
+
+    private fun keepChatsArchiveSwitchClickHandler() {
+        if (keepChatsArchiveSwitch.isChecked) {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.KEEP_CHATS_ARCHIVED,
+                true
+            )
+        } else {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.KEEP_CHATS_ARCHIVED,
+                false
+            )
+        }
+    }
+
+
+    private fun mediaVisibilitySwitchClickHandler() {
+        if (mediaVisibilitySwitch.isChecked) {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.MEDIA_VISIBILITY,
+                true
+            )
+        } else {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.MEDIA_VISIBILITY,
+                false
+            )
+        }
+    }
+
+
+    private fun enterKeySendSwitchClickHandler() {
+        if (enterKeySendSwitch.isChecked) {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.ENTER_KEY_IS_SEND,
+                true
+            )
+        } else {
+            SharedPreferenceUtil.setBooleanPreference(
+                this,
+                SharedPreferenceConstants.ENTER_KEY_IS_SEND,
+                false
+            )
+        }
     }
 
 
@@ -120,13 +261,6 @@ class ChatSettingActivity : AppCompatActivity() {
         }
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        updateCurrentThemeText()
-        updateAllSwitches()
-        updateCurrentChatFontSizeText()
-    }
 
     private fun updateCurrentChatFontSizeText() {
         when (SharedPreferenceUtil.getStringPreference(

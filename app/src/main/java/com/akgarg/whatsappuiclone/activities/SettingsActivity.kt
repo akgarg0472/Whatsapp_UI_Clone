@@ -22,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var qrCodeContainer: RelativeLayout
     private lateinit var mainSettingAccountContainer: RelativeLayout
     private lateinit var mainSettingChatContainer: RelativeLayout
+    private lateinit var helpContainer: RelativeLayout
     private lateinit var mainSettingInviteFriendContainer: RelativeLayout
     private lateinit var auth: FirebaseAuth
 
@@ -48,6 +49,7 @@ class SettingsActivity : AppCompatActivity() {
         mainSettingAccountContainer = findViewById(R.id.mainSettingAccountContainer)
         mainSettingChatContainer = findViewById(R.id.mainSettingChatContainer)
         mainSettingInviteFriendContainer = findViewById(R.id.mainSettingInviteFriendContainer)
+        helpContainer = findViewById(R.id.mainSettingHelpContainer)
 
         qrCodeContainer.setOnClickListener {
             qrCodeClickHandler()
@@ -68,6 +70,11 @@ class SettingsActivity : AppCompatActivity() {
         mainSettingInviteFriendContainer.setOnClickListener {
             inviteFriendClickHandler()
         }
+
+        helpContainer.setOnClickListener {
+            startActivity(Intent(this, HelpSettingActivity::class.java))
+        }
+
     }
 
 

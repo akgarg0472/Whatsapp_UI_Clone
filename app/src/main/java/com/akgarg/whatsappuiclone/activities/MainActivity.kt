@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     private lateinit var viewPagerAdapter: FragmentViewPagerAdapter
     private lateinit var fab: FloatingActionButton
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -58,16 +59,11 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     }
 
 
-    /**
-     * ******************************
-     * OVERRIDDEN METHODS
-     * ******************************
-     * */
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -75,7 +71,14 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                 val settingActivityIntent = Intent(this, SettingsActivity::class.java)
                 startActivity(settingActivityIntent)
             }
-
+            R.id.linked_devices_menu_item -> {
+                val linkedDevicesActivityIntent = Intent(this, LinkedDevicesActivity::class.java)
+                startActivity(linkedDevicesActivityIntent)
+            }
+            R.id.payments_menu_item -> {
+                val paymentsActivityIntent = Intent(this, PaymentActivity::class.java)
+                startActivity(paymentsActivityIntent)
+            }
             else -> {
                 Toast.makeText(this, "Not Available Right Now", Toast.LENGTH_SHORT).show()
             }
@@ -83,6 +86,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
         return true
     }
+
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
         viewPager.currentItem = tab?.position!!
@@ -121,16 +125,12 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         }
     }
 
+
     override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
 
     override fun onTabReselected(tab: TabLayout.Tab?) {}
 
-
-    /**
-     * ******************************
-     * CUSTOM METHODS
-     * ******************************
-     * */
 
     private fun setCameraTab() {
         val layout =
@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         drawable?.setTint(ResourcesCompat.getColor(resources, R.color.tab_layout_text_color, theme))
         tabLayout.getTabAt(0)?.icon = drawable
     }
+
 
     private fun setAppTheme() {
         val appTheme =
@@ -166,13 +167,16 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         }
     }
 
+
     private fun chatFabClickHandler() {
         Toast.makeText(this, "Chat Fab clicked", Toast.LENGTH_SHORT).show()
     }
 
+
     private fun statusFabClickHandler() {
         Toast.makeText(this, "Status Fab clicked", Toast.LENGTH_SHORT).show()
     }
+
 
     private fun callFabClickListener() {
         Toast.makeText(this, "Call Fab clicked", Toast.LENGTH_SHORT).show()

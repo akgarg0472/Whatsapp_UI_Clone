@@ -19,6 +19,13 @@ class SharedPreferenceConstants {
         const val SMALL_CHAT_FONT_SIZE = "SMALL_CHAT_FONT_SIZE"
         const val MEDIUM_CHAT_FONT_SIZE = "MEDIUM_CHAT_FONT_SIZE"
         const val LARGE_CHAT_FONT_SIZE = "LARGE_CHAT_FONT_SIZE"
+        const val CURRENT_APP_LANGUAGE = "CURRENT_APP_LANGUAGE"
+        const val LANGUAGE_PHONE = "LANGUAGE_PHONE"
+        const val LANGUAGE_ENGLISH = "LANGUAGE_ENGLISH"
+        const val LANGUAGE_HINDI = "LANGUAGE_HINDI"
+        const val LANGUAGE_GUJARATI = "LANGUAGE_GUJARATI"
+        const val LANGUAGE_MARATHI = "LANGUAGE_MARATHI"
+        const val LANGUAGE_PUNJABI = "LANGUAGE_PUNJABI"
     }
 
 }

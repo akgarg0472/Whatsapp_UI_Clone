@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appLanguageRadioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <RadioButton
+        android:id="@+id/deviceLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_device"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/englishLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_english"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/hindiLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_hindi"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/gujaratiLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_gujarati"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/marathiLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_marathi"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:id="@+id/punjabiLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/lan_punjabi"
+        android:textSize="18sp" />
+
+</RadioGroup>
