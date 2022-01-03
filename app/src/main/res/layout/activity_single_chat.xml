@@ -9,21 +9,22 @@
 
 
     <!-- Top Level -->
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/topChatPane"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/tab_layout_bg_color"
-        android:padding="8dp"
-        android:weightSum="10"
-        tools:ignore="UselessParent">
+        android:orientation="horizontal"
+        app:contentInsetStart="4dp">
+
 
         <!-- Back Button and chat Profile Picture container Layout -->
         <LinearLayout
             android:id="@+id/backToAllChats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:layout_marginEnd="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true">
 
@@ -50,23 +51,43 @@
         </LinearLayout>
 
 
-        <!-- Chat name -->
-        <TextView
-            android:id="@+id/chatName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <!-- Chat name and Online Status -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
             android:layout_toStartOf="@id/chatOptionsContainer"
             android:layout_toEndOf="@id/backToAllChats"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Akhilesh Garg" />
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="0dp">
 
+            <TextView
+                android:id="@+id/chatName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Akhilesh Garg" />
+
+            <TextView
+                android:id="@+id/chatOnlineStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="last seen yesterday at 8:38 pm"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                tools:ignore="HardcodedText"
+                tools:text="last seen yesterday at 8:38 pm" />
+        </LinearLayout>
 
         <!-- Chat Option Icons -->
         <LinearLayout
@@ -74,17 +95,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/chatVideoCallIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
-                android:background="?attr/selectableItemBackground"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/video_call_icon"
                 android:focusable="true"
+                android:padding="2dp"
                 android:src="@drawable/ic_baseline_videocam_24" />
 
             <ImageView
@@ -92,25 +115,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                android:background="?attr/selectableItemBackground"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/audio_call_icon"
                 android:focusable="true"
+                android:padding="2dp"
                 android:src="@drawable/ic_baseline_chat_call_24" />
 
             <ImageView
-                android:id="@+id/chatVerticalOptionsIcon"
+                android:id="@+id/chatOptionsMenuIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/extra_chat_options_icon"
                 android:focusable="true"
+                android:padding="2dp"
                 android:src="@drawable/ic_baseline_more_vert_24"
                 app:tint="#ffffff" />
         </LinearLayout>
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <androidx.core.widget.NestedScrollView

@@ -14,6 +14,7 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_received_missed_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_more_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_phonelink_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.26614583333333336" />
@@ -55,6 +56,7 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_fragment.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_rv_layout.xml" value="0.4" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/update_name_input_layout.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/chat_options_menu.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/full_profile_picture_menu.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/main_menu.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.26614583333333336" />

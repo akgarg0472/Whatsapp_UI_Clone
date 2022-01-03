@@ -16,6 +16,10 @@
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
     </style>
 
+    <style name="chatUITheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
+    </style>
+
     <style name="CMOptionsMenuNight" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:popupBackground">#233138</item>
     </style>

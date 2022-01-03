@@ -19,6 +19,7 @@
         <activity
             android:name=".activities.SingleChatActivity"
             android:exported="false"
+            android:theme="@style/chatUITheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.AppInfoActivity"

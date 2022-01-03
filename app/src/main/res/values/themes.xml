@@ -16,8 +16,19 @@
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuDay</item>
     </style>
 
+    <style name="chatUITheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenuDay</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@android:color/black</item>
+        <item name="android:actionOverflowButtonStyle">@style/CMOptionsMenuDayIcon</item>
+    </style>
+
+    <style name="CMOptionsMenuDayIcon" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_baseline_more_vert_24</item>
+    </style>
+
     <style name="CMOptionsMenuDay" parent="Widget.AppCompat.PopupMenu.Overflow">
-        <item name="android:popupBackground">#ffffff</item>
+        <item name="android:popupBackground">@android:color/white</item>
     </style>
 
     <style name="appThemeChooserDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">

@@ -1,12 +1,16 @@
 package com.akgarg.whatsappuiclone.activities
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
+import android.view.Menu
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.bumptech.glide.Glide
@@ -14,6 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
+    private var actionBar: ActionBar? = null
+    private lateinit var toolbar: Toolbar
     private lateinit var backChat: LinearLayout
     private lateinit var chatMessageAttachmentIcon: ImageView
     private lateinit var chatMessageCurrencyIcon: ImageView
@@ -25,12 +31,15 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
     private lateinit var sendMessageButton: FloatingActionButton
     private lateinit var recordVoiceButton: FloatingActionButton
 
+    private lateinit var chatOptionsMenuIcon: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_chat)
 
-        supportActionBar?.hide()
         window.statusBarColor = resources.getColor(R.color.tab_layout_bg_color, theme)
+        actionBar = supportActionBar
+        toolbar = findViewById(R.id.topChatPane)
 
         backChat = findViewById(R.id.backToAllChats)
         message = findViewById(R.id.newMessageEditText)
@@ -41,12 +50,14 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         chatMessageCameraIcon = findViewById(R.id.chatMessageCameraIcon)
         chatName = findViewById(R.id.chatName)
         chatProfilePicture = findViewById(R.id.chatProfilePicture)
+        chatOptionsMenuIcon = findViewById(R.id.chatOptionsMenuIcon)
 
         message.addTextChangedListener(this)
-
         sendMessageButton.setOnClickListener { sendMessageButtonClickHandler() }
-
+        chatOptionsMenuIcon.setOnClickListener { chatOptionsMenuIconClickHandler() }
         backChat.setOnClickListener { finish() }
+
+        updateToolbar()
     }
 
 
@@ -71,6 +82,19 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
     private fun sendMessage(message: String) {
         Toast.makeText(this, "Message '$message' sent", Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun chatOptionsMenuIconClickHandler() {
+
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.chat_options_menu, menu)
+        val moreMenuItem = menu?.findItem(R.id.chatMoreMenuItem)
+        moreMenuItem?.subMenu?.clearHeader()
+        return true
     }
 
 
@@ -117,6 +141,22 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         layoutParams.marginEnd = end.toInt()
         layoutParams.marginStart = start.toInt()
         chatMessageAttachmentIcon.layoutParams = layoutParams
+    }
+
+
+    private fun updateToolbar() {
+        setSupportActionBar(toolbar)
+        actionBar?.setDisplayShowTitleEnabled(false)
+        actionBar?.setDisplayUseLogoEnabled(false)
+
+        actionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                resources.getColor(
+                    R.color.tab_layout_bg_color,
+                    theme
+                )
+            )
+        )
     }
 
 }

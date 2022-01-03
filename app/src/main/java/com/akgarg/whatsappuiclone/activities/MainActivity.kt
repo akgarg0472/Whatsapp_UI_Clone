@@ -141,8 +141,14 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
         val drawable =
             ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_photo_camera_24, theme)
-        drawable?.setTint(ResourcesCompat.getColor(resources, R.color.tab_layout_text_color, theme))
         tabLayout.getTabAt(0)?.icon = drawable
+        tabLayout.getTabAt(0)?.icon?.setTint(
+            ResourcesCompat.getColor(
+                resources,
+                R.color.tab_layout_text_color,
+                theme
+            )
+        )
     }
 
 
