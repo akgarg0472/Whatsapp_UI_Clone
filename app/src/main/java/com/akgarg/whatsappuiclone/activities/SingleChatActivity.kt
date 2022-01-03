@@ -1,11 +1,13 @@
 package com.akgarg.whatsappuiclone.activities
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
@@ -21,17 +23,16 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
     private var actionBar: ActionBar? = null
     private lateinit var toolbar: Toolbar
     private lateinit var backChat: LinearLayout
+    private lateinit var chatNameAndOnlineStatusContainer: LinearLayout
     private lateinit var chatMessageAttachmentIcon: ImageView
     private lateinit var chatMessageCurrencyIcon: ImageView
     private lateinit var chatMessageCameraIcon: ImageView
-    private lateinit var chatName: TextView
     private lateinit var chatProfilePicture: ImageView
-
+    private lateinit var chatName: TextView
     private lateinit var message: EditText
     private lateinit var sendMessageButton: FloatingActionButton
     private lateinit var recordVoiceButton: FloatingActionButton
 
-    private lateinit var chatOptionsMenuIcon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,13 +51,12 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         chatMessageCameraIcon = findViewById(R.id.chatMessageCameraIcon)
         chatName = findViewById(R.id.chatName)
         chatProfilePicture = findViewById(R.id.chatProfilePicture)
-        chatOptionsMenuIcon = findViewById(R.id.chatOptionsMenuIcon)
+        chatNameAndOnlineStatusContainer = findViewById(R.id.chatNameAndOnlineStatusContainer)
 
         message.addTextChangedListener(this)
         sendMessageButton.setOnClickListener { sendMessageButtonClickHandler() }
-        chatOptionsMenuIcon.setOnClickListener { chatOptionsMenuIconClickHandler() }
+        chatNameAndOnlineStatusContainer.setOnClickListener { showProfile() }
         backChat.setOnClickListener { finish() }
-
         updateToolbar()
     }
 
@@ -85,16 +85,30 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
     }
 
 
-    private fun chatOptionsMenuIconClickHandler() {
-
-    }
-
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.chat_options_menu, menu)
         val moreMenuItem = menu?.findItem(R.id.chatMoreMenuItem)
         moreMenuItem?.subMenu?.clearHeader()
         return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.chatViewContactMenuItem -> showProfile()
+        }
+
+        return true
+    }
+
+
+    private fun showProfile() {
+        val profileIntent = Intent(this, ChatProfileInfo::class.java)
+        val extras = intent.extras
+        if (extras != null) {
+            profileIntent.putExtras(extras)
+        }
+        startActivity(profileIntent)
     }
 
 

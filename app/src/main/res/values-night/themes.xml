@@ -16,6 +16,17 @@
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
     </style>
 
+    <style name="chatProfileInfoTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:actionOverflowButtonStyle">@style/CMPIOptionsMenuNightIcon</item>
+    </style>
+
+    <style name="CMPIOptionsMenuNightIcon" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_baseline_more_vert_24</item>
+    </style>
+
     <style name="chatUITheme" parent="Theme.AppCompat.NoActionBar">
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
     </style>

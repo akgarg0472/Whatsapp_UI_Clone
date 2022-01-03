@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chat_profile_info_bg"
+    tools:context=".activities.ChatProfileInfo">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Top Level -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chatProfileInfoToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/chat_profile_bg_color"
+            android:orientation="horizontal">
+
+            <!-- Back Button and chat Profile Picture container Layout -->
+            <LinearLayout
+                android:id="@+id/backToChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/back_to_all_chats_image"
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <!-- Profile Picture -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chatProfileProfileImageContainer"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="55dp">
+
+            <ImageView
+                android:id="@+id/chatProfileProfileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/user_profile_picture"
+                android:scaleType="centerCrop"
+                android:src="@drawable/me" />
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Other Profile Information -->
+        <LinearLayout
+            android:id="@+id/chatProfileInfoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatProfileInfoToolbar"
+            android:background="@color/chat_profile_bg_color"
+            android:orientation="vertical"
+            android:paddingTop="72dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/chatProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/chat_profile_info_name_color"
+                android:textSize="24sp"
+                tools:text="Akhilesh Garg" />
+
+            <TextView
+                android:id="@+id/chatProfileRegisteredNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAlignment="center"
+                android:textColor="@color/chat_profile_info_number_color"
+                android:textSize="16sp"
+                tools:text="+91 9643454500" />
+
+            <TextView
+                android:id="@+id/chatProfileLastSeen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/chat_profile_last_seen"
+                android:textAlignment="center"
+                android:textColor="@color/chat_profile_info_number_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:weightSum="7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:text="@string/audio"
+                    android:textColor="@color/chat_profile_info_green_color"
+                    app:drawableTint="@color/chat_profile_info_green_color"
+                    app:drawableTopCompat="@drawable/ic_baseline_call_24" />
+
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:text="@string/video"
+                    android:textColor="@color/chat_profile_info_green_color"
+                    app:drawableTint="@color/chat_profile_info_green_color"
+                    app:drawableTopCompat="@drawable/ic_baseline_videocam_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:text="@string/add"
+                    android:textColor="@color/chat_profile_info_green_color"
+                    app:drawableTint="@color/chat_profile_info_green_color"
+                    app:drawableTopCompat="@drawable/ic_baseline_person_add_24" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- Status Container -->
+        <LinearLayout
+            android:id="@+id/chatProfileStatusContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatProfileInfoContainer"
+            android:layout_marginTop="12dp"
+            android:background="@color/chat_profile_bg_color"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hey There, I'm using WhatsApp Clone and this is a long status text to show"
+                android:textColor="@color/chat_profile_info_name_color"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="18 December 2021"
+                android:textColor="@color/chat_profile_info_number_color"
+                android:textSize="13sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+
+        <!-- Chat Settings -->
+        <RelativeLayout
+            android:id="@+id/chatProfileChatSettingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatProfileStatusContainer"
+            android:layout_marginTop="12dp"
+            android:background="@color/chat_profile_bg_color">
+
+            <!-- Mute notifications container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileMuteNotificationsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/muteNotificationsSwitch"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileMuteNotifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/mute_notifications"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_notifications_24"
+                        app:drawableTint="@color/chat_profile_info_gray_color" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/muteNotificationsSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+
+            <!-- Custom notifications container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileCustomNotificationsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatProfileMuteNotificationsContainer"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileCustomNotifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/custom_notifications"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_music_note_24"
+                        app:drawableTint="#8696a0" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <!-- Media visibility container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileMediaVisibilityContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatProfileCustomNotificationsContainer"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileMediaVisibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/media_visibility"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_photo_24"
+                        app:drawableTint="#8696a0" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <!-- Starred message container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileStarredMessagesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatProfileMediaVisibilityContainer"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileStarredMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/starred_messages"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_star_24"
+                        app:drawableTint="#8696a0" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <!-- Chat Security Settings -->
+        <RelativeLayout
+            android:id="@+id/chatProfileSecuritySettingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatProfileChatSettingsContainer"
+            android:layout_marginTop="12dp"
+            android:background="@color/chat_profile_bg_color">
+
+            <!-- Chat Encryption -->
+            <RelativeLayout
+                android:id="@+id/chatProfileEncryptionContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingThemeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/encryption"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_lock_24"
+                        app:drawableTint="#8696a0" />
+
+                    <TextView
+                        android:id="@+id/currentThemeTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:text="@string/encryption_footer"
+                        android:textColor="@color/chat_settings_grey_color"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <!-- Disappearing Settings -->
+            <RelativeLayout
+                android:id="@+id/chatProfileDisappearingMessagesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatProfileEncryptionContainer"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/chatSettingDisappearingMessageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatSettingDisappearingMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/disappearing_messages"
+                        android:textColor="@color/settings_page_header_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_lock_24"
+                        app:drawableTint="#8696a0" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:text="@string/off"
+                        android:textColor="@color/chat_settings_grey_color"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <!-- Block and Report Settings container -->
+        <RelativeLayout
+            android:id="@+id/chatProfileBlockAndReportContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chatProfileSecuritySettingsContainer"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/chat_profile_bg_color">
+
+            <!-- Block Contact container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileBlockUserContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileBlockUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/block_user_text"
+                        android:textColor="@color/chat_profile_danger_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_block_24"
+                        app:drawableTint="@color/chat_profile_danger_color" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- Report Contact container -->
+            <RelativeLayout
+                android:id="@+id/chatProfileReportUserContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chatProfileBlockUserContainer"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/chatProfileReportUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:text="@string/report_user_text"
+                        android:textColor="@color/chat_profile_danger_color"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_baseline_thumb_down_24"
+                        app:drawableTint="@color/chat_profile_danger_color" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

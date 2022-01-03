@@ -6,6 +6,7 @@
     <item
         android:id="@+id/videoCallChatMenuItem"
         android:icon="@drawable/ic_baseline_videocam_24"
+        android:orderInCategory="0"
         android:title="Search"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
@@ -13,32 +14,40 @@
     <item
         android:id="@+id/audioCallChatMenuItem"
         android:icon="@drawable/ic_baseline_chat_call_24"
+        android:orderInCategory="1"
         android:title="Search"
         app:showAsAction="ifRoom"
         tools:ignore="HardcodedText" />
 
     <item
+        android:id="@+id/chatViewContactMenuItem"
+        android:orderInCategory="2"
         android:title="View contact"
         tools:ignore="HardcodedText" />
 
     <item
+        android:orderInCategory="3"
         android:title="Media, links and docs"
         tools:ignore="HardcodedText" />
 
     <item
+        android:orderInCategory="4"
         android:title="Search"
         tools:ignore="HardcodedText" />
 
     <item
+        android:orderInCategory="5"
         android:title="Mute notifications"
         tools:ignore="HardcodedText" />
 
     <item
+        android:orderInCategory="6"
         android:title="Wallpaper"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/chatMoreMenuItem"
+        android:orderInCategory="7"
         android:title="More"
         tools:ignore="HardcodedText">
 

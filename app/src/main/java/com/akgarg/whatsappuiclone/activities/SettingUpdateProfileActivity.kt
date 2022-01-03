@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
@@ -124,6 +125,14 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
 
     private fun profilePictureClickHandler() {
         val fullScreenProfilePictureIntent = Intent(this, FullScreenProfilePicture::class.java)
+        fullScreenProfilePictureIntent.putExtra(
+            ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_TITLE,
+            "Profile Photo"
+        )
+        fullScreenProfilePictureIntent.putExtra(
+            ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_URL,
+            currentUser.photoUrl.toString()
+        )
         startActivity(fullScreenProfilePictureIntent)
     }
 

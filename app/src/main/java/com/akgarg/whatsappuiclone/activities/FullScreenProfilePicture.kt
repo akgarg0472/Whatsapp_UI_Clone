@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
 
 class FullScreenProfilePicture : AppCompatActivity() {
 
@@ -20,7 +20,33 @@ class FullScreenProfilePicture : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_screen_profile_picture)
 
-        supportActionBar?.title = "Profile Photo"
+        fullScreenProfilePictureImageView = findViewById(R.id.fullScreenProfilePictureImageView)
+
+        val title = intent.getStringExtra(ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_TITLE)
+        val profilePictureUrlString =
+            intent.getStringExtra(ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_URL)
+        val profilePictureUrlInt =
+            intent.getIntExtra(ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_URL, 0)
+
+        updateActionBar(title)
+
+        if (profilePictureUrlString != null) {
+            updateProfilePictureImage(profilePictureUrlString)
+        } else {
+            updateProfilePictureImage(profilePictureUrlInt)
+        }
+    }
+
+
+    private fun updateProfilePictureImage(profilePictureUrl: Any?) {
+        Glide.with(this).load(profilePictureUrl)
+            .into(fullScreenProfilePictureImageView)
+    }
+
+
+    private fun updateActionBar(title: String?) {
+        supportActionBar?.title = title
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setBackgroundDrawable(
             ColorDrawable(
@@ -31,10 +57,6 @@ class FullScreenProfilePicture : AppCompatActivity() {
             )
         )
         window.statusBarColor = Color.BLACK
-
-        fullScreenProfilePictureImageView = findViewById(R.id.fullScreenProfilePictureImageView)
-        Glide.with(this).load(FirebaseAuth.getInstance().currentUser?.photoUrl)
-            .into(fullScreenProfilePictureImageView)
     }
 
 

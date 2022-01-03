@@ -146,6 +146,21 @@
     <string name="message">Message</string>
     <string name="emoji_icon">Emoji Icon</string>
     <string name="send_message_button">Send Message Button</string>
+    <string name="chat_profile_registered_number">+%s %s</string>
+    <string name="media_links_and_docs">Media, links and docs</string>
+    <string name="mute_notifications">Mute notifications</string>
+    <string name="custom_notifications">Custom notifications</string>
+    <string name="starred_messages">Starred messages</string>
+    <string name="encryption">Encryption</string>
+    <string name="encryption_footer">Messages and cakks are ebd-to-end encrypted. Tap to verify.</string>
+    <string name="disappearing_messages">Disappearing messages</string>
+    <string name="off">Off</string>
+    <string name="block_user_text">Block %s</string>
+    <string name="report_user_text">Report %s</string>
+    <string name="add">Add</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="chat_profile_last_seen">Last seen %s</string>
 
     <string-array name="countries">
         <item>India</item>

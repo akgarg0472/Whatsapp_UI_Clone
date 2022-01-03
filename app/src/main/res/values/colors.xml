@@ -45,4 +45,11 @@
     <color name="app_info_title_color">#112d2e</color>
     <color name="chat_new_message_container_bg">#FFFFFF</color>
     <color name="chat_message_scroll_color">#C3C3C3</color>
+    <color name="chat_profile_bg_color">#ffffff</color>
+    <color name="chat_profile_danger_color">#ea0038</color>
+    <color name="chat_profile_info_bg">#f7f8fa</color>
+    <color name="chat_profile_info_gray_color">#8696a0</color>
+    <color name="chat_profile_info_name_color">#000000</color>
+    <color name="chat_profile_info_number_color">#667781</color>
+    <color name="chat_profile_info_green_color">#00a884</color>
 </resources>

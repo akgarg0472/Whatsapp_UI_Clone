@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:title="Share"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Edit"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="View in address book"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Verify security code"
+        tools:ignore="HardcodedText" />
+
+</menu>

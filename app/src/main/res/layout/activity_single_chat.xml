@@ -53,11 +53,11 @@
 
         <!-- Chat name and Online Status -->
         <LinearLayout
+            android:id="@+id/chatNameAndOnlineStatusContainer"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_toStartOf="@id/chatOptionsContainer"
             android:layout_toEndOf="@id/backToAllChats"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
@@ -87,52 +87,6 @@
                 android:textSize="13sp"
                 tools:ignore="HardcodedText"
                 tools:text="last seen yesterday at 8:38 pm" />
-        </LinearLayout>
-
-        <!-- Chat Option Icons -->
-        <LinearLayout
-            android:id="@+id/chatOptionsContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/chatVideoCallIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="@string/video_call_icon"
-                android:focusable="true"
-                android:padding="2dp"
-                android:src="@drawable/ic_baseline_videocam_24" />
-
-            <ImageView
-                android:id="@+id/chatVoiceCallIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="@string/audio_call_icon"
-                android:focusable="true"
-                android:padding="2dp"
-                android:src="@drawable/ic_baseline_chat_call_24" />
-
-            <ImageView
-                android:id="@+id/chatOptionsMenuIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="@string/extra_chat_options_icon"
-                android:focusable="true"
-                android:padding="2dp"
-                android:src="@drawable/ic_baseline_more_vert_24"
-                app:tint="#ffffff" />
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
