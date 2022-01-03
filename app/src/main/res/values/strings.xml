@@ -161,6 +161,7 @@
     <string name="video">Video</string>
     <string name="audio">Audio</string>
     <string name="chat_profile_last_seen">Last seen %s</string>
+    <string name="send_message_delivery_status">Send Message Delivery Status</string>
 
     <string-array name="countries">
         <item>India</item>

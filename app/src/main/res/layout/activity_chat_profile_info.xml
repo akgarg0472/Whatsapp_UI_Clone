@@ -394,7 +394,7 @@
 
                     <TextView
                         android:id="@+id/chatSettingDisappearingMessage"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="16dp"
                         android:text="@string/disappearing_messages"

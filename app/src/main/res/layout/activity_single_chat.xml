@@ -92,14 +92,14 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/centerChatPane"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/topChatPane">
-
-    </androidx.core.widget.NestedScrollView>
-
+        android:layout_above="@id/bottomChatPane"
+        android:layout_below="@id/topChatPane"
+        tools:itemCount="4"
+        tools:listitem="@layout/chat_message_layout_received" />
 
     <RelativeLayout
         android:id="@+id/bottomChatPane"

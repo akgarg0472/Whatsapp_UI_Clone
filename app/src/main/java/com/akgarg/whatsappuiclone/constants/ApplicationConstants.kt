@@ -13,5 +13,7 @@ class ApplicationConstants {
         const val CHAT_PROFILE_NAME = "CHAT_PROFILE_NAME"
         const val FULL_SCREEN_PROFILE_PICTURE_TITLE = "FULL_SCREEN_PROFILE_PICTURE_TITLE"
         const val FULL_SCREEN_PROFILE_PICTURE_URL = "FULL_SCREEN_PROFILE_PICTURE_URL"
+        const val MESSAGE_RECEIVED = 0
+        const val MESSAGE_SEND = 1
     }
 }

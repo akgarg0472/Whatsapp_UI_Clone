@@ -13,7 +13,10 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.adapters.SingleChatRecyclerViewAdapter
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,6 +35,9 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
     private lateinit var message: EditText
     private lateinit var sendMessageButton: FloatingActionButton
     private lateinit var recordVoiceButton: FloatingActionButton
+
+    private lateinit var chatRecyclerView: RecyclerView
+    private lateinit var chatRecyclerViewAdapter: SingleChatRecyclerViewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +58,8 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         chatName = findViewById(R.id.chatName)
         chatProfilePicture = findViewById(R.id.chatProfilePicture)
         chatNameAndOnlineStatusContainer = findViewById(R.id.chatNameAndOnlineStatusContainer)
+        chatRecyclerView = findViewById(R.id.chatRecyclerView)
+        chatRecyclerViewAdapter = SingleChatRecyclerViewAdapter(this, null)
 
         message.addTextChangedListener(this)
         sendMessageButton.setOnClickListener { sendMessageButtonClickHandler() }
@@ -66,6 +74,14 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
         val bundle = intent.extras
         chatName.text = bundle?.getString(ApplicationConstants.CHAT_PROFILE_NAME)
+
+//        chatName.doOnPreDraw {
+//            Log.d("LINE_COUNT", chatName.lineCount.toString())
+//        }
+        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
+        chatRecyclerView.layoutManager = linearLayoutManager
+        chatRecyclerView.adapter = chatRecyclerViewAdapter
+
         Glide.with(this).load(bundle?.getInt(ApplicationConstants.CHAT_PROFILE_PICTURE))
             .into(chatProfilePicture)
     }

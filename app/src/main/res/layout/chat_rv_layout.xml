@@ -76,7 +76,7 @@
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/message_status_tick_text"
                 android:rotationY="10"
-                android:src="@drawable/double_tick" />
+                android:src="@drawable/blue_tick" />
 
             <TextView
                 android:id="@+id/chatMessagePreview"
@@ -89,6 +89,7 @@
                 android:textColor="@color/chat_message_text_preview"
                 tools:text="This is the sample message which is used to check the overflow of content" />
         </RelativeLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

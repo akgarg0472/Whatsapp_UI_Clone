@@ -44,4 +44,9 @@
     <color name="chat_profile_info_name_color">#e9edef</color>
     <color name="chat_profile_info_number_color">#8696a0</color>
     <color name="chat_profile_info_green_color">#00a884</color>
+    <color name="chat_message_send_bg">#005d4a</color>
+    <color name="chat_message_send_text_bg">#dcf2f5</color>
+    <color name="message_time_color">#87c3b9</color>
+    <color name="chat_message_received_text_bg">#DCF2F5</color>
+    <color name="chat_message_received_bg_color">#1f2c34</color>
 </resources>
