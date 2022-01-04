@@ -13,7 +13,7 @@ import com.akgarg.whatsappuiclone.activities.SingleChatActivity
 import com.akgarg.whatsappuiclone.adapters.ChatRecyclerViewAdapter
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.interfaces.IChatClick
-import com.akgarg.whatsappuiclone.model.ChatDataModel
+import com.akgarg.whatsappuiclone.models.ChatDataModel
 import com.akgarg.whatsappuiclone.utils.ChatDataUtil
 
 class ChatsFragment : Fragment(), IChatClick {

@@ -223,7 +223,7 @@ class ChatSettingActivity : AppCompatActivity() {
 
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             Log.d(
-                ApplicationLoggingConstants.RADIO_BUTTON_CLICK_CHANGE_TAG.toString(),
+                ApplicationLoggingConstants.RADIO_BUTTON_CLICK_CHANGE.toString(),
                 "Radio Group Changed"
             )
             updateChatFontSize(checkedId)

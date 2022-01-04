@@ -1,7 +1,7 @@
 package com.akgarg.whatsappuiclone.utils
 
 import com.akgarg.whatsappuiclone.R
-import com.akgarg.whatsappuiclone.model.CallDataModel
+import com.akgarg.whatsappuiclone.models.CallDataModel
 
 class CallDataUtil {
 

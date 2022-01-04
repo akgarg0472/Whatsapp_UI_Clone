@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
-import com.akgarg.whatsappuiclone.model.CallDataModel
+import com.akgarg.whatsappuiclone.models.CallDataModel
 import com.akgarg.whatsappuiclone.viewHolders.ChatMessageRvViewHolder
 
 @Suppress("unused")

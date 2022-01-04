@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
-import com.akgarg.whatsappuiclone.model.StatusDataModel
+import com.akgarg.whatsappuiclone.models.StatusDataModel
 import com.akgarg.whatsappuiclone.viewHolders.StatusRvViewHolder
 
 @Suppress("unused")

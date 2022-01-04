@@ -9,7 +9,7 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.interfaces.IChatClick
-import com.akgarg.whatsappuiclone.model.ChatDataModel
+import com.akgarg.whatsappuiclone.models.ChatDataModel
 import com.akgarg.whatsappuiclone.utils.ChatDataUtil
 import com.akgarg.whatsappuiclone.viewHolders.ChatRvViewHolder
 

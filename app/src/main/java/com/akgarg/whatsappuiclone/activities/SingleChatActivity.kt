@@ -9,7 +9,10 @@ import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,8 +21,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.SingleChatRecyclerViewAdapter
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
+import com.akgarg.whatsappuiclone.models.firebase.ChatMessage
+import com.akgarg.whatsappuiclone.utils.FirebaseUtils
+import com.akgarg.whatsappuiclone.utils.SecurityUtils
+import com.akgarg.whatsappuiclone.utils.TimeUtils
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 
 class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
@@ -97,7 +105,18 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
 
     private fun sendMessage(message: String) {
-        Toast.makeText(this, "Message '$message' sent", Toast.LENGTH_SHORT).show()
+        val senderUid = FirebaseAuth.getInstance().currentUser?.uid
+
+        val messageObject = ChatMessage(
+            message = SecurityUtils.encryptMessage(message, senderUid, senderUid),
+            time = TimeUtils.getCurrentDateTime(),
+            senderUid = senderUid,
+            isMessageDelivered = false,
+            receiverUid = senderUid,
+            isMessageSeen = false
+        )
+
+        FirebaseUtils.uploadMessage(messageObject)
     }
 
 

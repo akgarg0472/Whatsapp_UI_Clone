@@ -15,5 +15,7 @@ class ApplicationConstants {
         const val FULL_SCREEN_PROFILE_PICTURE_URL = "FULL_SCREEN_PROFILE_PICTURE_URL"
         const val MESSAGE_RECEIVED = 0
         const val MESSAGE_SEND = 1
+        const val FIREBASE_CHAT_MESSAGES_COLLECTION = "collection_chat_messages"
     }
+
 }

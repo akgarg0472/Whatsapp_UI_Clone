@@ -1,38 +1,38 @@
 package com.akgarg.whatsappuiclone.utils
 
-import android.net.Uri
 import android.util.Log
+import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.storage.FirebaseStorage
+import com.akgarg.whatsappuiclone.models.firebase.ChatMessage
+import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseUtils {
 
     companion object {
 
-        fun uploadPicture(profilePictureUri: Uri, currentUser: FirebaseUser): Uri? {
-            val storageRef = FirebaseStorage.getInstance().reference
-            var uploadedImageUri: Uri? = null
-            Log.d(ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(), "Starting executing upload picture method")
+        fun uploadMessage(message: ChatMessage): String? {
+            val messageCollection = FirebaseFirestore.getInstance()
+                .collection(ApplicationConstants.FIREBASE_CHAT_MESSAGES_COLLECTION)
 
-            val image = storageRef.child("profile_pictures/${currentUser.uid}")
-            image.putFile(profilePictureUri)
-                .addOnSuccessListener {
-                    val uploadSessionUri = it.uploadSessionUri.toString()
-                    val str1 =
-                        uploadSessionUri.substring(0, uploadSessionUri.indexOf("&uploadType"))
-                    val finalUrl = "$str1&alt=media"
-                    Log.d(ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(), finalUrl)
-                    uploadedImageUri = Uri.parse(finalUrl)
-                }
-                .addOnFailureListener {
+            messageCollection
+                .add(message)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        println(it.result?.id)
+                    } else {
+                        Log.d(
+                            ApplicationLoggingConstants.FIREBASE_CHAT_MESSAGE_UPLOAD.toString(),
+                            it.exception?.message.toString()
+                        )
+                    }
+                }.addOnFailureListener {
                     Log.d(
-                        ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
-                        "Error uploading image file. ${it.message}"
+                        ApplicationLoggingConstants.FIREBASE_CHAT_MESSAGE_UPLOAD.toString(),
+                        it.message.toString()
                     )
                 }
 
-            return uploadedImageUri
+            return null
         }
     }
 }

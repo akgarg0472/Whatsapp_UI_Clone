@@ -1,7 +1,7 @@
 package com.akgarg.whatsappuiclone.utils
 
 import com.akgarg.whatsappuiclone.R
-import com.akgarg.whatsappuiclone.model.StatusDataModel
+import com.akgarg.whatsappuiclone.models.StatusDataModel
 
 class StatusDataUtil {
 

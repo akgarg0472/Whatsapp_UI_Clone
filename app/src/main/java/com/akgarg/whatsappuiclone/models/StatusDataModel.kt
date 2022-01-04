@@ -1,4 +1,4 @@
-package com.akgarg.whatsappuiclone.model
+package com.akgarg.whatsappuiclone.models
 
 class StatusDataModel(
     private val statusTitle: String,

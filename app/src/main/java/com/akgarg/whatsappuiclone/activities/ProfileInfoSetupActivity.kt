@@ -187,12 +187,12 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         if (currentUser != null) {
             if (profilePictureUri != null) {
                 Log.d(
-                    ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
+                    ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
                     profilePictureUri.toString()
                 )
 
                 Log.d(
-                    ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
+                    ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
                     "Starting executing upload picture method"
                 )
 
@@ -203,20 +203,20 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                         val str1 =
                             uploadSessionUri.substring(0, uploadSessionUri.indexOf("&uploadType"))
                         val finalUrl = "$str1&alt=media"
-                        Log.d(ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(), finalUrl)
+                        Log.d(ApplicationLoggingConstants.FIREBASE_IMAGE.toString(), finalUrl)
                         updateProfileRequestBuilder.photoUri = Uri.parse(finalUrl)
                         updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
                     }
                     .addOnFailureListener {
                         Log.d(
-                            ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
+                            ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
                             "Error uploading image file. ${it.message}"
                         )
                         updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
                     }
             } else {
                 Log.d(
-                    ApplicationLoggingConstants.FIREBASE_IMAGE_TAG.toString(),
+                    ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
                     "No Profile Picture Selected"
                 )
                 updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
