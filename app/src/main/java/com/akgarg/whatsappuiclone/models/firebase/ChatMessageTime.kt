@@ -1,13 +1,29 @@
 package com.akgarg.whatsappuiclone.models.firebase
 
 @Suppress("unused")
-class ChatMessageTime(
-    private val hour: Int,
-    private val minutes: Int,
-    private val day: Int,
-    private val month: Int,
-    private val year: Int
-) {
+class ChatMessageTime {
+
+    private var hour: Int = 0
+    private var minutes: Int = 0
+    private var day: Int = 0
+    private var month: Int = 0
+    private var year: Int = 0
+
+    constructor()
+
+    constructor(
+        hour: Int,
+        minutes: Int,
+        day: Int,
+        month: Int,
+        year: Int
+    ) {
+        this.hour = hour
+        this.minutes = minutes
+        this.day = day
+        this.month = month
+        this.year = year
+    }
 
     fun getHour() = this.hour
 

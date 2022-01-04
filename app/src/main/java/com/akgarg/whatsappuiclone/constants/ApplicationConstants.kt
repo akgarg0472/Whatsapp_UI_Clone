@@ -16,6 +16,8 @@ class ApplicationConstants {
         const val MESSAGE_RECEIVED = 0
         const val MESSAGE_SEND = 1
         const val FIREBASE_CHAT_MESSAGES_COLLECTION = "collection_chat_messages"
+        const val FIREBASE_USERS_COLLECTION = "collection_users"
+        const val DEFAULT_USER_PROFILE_STATUS = "Hey there, I'm using WhatsApp Clone"
     }
 
 }

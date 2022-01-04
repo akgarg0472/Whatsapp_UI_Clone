@@ -7,7 +7,7 @@ class TimeUtils {
 
     companion object {
 
-        fun getCurrentDateTime(): ChatMessageTime {
+        fun getMessageDateTime(): ChatMessageTime {
             val localDateTime = LocalDateTime.now()
 
             val hour = localDateTime.hour
@@ -23,6 +23,20 @@ class TimeUtils {
                 month = month,
                 year = year
             )
+        }
+
+
+        fun getCurrentDateAndTime(): String {
+            val localDateTime = LocalDateTime.now()
+
+            val hour = localDateTime.hour
+            val minutes = localDateTime.minute
+            val seconds = localDateTime.second
+            val day = localDateTime.dayOfMonth
+            val month = localDateTime.monthValue
+            val year = localDateTime.year
+
+            return "$day-$month-$year, $hour:$minutes:$seconds"
         }
 
     }

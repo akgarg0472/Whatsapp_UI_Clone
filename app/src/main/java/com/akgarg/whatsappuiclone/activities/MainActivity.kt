@@ -20,6 +20,7 @@ import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 
+
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     private lateinit var viewPager: ViewPager
     private lateinit var viewPagerAdapter: FragmentViewPagerAdapter
     private lateinit var fab: FloatingActionButton
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
         // swipe on page fragment changer
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+
         setCameraTab()
         setAppTheme()
     }

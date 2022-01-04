@@ -49,6 +49,7 @@
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/optional_profile_photo"
             android:src="@drawable/ic_baseline_add_a_photo_24"
             app:tint="@color/profile_info_camera_icon_color" />

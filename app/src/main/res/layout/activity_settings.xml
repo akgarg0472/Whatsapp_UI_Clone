@@ -27,6 +27,7 @@
                 android:id="@+id/settingsPageProfilePictureContainer"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+
                 android:layout_marginStart="4dp"
                 app:cardCornerRadius="32dp">
 
@@ -34,11 +35,11 @@
                     android:id="@+id/settingsPageProfilePicture"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:layout_marginTop="10dp"
                     android:contentDescription="@string/user_profile_picture_txt"
                     android:scaleType="centerCrop"
-                    tools:src="@drawable/me"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/user"
+                    app:tint="@color/profile_picture_tint_color"
+                    tools:src="@drawable/user" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -72,7 +73,6 @@
                     android:ellipsize="end"
                     android:lines="1"
                     android:maxLines="1"
-                    android:text="@string/don_t_be_a_css_to_my_html_be_javascript"
                     android:textColor="#8696a0"
                     android:textSize="14sp"
                     tools:ignore="RelativeOverlap"

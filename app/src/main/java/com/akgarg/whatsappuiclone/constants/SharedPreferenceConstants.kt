@@ -26,6 +26,7 @@ class SharedPreferenceConstants {
         const val LANGUAGE_GUJARATI = "LANGUAGE_GUJARATI"
         const val LANGUAGE_MARATHI = "LANGUAGE_MARATHI"
         const val LANGUAGE_PUNJABI = "LANGUAGE_PUNJABI"
+        const val PROFILE_STATUS = "PROFILE_STATUS"
     }
 
 }

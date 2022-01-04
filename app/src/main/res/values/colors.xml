@@ -57,4 +57,5 @@
     <color name="chat_message_received_text_bg">#12191f</color>
     <color name="message_time_color">#72867a</color>
     <color name="chat_message_received_bg_color">#ffffff</color>
+    <color name="profile_picture_tint_color">#969696</color>
 </resources>

@@ -82,10 +82,6 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
         val bundle = intent.extras
         chatName.text = bundle?.getString(ApplicationConstants.CHAT_PROFILE_NAME)
-
-//        chatName.doOnPreDraw {
-//            Log.d("LINE_COUNT", chatName.lineCount.toString())
-//        }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         chatRecyclerView.layoutManager = linearLayoutManager
         chatRecyclerView.adapter = chatRecyclerViewAdapter
@@ -109,7 +105,8 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
         val messageObject = ChatMessage(
             message = SecurityUtils.encryptMessage(message, senderUid, senderUid),
-            time = TimeUtils.getCurrentDateTime(),
+            chatMessageTime = TimeUtils.getMessageDateTime(),
+            time = System.currentTimeMillis(),
             senderUid = senderUid,
             isMessageDelivered = false,
             receiverUid = senderUid,

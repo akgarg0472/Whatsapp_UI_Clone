@@ -2,6 +2,7 @@ package com.akgarg.whatsappuiclone.activities
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.ViewGroup
@@ -12,11 +13,16 @@ import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var profileName: TextView
+    private lateinit var settingPageStatus: TextView
     private lateinit var profilePicture: ImageView
     private lateinit var personalInformationContainer: RelativeLayout
     private lateinit var qrCodeContainer: RelativeLayout
@@ -43,6 +49,7 @@ class SettingsActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         profileName = findViewById(R.id.settingsPageProfileName)
+        settingPageStatus = findViewById(R.id.settingsPageStatus)
         profilePicture = findViewById(R.id.settingsPageProfilePicture)
         personalInformationContainer = findViewById(R.id.settingsPagePersonalInformationContainer)
         qrCodeContainer = findViewById(R.id.settingsPageQrCodeContainer)
@@ -109,6 +116,8 @@ class SettingsActivity : AppCompatActivity() {
                 SharedPreferenceConstants.REGISTERED_USER_NAME
             )
         )
+        settingPageStatus.text =
+            SharedPreferenceUtil.getStringPreference(this, SharedPreferenceConstants.PROFILE_STATUS)
     }
 
 
@@ -119,7 +128,30 @@ class SettingsActivity : AppCompatActivity() {
         val layoutParams = FrameLayout.LayoutParams(profilePicture.layoutParams)
         layoutParams.setMargins(0)
         profilePicture.layoutParams = layoutParams
-        Glide.with(this).load(auth.currentUser?.photoUrl).into(profilePicture)
+
+        Glide.with(this)
+            .load(auth.currentUser?.photoUrl)
+            .listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return true
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+            })
+            .into(profilePicture)
     }
 
 

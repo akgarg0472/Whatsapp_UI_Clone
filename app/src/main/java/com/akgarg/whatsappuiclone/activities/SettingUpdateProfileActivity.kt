@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SettingUpdateProfileActivity : AppCompatActivity() {
 
@@ -74,7 +75,8 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
                 SharedPreferenceConstants.REGISTERED_PHONE_NUMBER
             )
         )
-        settingUpdateProfileAbout.text = "Hey there, I'm using Your App"
+        settingUpdateProfileAbout.text =
+            SharedPreferenceUtil.getStringPreference(this, SharedPreferenceConstants.PROFILE_STATUS)
         Glide.with(this).load(currentUser.photoUrl).into(settingProfileUpdateImageView)
         updateProfileUpdateNameRelativeLayout.setOnClickListener { updateNameClickHandler() }
     }
@@ -101,7 +103,9 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
             if (newName.isEmpty()) {
                 Toast.makeText(this, "Name can't be empty", Toast.LENGTH_SHORT).show()
             } else {
-                updateUserName(newName)
+                if (currentUser.displayName != newName.trim()) {
+                    updateUserName(newName.trim())
+                }
                 dialog.dismiss()
             }
         }
@@ -156,7 +160,7 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Name Updated Successfully", Toast.LENGTH_SHORT).show()
                 Log.d(
                     ApplicationLoggingConstants.PROFILE_NAME_CHANGED.toString(),
-                    "Profile Name Changed"
+                    "Profile Name updated"
                 )
                 SharedPreferenceUtil.setStringPreference(
                     this,
@@ -167,8 +171,14 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
                     this,
                     SharedPreferenceConstants.REGISTERED_USER_NAME
                 )
+
+                FirebaseFirestore.getInstance()
+                    .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+                    .document(currentUser.uid)
+                    .update("name", newName)
             }
         }
     }
+
 
 }

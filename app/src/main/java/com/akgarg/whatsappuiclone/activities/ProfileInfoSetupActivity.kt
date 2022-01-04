@@ -18,9 +18,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
 import com.akgarg.whatsappuiclone.R
+import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
+import com.akgarg.whatsappuiclone.models.firebase.User
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
+import com.akgarg.whatsappuiclone.utils.TimeUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -29,6 +32,8 @@ import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -148,6 +153,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
     private fun nextButtonClickHandler(profilePictureUri: Uri?) {
         progressBar.visibility = View.VISIBLE
         nextButton.isEnabled = false
+        profilePictureSelector.isEnabled = false
         val name = nameInput.text.toString()
 
         when {
@@ -155,10 +161,12 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show()
                 progressBar.visibility = View.INVISIBLE
                 nextButton.isEnabled = true
+                profilePictureSelector.isEnabled = true
             }
             currentUser == null -> {
                 progressBar.visibility = View.INVISIBLE
                 nextButton.isEnabled = true
+                profilePictureSelector.isEnabled = true
 
                 AlertDialog.Builder(this).setTitle("Error")
                     .setMessage("Something serious F***d up. Please verify phone again")
@@ -181,6 +189,8 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
     private fun updateProfileAndProceed(name: String, profilePictureUri: Uri?) {
         progressBar.visibility = View.VISIBLE
         nextButton.isEnabled = false
+        profilePictureSelector.isEnabled = false
+
         val updateProfileRequestBuilder = UserProfileChangeRequest
             .Builder().setDisplayName(name)
 
@@ -239,25 +249,152 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         currentUser.updateProfile(updateProfileRequestBuilder.build())
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    progressBar.visibility = View.INVISIBLE
-                    nextButton.isEnabled = true
                     SharedPreferenceUtil.setStringPreference(
                         this,
                         SharedPreferenceConstants.REGISTERED_USER_NAME,
                         name
                     )
-                    val mainActivityIntent = Intent(this, MainActivity::class.java)
-                    startActivity(mainActivityIntent)
-                    finish()
+                    saveOrUpdateUsersCollection(currentUser)
                 } else {
                     progressBar.visibility = View.INVISIBLE
                     nextButton.isEnabled = true
+                    profilePictureSelector.isEnabled = true
                     println(it.exception)
                     println(it.exception?.message)
                     Toast.makeText(this, "Something wrong happened", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
+    }
+
+
+    private fun saveOrUpdateUsersCollection(currentUser: FirebaseUser?) {
+        val usersCollection = FirebaseFirestore.getInstance()
+            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+
+        if (currentUser != null) {
+            usersCollection.document(currentUser.uid).get()
+                .addOnSuccessListener {
+                    Log.d(
+                        ApplicationLoggingConstants.PROFILE_FOUND.toString(),
+                        "saveOrUpdateUsersCollection: ${it.data != null}"
+                    )
+                    if (it.data != null) {
+                        val user = it.toObject<User>()
+                        if (user != null) {
+                            SharedPreferenceUtil.setStringPreference(
+                                this,
+                                SharedPreferenceConstants.PROFILE_STATUS,
+                                user.getProfileStatus()
+                            )
+                            updateCurrentUserInformation(
+                                currentUser.uid,
+                                currentUser.displayName,
+                                currentUser.photoUrl,
+                                user
+                            )
+                        }
+                    } else {
+                        SharedPreferenceUtil.setStringPreference(
+                            this,
+                            SharedPreferenceConstants.PROFILE_STATUS,
+                            ApplicationConstants.DEFAULT_USER_PROFILE_STATUS
+                        )
+                        addCurrentUserToCollection(
+                            currentUser.uid,
+                            currentUser.displayName,
+                            currentUser.photoUrl
+                        )
+                    }
+                }
+                .addOnFailureListener {
+                    println("Error searching user.")
+                    launchMainActivity()
+                }
+        }
+    }
+
+
+    private fun addCurrentUserToCollection(id: String, name: String?, photoUrl: Uri?) {
+        val usersCollection = FirebaseFirestore.getInstance()
+            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+
+        val user = User(
+            uid = id,
+            name = name,
+            profilePictureUrl = photoUrl.toString(),
+            countryCode = SharedPreferenceUtil.getStringPreference(
+                this,
+                SharedPreferenceConstants.REGISTERED_COUNTRY_CODE
+            ),
+            mobileNumber = SharedPreferenceUtil.getStringPreference(
+                this,
+                SharedPreferenceConstants.REGISTERED_PHONE_NUMBER
+            ),
+            isLastSeenVisible = true,
+            lastSeen = "",
+            profileStatus = ApplicationConstants.DEFAULT_USER_PROFILE_STATUS,
+            isOnline = true,
+            statusUpdatedOn = null,
+            profileCreatedOn = TimeUtils.getCurrentDateAndTime()
+        )
+
+        usersCollection.document(user.getUid()).set(user).addOnCompleteListener {
+            launchMainActivity()
+        }.addOnFailureListener {
+            launchMainActivity()
+        }
+    }
+
+
+    private fun updateCurrentUserInformation(
+        userId: String,
+        name: String?,
+        profilePicture: Uri?,
+        user: User
+    ) {
+        val usersCollection = FirebaseFirestore.getInstance()
+            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+
+        val existingUser = User(user)
+        val dataUpdates = hashMapOf<String, Any>()
+        var isProfileUpdated = false
+
+        // if user has updated name on setup screen
+        if (name != user.getName()) {
+            existingUser.setName(name)
+            dataUpdates["name"] = name.toString()
+            isProfileUpdated = true
+        }
+
+        // if user has updated profile picture on setup screen
+        if (profilePicture.toString() != user.getProfilePictureUrl()) {
+            existingUser.setProfilePictureUrl(profilePicture.toString())
+            isProfileUpdated = true
+        }
+
+        if (isProfileUpdated) {
+            usersCollection
+                .document(userId).update(dataUpdates)
+                .addOnCompleteListener {
+                    launchMainActivity()
+                }
+                .addOnFailureListener {
+                    launchMainActivity()
+                }
+        } else {
+            launchMainActivity()
+        }
+    }
+
+
+    private fun launchMainActivity() {
+        progressBar.visibility = View.INVISIBLE
+        nextButton.isEnabled = true
+        profilePictureSelector.isEnabled = true
+        val mainActivityIntent = Intent(this, MainActivity::class.java)
+        startActivity(mainActivityIntent)
+        finish()
     }
 
 }
