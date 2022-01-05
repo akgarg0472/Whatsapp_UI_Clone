@@ -16,11 +16,16 @@
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
     </style>
 
+    <!-- Custom Themes -->
     <style name="chatProfileInfoTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="android:actionOverflowButtonStyle">@style/CMPIOptionsMenuNightIcon</item>
+    </style>
+
+    <style name="allContactsTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenuNight</item>
     </style>
 
     <style name="CMPIOptionsMenuNightIcon" parent="Widget.AppCompat.ActionButton.Overflow">

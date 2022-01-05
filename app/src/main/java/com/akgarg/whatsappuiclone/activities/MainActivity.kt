@@ -176,7 +176,8 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
 
     private fun chatFabClickHandler() {
-        Toast.makeText(this, "Chat Fab clicked", Toast.LENGTH_SHORT).show()
+        val allContactsActivityIntent = Intent(this, AllContactsActivity::class.java)
+        startActivity(allContactsActivityIntent)
     }
 
 

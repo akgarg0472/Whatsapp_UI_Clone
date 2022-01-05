@@ -20,6 +20,7 @@ import androidx.core.view.setMargins
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
+import com.akgarg.whatsappuiclone.constants.FirebaseConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.models.firebase.User
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
@@ -206,7 +207,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                     "Starting executing upload picture method"
                 )
 
-                val image = storageRef.child("profile_pictures/${currentUser?.uid}")
+                val image = storageRef.child("${FirebaseConstants.PROFILE_PICTURE_DIRECTORY_PATH}/${currentUser?.uid}")
                 image.putFile(profilePictureUri)
                     .addOnSuccessListener {
                         val uploadSessionUri = it.uploadSessionUri.toString()
@@ -270,7 +271,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
 
     private fun saveOrUpdateUsersCollection(currentUser: FirebaseUser?) {
         val usersCollection = FirebaseFirestore.getInstance()
-            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+            .collection(FirebaseConstants.FIREBASE_USERS_COLLECTION)
 
         if (currentUser != null) {
             usersCollection.document(currentUser.uid).get()
@@ -317,7 +318,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
 
     private fun addCurrentUserToCollection(id: String, name: String?, photoUrl: Uri?) {
         val usersCollection = FirebaseFirestore.getInstance()
-            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+            .collection(FirebaseConstants.FIREBASE_USERS_COLLECTION)
 
         val user = User(
             uid = id,
@@ -335,7 +336,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
             lastSeen = "",
             profileStatus = ApplicationConstants.DEFAULT_USER_PROFILE_STATUS,
             isOnline = true,
-            statusUpdatedOn = null,
+            statusUpdatedOn = TimeUtils.getCurrentDateAndTime(),
             profileCreatedOn = TimeUtils.getCurrentDateAndTime()
         )
 
@@ -354,7 +355,7 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         user: User
     ) {
         val usersCollection = FirebaseFirestore.getInstance()
-            .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+            .collection(FirebaseConstants.FIREBASE_USERS_COLLECTION)
 
         val existingUser = User(user)
         val dataUpdates = hashMapOf<String, Any>()

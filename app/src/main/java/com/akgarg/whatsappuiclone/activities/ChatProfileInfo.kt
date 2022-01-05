@@ -11,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
-import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
-import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
+import com.akgarg.whatsappuiclone.constants.ChatConstants
 import com.bumptech.glide.Glide
 
 class ChatProfileInfo : AppCompatActivity() {
@@ -27,8 +26,9 @@ class ChatProfileInfo : AppCompatActivity() {
     private lateinit var chatProfileBlockUser: TextView
     private lateinit var chatProfileReportUser: TextView
 
+    private var userDataBundle: Bundle? = null
     private var name: String? = null
-    private var profilePicture: Int? = null
+    private var profilePicture: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +46,39 @@ class ChatProfileInfo : AppCompatActivity() {
         chatProfileBlockUser = findViewById(R.id.chatProfileBlockUser)
         chatProfileReportUser = findViewById(R.id.chatProfileReportUser)
 
-        name = intent.extras?.getString(ApplicationConstants.CHAT_PROFILE_NAME)
-        profilePicture = intent.extras?.getInt(ApplicationConstants.CHAT_PROFILE_PICTURE)
+        userDataBundle = intent.extras
 
         backToChatButton.setOnClickListener { finish() }
         chatProfileProfileImage.setOnClickListener { chatProfileProfileImageClickHandler() }
-
         updateToolbar()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        name = userDataBundle?.getString(ChatConstants.CHAT_PROFILE_NAME)
+        profilePicture = userDataBundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE)
+        chatProfileName.text = name
+
+        Glide.with(this).load(profilePicture)
+            .into(chatProfileProfileImage)
+
+        chatProfileRegisteredNumber.text =
+            getString(
+                R.string.chat_profile_registered_number,
+                userDataBundle?.getString(ChatConstants.CHAT_PROFILE_COUNTRY_CODE),
+                userDataBundle?.getString(ChatConstants.CHAT_PROFILE_PHONE_NUMBER)
+            )
+
+        chatProfileLastSeen.text = getString(
+            R.string.chat_profile_last_seen,
+            userDataBundle?.getString(ChatConstants.CHAT_PROFILE_LAST_SEEN)
+        )
+
+        chatProfileBlockUser.text = getString(R.string.block_user_text, name)
+
+        chatProfileReportUser.text = getString(R.string.report_user_text, name)
     }
 
 
@@ -67,29 +93,6 @@ class ChatProfileInfo : AppCompatActivity() {
             profilePicture
         )
         startActivity(fullScreenProfilePictureIntent)
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        val countryCode = SharedPreferenceUtil.getStringPreference(
-            this,
-            SharedPreferenceConstants.REGISTERED_COUNTRY_CODE
-        )
-        val registeredNumber = SharedPreferenceUtil.getStringPreference(
-            this,
-            SharedPreferenceConstants.REGISTERED_PHONE_NUMBER
-        )
-
-        chatProfileName.text = name
-        Glide.with(this).load(profilePicture)
-            .into(chatProfileProfileImage)
-        chatProfileRegisteredNumber.text =
-            getString(R.string.chat_profile_registered_number, countryCode, registeredNumber)
-        chatProfileLastSeen.text = getString(R.string.chat_profile_last_seen, "today at 7:26 pm")
-
-        chatProfileBlockUser.text = getString(R.string.block_user_text, name)
-        chatProfileReportUser.text = getString(R.string.report_user_text, name)
     }
 
 

@@ -30,7 +30,6 @@ class CallsFragment : Fragment() {
         return view
     }
 
-
     override fun onResume() {
         super.onResume()
         recyclerView.adapter = adapter

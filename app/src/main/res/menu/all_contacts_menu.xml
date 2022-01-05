@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/refreshContactProgressBarMenuItem"
+        android:visible="false"
+        app:actionLayout="@layout/contacts_refresh_progress_layout"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction,HardcodedText,MenuTitle" />
+
+    <item
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Invite a friend"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Contacts"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/refreshContact"
+        android:title="Refresh"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:title="Help"
+        tools:ignore="HardcodedText" />
+
+</menu>

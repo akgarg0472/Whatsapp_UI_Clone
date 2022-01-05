@@ -50,4 +50,5 @@
     <color name="chat_message_received_text_bg">#DCF2F5</color>
     <color name="chat_message_received_bg_color">#1f2c34</color>
     <color name="profile_picture_tint_color">#DCF2F5</color>
+    <color name="select_contact_text_bg">#ffffff</color>
 </resources>

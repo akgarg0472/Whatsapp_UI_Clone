@@ -16,13 +16,17 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_disabled_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_call_received_missed_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_chat_call_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_group_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_more_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_more_vert_24_black.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_phonelink_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_sms_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.26614583333333336" />
@@ -35,6 +39,7 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/small_camera.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/drawable/user.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_account_setting.xml" value="0.264" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_all_contacts.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_app_info.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_chat_profile_info.xml" value="0.264" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/activity_chat_setting.xml" value="0.264" />
@@ -58,14 +63,20 @@
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/calls_fragement.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/calls_fragment.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/chat_fragment.xml" value="0.25" />
-        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/chat_message_layout_received.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/chat_message_layout_received.xml" value="0.4" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/chat_message_layout_send.xml" value="0.4" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/chat_rv_layout.xml" value="0.264" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/contact_rv_layout.xml" value="0.264" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/contacts_refresh_progress_layout.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/country_code_selector_dropdown_layout.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/demo_layout.xml" value="0.536" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/font_size_selector_dialog_layout.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/fragment_new_chat_fab.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/new_chat_fragment.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_fragment.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/status_rv_layout.xml" value="0.4" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/layout/update_name_input_layout.xml" value="0.25" />
+        <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/all_contacts_menu.xml" value="0.264" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/chat_options_menu.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/chat_profile_info_menu.xml" value="0.25" />
         <entry key="..\:/Users/akgar/AndroidStudioProjects/WhatsappUIClone/app/src/main/res/menu/full_profile_picture_menu.xml" value="0.25" />

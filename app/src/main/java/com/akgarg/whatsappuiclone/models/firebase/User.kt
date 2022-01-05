@@ -77,6 +77,8 @@ class User {
 
     fun getProfileCreatedOn() = this.profileCreatedOn
 
+    fun getStatusUpdatedOn() = this.statusUpdatedOn
+
     fun setName(name: String?) {
         this.name = name
     }
@@ -107,6 +109,13 @@ class User {
 
     fun setIsOnline(isOnline: Boolean) {
         this.isOnline = isOnline
+    }
+
+    override fun toString(): String {
+        return "uid: ${this.uid}\n" +
+                "name: ${this.name}\n" +
+                "contact: +${this.countryCode} ${this.mobileNumber}\n" +
+                "status: ${this.profileStatus}"
     }
 
 }

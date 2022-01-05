@@ -5,23 +5,36 @@ class SecurityUtils private constructor() {
 
     companion object {
 
-        fun decryptMessage(message: String, sum: Int): String {
+        fun encryptMessage(message: String, senderUid: String?, receiverUid: String?): String {
+            val sum = getSum(senderUid, receiverUid)
+
             val sb = StringBuilder()
             for (ch in message.toCharArray()) {
-                val newInt = (ch.code + 256 - sum) % 256
-                sb.append(newInt.toChar())
+                if (isEmoji(ch)) {
+                    sb.append(ch)
+                } else {
+                    val newInt = (ch.code + sum) % 256
+                    sb.append(newInt.toChar())
+                }
             }
             return sb.toString()
         }
 
 
-        fun encryptMessage(message: String, senderUid: String?, receiverUid: String?): String {
+        fun decryptMessage(message: String, senderUid: String?, receiverUid: String?): String {
             val sum = getSum(senderUid, receiverUid)
-            val sb = java.lang.StringBuilder()
+
+            val sb = StringBuilder()
             for (ch in message.toCharArray()) {
-                val newInt = (ch.code + sum) % 256
-                sb.append(newInt.toChar())
+                val newInt = (ch.code + 256 - sum) % 256
+
+                if (isEmoji(newInt.toChar())) {
+                    sb.append(ch)
+                } else {
+                    sb.append(newInt.toChar())
+                }
             }
+
             return sb.toString()
         }
 
@@ -46,6 +59,11 @@ class SecurityUtils private constructor() {
             }
 
             return sum
+        }
+
+
+        private fun isEmoji(ch: Char): Boolean {
+            return Character.getNumericValue(ch) == -1
         }
 
     }

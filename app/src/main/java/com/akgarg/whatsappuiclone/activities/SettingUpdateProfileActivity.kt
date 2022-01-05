@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
+import com.akgarg.whatsappuiclone.constants.FirebaseConstants
 import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.bumptech.glide.Glide
@@ -173,12 +174,11 @@ class SettingUpdateProfileActivity : AppCompatActivity() {
                 )
 
                 FirebaseFirestore.getInstance()
-                    .collection(ApplicationConstants.FIREBASE_USERS_COLLECTION)
+                    .collection(FirebaseConstants.FIREBASE_USERS_COLLECTION)
                     .document(currentUser.uid)
                     .update("name", newName)
             }
         }
     }
-
 
 }

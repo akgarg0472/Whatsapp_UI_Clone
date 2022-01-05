@@ -26,7 +26,7 @@
         tools:ignore="UselessParent">
 
         <TextView
-            android:id="@+id/chatMessageSend"
+            android:id="@+id/chatMessageReceived"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
@@ -36,35 +36,15 @@
             android:textColor="@color/chat_message_received_text_bg"
             tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:id="@+id/chatMessageTimeAndTickContainer"
+        <TextView
+            android:id="@+id/chatMessageReceivedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginStart="4dp"
-            android:gravity="end|bottom"
-            android:paddingBottom="4dp"
-            tools:ignore="UseCompoundDrawables">
-
-            <TextView
-                android:id="@+id/chatMessageSendTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11:57 am"
-                android:textColor="#87c3b9"
-                android:textSize="11sp"
-                tools:ignore="HardcodedText" />
-
-            <ImageView
-                android:id="@+id/sendMessageStatusTick"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/send_message_delivery_status"
-                android:src="@drawable/blue_tick" />
-        </LinearLayout>
-
+            android:layout_gravity="bottom|end"
+            android:text="11:57 am"
+            android:textColor="#87c3b9"
+            android:textSize="11sp"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </LinearLayout>

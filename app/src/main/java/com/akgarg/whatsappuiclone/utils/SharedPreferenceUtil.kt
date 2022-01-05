@@ -17,13 +17,14 @@ class SharedPreferenceUtil {
             return sharedPreference.getString(key, null)
         }
 
+
         fun getIntegerPreference(context: Context, key: String): Int {
             val sharedPreference = context.getSharedPreferences(
                 SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
                 Context.MODE_PRIVATE
             )
 
-            return sharedPreference.getInt(key, Int.MAX_VALUE)
+            return sharedPreference.getInt(key, 0)
         }
 
 
@@ -57,6 +58,18 @@ class SharedPreferenceUtil {
 
             val editor = sharedPreference.edit()
             editor.putBoolean(key, value)
+            editor.apply()
+        }
+
+
+        fun setIntegerPreference(context: Context, key: String, value: Int) {
+            val sharedPreference = context.getSharedPreferences(
+                SharedPreferenceConstants.SHARED_PREFERENCE_NAME,
+                Context.MODE_PRIVATE
+            )
+
+            val editor = sharedPreference.edit()
+            editor.putInt(key, value)
             editor.apply()
         }
 

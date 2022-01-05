@@ -1,10 +1,12 @@
 package com.akgarg.whatsappuiclone.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
@@ -20,14 +22,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.adapters.SingleChatRecyclerViewAdapter
-import com.akgarg.whatsappuiclone.constants.ApplicationConstants
+import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
+import com.akgarg.whatsappuiclone.constants.ChatConstants
+import com.akgarg.whatsappuiclone.constants.FirebaseConstants
 import com.akgarg.whatsappuiclone.models.firebase.ChatMessage
-import com.akgarg.whatsappuiclone.utils.FirebaseUtils
 import com.akgarg.whatsappuiclone.utils.SecurityUtils
 import com.akgarg.whatsappuiclone.utils.TimeUtils
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.toObject
 
 class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
@@ -46,7 +53,10 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
 
     private lateinit var chatRecyclerView: RecyclerView
     private lateinit var chatRecyclerViewAdapter: SingleChatRecyclerViewAdapter
+    private var receiverUid: String? = null
+    private var senderUid: String? = null
 
+    private lateinit var messageCollectionRef: CollectionReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +65,8 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         window.statusBarColor = resources.getColor(R.color.tab_layout_bg_color, theme)
         actionBar = supportActionBar
         toolbar = findViewById(R.id.topChatPane)
+        messageCollectionRef = FirebaseFirestore.getInstance()
+            .collection(FirebaseConstants.FIREBASE_CHAT_MESSAGES_COLLECTION)
 
         backChat = findViewById(R.id.backToAllChats)
         message = findViewById(R.id.newMessageEditText)
@@ -67,27 +79,47 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         chatProfilePicture = findViewById(R.id.chatProfilePicture)
         chatNameAndOnlineStatusContainer = findViewById(R.id.chatNameAndOnlineStatusContainer)
         chatRecyclerView = findViewById(R.id.chatRecyclerView)
-        chatRecyclerViewAdapter = SingleChatRecyclerViewAdapter(this, null)
+
+        senderUid = FirebaseAuth.getInstance().currentUser?.uid
+        receiverUid = intent.extras?.getString(ChatConstants.CHAT_PROFILE_UID)
 
         message.addTextChangedListener(this)
         sendMessageButton.setOnClickListener { sendMessageButtonClickHandler() }
         chatNameAndOnlineStatusContainer.setOnClickListener { showProfile() }
         backChat.setOnClickListener { finish() }
         updateToolbar()
+
+        messageCollectionRef.addSnapshotListener { value, error ->
+            if (error != null) {
+                return@addSnapshotListener
+            }
+
+            if (value != null && value.metadata.hasPendingWrites()) {
+                Log.d(
+                    ApplicationLoggingConstants.CHAT_DATA_CHANGED.toString(),
+                    "Listener"
+                )
+
+                fetAndUpdateChatDataForCurrentChat()
+            }
+        }
     }
 
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
 
         val bundle = intent.extras
-        chatName.text = bundle?.getString(ApplicationConstants.CHAT_PROFILE_NAME)
-        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
-        chatRecyclerView.layoutManager = linearLayoutManager
+        chatName.text = bundle?.getString(ChatConstants.CHAT_PROFILE_NAME)
+        chatRecyclerViewAdapter = SingleChatRecyclerViewAdapter(this)
+        chatRecyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         chatRecyclerView.adapter = chatRecyclerViewAdapter
 
-        Glide.with(this).load(bundle?.getInt(ApplicationConstants.CHAT_PROFILE_PICTURE))
+        Glide.with(this).load(bundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE))
             .into(chatProfilePicture)
+
+        fetAndUpdateChatDataForCurrentChat()
     }
 
 
@@ -97,23 +129,6 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
             message.setText("")
             sendMessage(msg)
         }
-    }
-
-
-    private fun sendMessage(message: String) {
-        val senderUid = FirebaseAuth.getInstance().currentUser?.uid
-
-        val messageObject = ChatMessage(
-            message = SecurityUtils.encryptMessage(message, senderUid, senderUid),
-            chatMessageTime = TimeUtils.getMessageDateTime(),
-            time = System.currentTimeMillis(),
-            senderUid = senderUid,
-            isMessageDelivered = false,
-            receiverUid = senderUid,
-            isMessageSeen = false
-        )
-
-        FirebaseUtils.uploadMessage(messageObject)
     }
 
 
@@ -203,6 +218,74 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
                 )
             )
         )
+    }
+
+
+    private fun sendMessage(message: String) {
+        val messageObject = ChatMessage(
+            message = SecurityUtils.encryptMessage(message, senderUid, receiverUid),
+            chatMessageTime = TimeUtils.getMessageDateTime(),
+            time = System.currentTimeMillis(),
+            senderUid = senderUid,
+            isMessageDelivered = false,
+            receiverUid = receiverUid,
+            isMessageSeen = false
+        )
+
+        uploadMessage(messageObject)
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun uploadMessage(message: ChatMessage): String? {
+        messageCollectionRef
+            .add(message)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.d(
+                        ApplicationLoggingConstants.FIREBASE_CHAT_MESSAGE_UPLOAD.toString(),
+                        "Message stored in the database"
+                    )
+                } else {
+                    Log.d(
+                        ApplicationLoggingConstants.FIREBASE_CHAT_MESSAGE_UPLOAD.toString(),
+                        it.exception?.message.toString()
+                    )
+                }
+            }.addOnFailureListener {
+                Log.d(
+                    ApplicationLoggingConstants.FIREBASE_CHAT_MESSAGE_UPLOAD.toString(),
+                    it.message.toString()
+                )
+            }
+
+        return null
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun fetAndUpdateChatDataForCurrentChat() {
+        val sender = senderUid
+        val receiver = receiverUid
+
+        messageCollectionRef.orderBy("time", Query.Direction.DESCENDING).get()
+            .addOnSuccessListener {
+                val docs = it.documents
+                val chats = arrayListOf<ChatMessage>()
+
+                docs.forEach { documentSnapshot ->
+                    val message = documentSnapshot.toObject<ChatMessage>()
+
+                    if (message != null) {
+                        if ((message.getSenderUid() == receiver && message.getReceiverUid() == sender) || (message.getSenderUid() == sender && message.getReceiverUid() == receiver)) {
+                            chats.add(message)
+                        }
+                    }
+                }
+
+                chatRecyclerViewAdapter.updateChatMessageDataset(chats)
+                chatRecyclerViewAdapter.notifyDataSetChanged()
+            }
     }
 
 }

@@ -41,6 +41,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //noinspection GradleDynamicVersion
     testImplementation 'junit:junit:4.+'

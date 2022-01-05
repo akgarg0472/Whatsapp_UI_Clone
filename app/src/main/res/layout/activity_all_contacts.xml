@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chat_profile_info_bg"
+    tools:context=".activities.AllContactsActivity">
+
+
+    <!-- Top Level -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/allChatsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_layout_bg_color"
+        android:orientation="horizontal">
+
+        <!-- Back Button and chat Profile Picture container Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_contact"
+                android:textSize="18sp"
+                android:textColor="@color/select_contact_text_bg"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/contactsCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 contacts"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/allChatsToolbar"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- New group container -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="12dp"
+                tools:ignore="UselessParent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/newGroupPictureContainer"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/chat_profile_info_green_color"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/newContactProfilePicture"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/new_group_picture_txt"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_group_24"
+                        app:tint="@android:color/white" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/newGroupPictureContainer"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/new_group"
+                    android:textColor="@color/chat_title_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+
+            <!-- New contact container -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="12dp"
+                tools:ignore="UselessParent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/newContactPictureContainer"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/chat_profile_info_green_color"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/newContactPicture"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/new_contact_picture_txt"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_person_add_24"
+                        app:tint="@android:color/white" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/newContactPictureContainer"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/new_contact"
+                    android:textColor="@color/chat_title_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+
+            <!-- Recycler view -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allContactsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="4"
+                tools:listitem="@layout/contact_rv_layout" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
+

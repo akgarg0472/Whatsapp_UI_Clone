@@ -11,15 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.activities.SingleChatActivity
 import com.akgarg.whatsappuiclone.adapters.ChatRecyclerViewAdapter
-import com.akgarg.whatsappuiclone.constants.ApplicationConstants
+import com.akgarg.whatsappuiclone.constants.ChatConstants
 import com.akgarg.whatsappuiclone.interfaces.IChatClick
 import com.akgarg.whatsappuiclone.models.ChatDataModel
 import com.akgarg.whatsappuiclone.utils.ChatDataUtil
+import com.google.firebase.firestore.CollectionReference
 
 class ChatsFragment : Fragment(), IChatClick {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ChatRecyclerViewAdapter
+
+    private lateinit var messageCollectionRef: CollectionReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,11 +31,17 @@ class ChatsFragment : Fragment(), IChatClick {
     ): View? {
         val view = inflater.inflate(R.layout.chat_fragment, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
+
+        return view
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
         adapter = ChatRecyclerViewAdapter(requireContext(), ChatDataUtil.getChatData(), this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
-
-        return view
     }
 
 
@@ -40,10 +49,16 @@ class ChatsFragment : Fragment(), IChatClick {
         println("Chat clicked ${chat.getChatTitle()}")
         val chatIntent = Intent(context, SingleChatActivity::class.java)
         val bundle = Bundle()
-        bundle.putInt(ApplicationConstants.CHAT_PROFILE_PICTURE, chat.getProfilePictureUrl())
-        bundle.putString(ApplicationConstants.CHAT_PROFILE_NAME, chat.getChatTitle())
+        bundle.putInt(ChatConstants.CHAT_PROFILE_PICTURE, chat.getProfilePictureUrl())
+        bundle.putString(ChatConstants.CHAT_PROFILE_NAME, chat.getChatTitle())
         chatIntent.putExtras(bundle)
         startActivity(chatIntent)
     }
+
+
+    private fun getExistingChatUsersForCurrentUser() {
+
+    }
+
 
 }

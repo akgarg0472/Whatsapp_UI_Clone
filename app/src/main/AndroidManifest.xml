@@ -15,10 +15,17 @@
         android:theme="@style/Theme.WhatsappUIClone"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
+
+        <activity
+            android:name=".activities.AllContactsActivity"
+            android:exported="false"
+            android:theme="@style/allContactsTheme" />
+
         <activity
             android:name=".activities.ChatProfileInfo"
             android:exported="false"
             android:theme="@style/chatProfileInfoTheme" />
+
         <activity
             android:name=".activities.SingleChatActivity"
             android:exported="false"
