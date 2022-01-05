@@ -1,5 +1,7 @@
 package com.akgarg.whatsappuiclone.models.firebase
 
+import com.akgarg.whatsappuiclone.utils.TimeUtils
+
 @Suppress("unused")
 class ChatMessageTime {
 
@@ -36,7 +38,7 @@ class ChatMessageTime {
     fun getYear() = this.year
 
     override fun toString(): String {
-        return "{ $hour:$minutes, $day-$month-$year }"
+        return TimeUtils.beautifyChatMessageTime(hour, minutes, day, month, year)
     }
 
 }

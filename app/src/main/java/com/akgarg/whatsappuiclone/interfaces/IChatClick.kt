@@ -1,9 +1,9 @@
 package com.akgarg.whatsappuiclone.interfaces
 
-import com.akgarg.whatsappuiclone.models.ChatDataModel
+import com.akgarg.whatsappuiclone.models.firebase.User
 
 interface IChatClick {
 
-    fun onItemClicked(chat: ChatDataModel)
+    fun onItemClicked(user: User)
 
 }

@@ -112,10 +112,7 @@ class User {
     }
 
     override fun toString(): String {
-        return "uid: ${this.uid}\n" +
-                "name: ${this.name}\n" +
-                "contact: +${this.countryCode} ${this.mobileNumber}\n" +
-                "status: ${this.profileStatus}"
+        return "contact: +${this.countryCode} ${this.mobileNumber}\n"
     }
 
 }

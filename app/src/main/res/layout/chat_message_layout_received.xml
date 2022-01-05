@@ -23,6 +23,8 @@
         android:focusable="true"
         android:gravity="start"
         android:orientation="vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         tools:ignore="UselessParent">
 
         <TextView
@@ -30,8 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
-            android:padding="4dp"
+            android:paddingTop="4dp"
             android:text="Hey there 👋, Welcome to the club"
             android:textColor="@color/chat_message_received_text_bg"
             tools:ignore="HardcodedText" />

@@ -39,6 +39,53 @@ class TimeUtils {
             return "$day-$month-$year, $hour:$minutes:$seconds"
         }
 
+
+        fun beautifyChatMessageTime(
+            hour: Int,
+            minutes: Int,
+            day: Int,
+            month: Int,
+            year: Int
+        ): String {
+            val h = when {
+                hour < 10 -> {
+                    "0$hour"
+                }
+                hour <= 12 -> {
+                    hour
+                }
+                else -> {
+                    "${hour - 12}"
+                }
+            }
+
+            val m = if (minutes < 10) {
+                "0$minutes"
+            } else {
+                minutes
+            }
+
+            val amPm = if (hour < 12) {
+                "AM"
+            } else {
+                "PM"
+            }
+
+            val d = if (day < 10) {
+                "0$day"
+            } else {
+                day
+            }
+
+            val mo = if (month < 10) {
+                "0$month"
+            } else {
+                month
+            }
+
+            return "$h:$m $amPm, $d/$mo/$year"
+        }
+
     }
 
 }

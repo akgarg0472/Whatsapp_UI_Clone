@@ -2,13 +2,11 @@ package com.akgarg.whatsappuiclone.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.constants.ApplicationConstants
-import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.models.firebase.ChatMessage
 import com.akgarg.whatsappuiclone.utils.SecurityUtils
 import com.akgarg.whatsappuiclone.viewHolders.ChatMessageReceivedRvViewHolder
@@ -48,13 +46,6 @@ class SingleChatRecyclerViewAdapter(
 
         if (holder.itemViewType == ApplicationConstants.MESSAGE_SEND) {
             val sendMessageViewHolder = holder as ChatMessageSendRvViewHolder
-
-            println()
-
-            Log.d(
-                ApplicationLoggingConstants.SECURITY_LOGS.toString(),
-                "Just before decrypt: ${chatMessage.getSenderUid()}, ${chatMessage.getReceiverUid()}"
-            )
 
             sendMessageViewHolder.chatMessageSend.text = SecurityUtils.decryptMessage(
                 chatMessage.getMessage(),

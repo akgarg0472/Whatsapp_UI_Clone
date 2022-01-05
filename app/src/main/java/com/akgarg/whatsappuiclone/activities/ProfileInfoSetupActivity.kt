@@ -207,7 +207,8 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                     "Starting executing upload picture method"
                 )
 
-                val image = storageRef.child("${FirebaseConstants.PROFILE_PICTURE_DIRECTORY_PATH}/${currentUser?.uid}")
+                val image =
+                    storageRef.child("${FirebaseConstants.PROFILE_PICTURE_DIRECTORY_PATH}/${currentUser?.uid}")
                 image.putFile(profilePictureUri)
                     .addOnSuccessListener {
                         val uploadSessionUri = it.uploadSessionUri.toString()
@@ -276,10 +277,6 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
         if (currentUser != null) {
             usersCollection.document(currentUser.uid).get()
                 .addOnSuccessListener {
-                    Log.d(
-                        ApplicationLoggingConstants.PROFILE_FOUND.toString(),
-                        "saveOrUpdateUsersCollection: ${it.data != null}"
-                    )
                     if (it.data != null) {
                         val user = it.toObject<User>()
                         if (user != null) {
