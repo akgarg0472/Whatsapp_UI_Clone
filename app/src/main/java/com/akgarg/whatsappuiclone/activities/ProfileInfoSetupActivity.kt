@@ -197,16 +197,6 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
 
         if (currentUser != null) {
             if (profilePictureUri != null) {
-                Log.d(
-                    ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
-                    profilePictureUri.toString()
-                )
-
-                Log.d(
-                    ApplicationLoggingConstants.FIREBASE_IMAGE.toString(),
-                    "Starting executing upload picture method"
-                )
-
                 val image =
                     storageRef.child("${FirebaseConstants.PROFILE_PICTURE_DIRECTORY_PATH}/${currentUser?.uid}")
                 image.putFile(profilePictureUri)
@@ -215,7 +205,6 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                         val str1 =
                             uploadSessionUri.substring(0, uploadSessionUri.indexOf("&uploadType"))
                         val finalUrl = "$str1&alt=media"
-                        Log.d(ApplicationLoggingConstants.FIREBASE_IMAGE.toString(), finalUrl)
                         updateProfileRequestBuilder.photoUri = Uri.parse(finalUrl)
                         updateFirebaseProfile(currentUser!!, updateProfileRequestBuilder, name)
                     }
@@ -282,6 +271,16 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
                         if (user != null) {
                             SharedPreferenceUtil.setStringPreference(
                                 this,
+                                SharedPreferenceConstants.REGISTERED_USER_UID,
+                                currentUser.uid
+                            )
+                            SharedPreferenceUtil.setBooleanPreference(
+                                this,
+                                SharedPreferenceConstants.REGISTERED_USER_IS_READ_RECEIPT_ENABLED,
+                                user.getIsReadReceiptEnabled()
+                            )
+                            SharedPreferenceUtil.setStringPreference(
+                                this,
                                 SharedPreferenceConstants.PROFILE_STATUS,
                                 user.getProfileStatus()
                             )
@@ -334,7 +333,19 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
             profileStatus = ApplicationConstants.DEFAULT_USER_PROFILE_STATUS,
             isOnline = true,
             statusUpdatedOn = TimeUtils.getCurrentDateAndTime(),
-            profileCreatedOn = TimeUtils.getCurrentDateAndTime()
+            profileCreatedOn = TimeUtils.getCurrentDateAndTime(),
+            isReadReceiptEnabled = true
+        )
+
+        SharedPreferenceUtil.setStringPreference(
+            this,
+            SharedPreferenceConstants.REGISTERED_USER_UID,
+            user.getUid()
+        )
+        SharedPreferenceUtil.setBooleanPreference(
+            this,
+            SharedPreferenceConstants.REGISTERED_USER_IS_READ_RECEIPT_ENABLED,
+            true
         )
 
         usersCollection.document(user.getUid()).set(user).addOnCompleteListener {
@@ -387,6 +398,11 @@ class ProfileInfoSetupActivity : AppCompatActivity() {
 
 
     private fun launchMainActivity() {
+        SharedPreferenceUtil.setBooleanPreference(
+            this,
+            SharedPreferenceConstants.PROFILE_INFO_SETUP_COMPLETED,
+            true
+        )
         progressBar.visibility = View.INVISIBLE
         nextButton.isEnabled = true
         profilePictureSelector.isEnabled = true

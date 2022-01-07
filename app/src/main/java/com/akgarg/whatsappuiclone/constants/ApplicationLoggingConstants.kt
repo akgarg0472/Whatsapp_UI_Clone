@@ -12,6 +12,7 @@ enum class ApplicationLoggingConstants {
     PROFILE_FOUND,
     CONTACTS_TAG,
     SECURITY_LOGS,
-    CHAT_DATA_CHANGED
+    CHAT_DATA_CHANGED,
+    FIREBASE_PROFILE_PICTURE_UPLOAD_FAIL
 
 }

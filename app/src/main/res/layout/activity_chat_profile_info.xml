@@ -46,16 +46,19 @@
             android:layout_height="110dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/profile_picture_bg_tint"
             app:cardCornerRadius="55dp">
 
             <ImageView
                 android:id="@+id/chatProfileProfileImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/user_profile_picture"
                 android:scaleType="centerCrop"
-                android:src="@drawable/me" />
+                android:src="@drawable/user"
+                app:tint="@color/profile_picture_tint_color" />
         </androidx.cardview.widget.CardView>
 
 

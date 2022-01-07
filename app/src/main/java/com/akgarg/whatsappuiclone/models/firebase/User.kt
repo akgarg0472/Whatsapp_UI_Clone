@@ -14,6 +14,7 @@ class User {
     private var isOnline: Boolean = false
     private var statusUpdatedOn: String? = null
     private lateinit var profileCreatedOn: String
+    private var isReadReceiptEnabled: Boolean = true
 
     constructor()
 
@@ -28,7 +29,8 @@ class User {
         profileStatus: String,
         isOnline: Boolean,
         statusUpdatedOn: String?,
-        profileCreatedOn: String
+        profileCreatedOn: String,
+        isReadReceiptEnabled: Boolean
     ) {
         this.uid = uid
         this.name = name
@@ -41,7 +43,9 @@ class User {
         this.isOnline = isOnline
         this.statusUpdatedOn = statusUpdatedOn
         this.profileCreatedOn = profileCreatedOn
+        this.isReadReceiptEnabled = isReadReceiptEnabled
     }
+
 
     constructor(user: User) {
         this.uid = user.uid
@@ -55,6 +59,7 @@ class User {
         this.isOnline = user.isOnline
         this.statusUpdatedOn = user.statusUpdatedOn
         this.profileCreatedOn = user.profileCreatedOn
+        this.isReadReceiptEnabled = user.isReadReceiptEnabled
     }
 
     fun getUid() = this.uid
@@ -78,6 +83,8 @@ class User {
     fun getProfileCreatedOn() = this.profileCreatedOn
 
     fun getStatusUpdatedOn() = this.statusUpdatedOn
+
+    fun getIsReadReceiptEnabled() = this.isReadReceiptEnabled
 
     fun setName(name: String?) {
         this.name = name
@@ -109,6 +116,10 @@ class User {
 
     fun setIsOnline(isOnline: Boolean) {
         this.isOnline = isOnline
+    }
+
+    fun setIsReadReceiptEnabled(isReadReceiptEnabled: Boolean) {
+        this.isReadReceiptEnabled = isReadReceiptEnabled
     }
 
     override fun toString(): String {

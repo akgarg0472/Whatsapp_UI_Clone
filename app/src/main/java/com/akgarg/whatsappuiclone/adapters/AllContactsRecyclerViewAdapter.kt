@@ -3,6 +3,7 @@ package com.akgarg.whatsappuiclone.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.interfaces.IContactClick
@@ -42,8 +43,16 @@ class AllContactsRecyclerViewAdapter(
         if (data != null) {
             holder.contactName.text = data.getName()
             holder.contactStatus.text = data.getProfileStatus()
-            Glide.with(holder.itemView).load(data.getProfilePictureUrl())
-                .into(holder.contactProfilePicture)
+            if (data.getProfilePictureUrl() != null && data.getProfilePictureUrl() != "null") {
+                holder.contactProfilePicture.layoutParams.width =
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                holder.contactProfilePicture.layoutParams.height =
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                holder.contactProfilePicture.scaleType = ImageView.ScaleType.FIT_XY
+                holder.contactProfilePicture.imageTintMode = null
+                Glide.with(holder.itemView).load(data.getProfilePictureUrl())
+                    .into(holder.contactProfilePicture)
+            }
         }
     }
 

@@ -24,7 +24,7 @@
         android:gravity="start"
         android:orientation="vertical"
         android:paddingStart="4dp"
-        android:paddingEnd="4dp"
+        android:paddingEnd="8dp"
         tools:ignore="UselessParent">
 
         <TextView
@@ -42,8 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
+            android:paddingBottom="4dp"
             android:text="11:57 am"
-            android:textColor="#87c3b9"
+            android:textColor="@color/chat_message_time_color"
             android:textSize="11sp"
             tools:ignore="HardcodedText" />
     </LinearLayout>

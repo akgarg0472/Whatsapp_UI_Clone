@@ -18,15 +18,18 @@
             android:id="@+id/profilePictureContainer"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:backgroundTint="@color/profile_picture_bg_tint"
             app:cardCornerRadius="25dp">
 
             <ImageView
                 android:id="@+id/profilePicture"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
                 android:contentDescription="@string/user_profile_picture_txt"
                 android:scaleType="centerCrop"
-                android:src="@drawable/user" />
+                android:src="@drawable/user"
+                app:tint="@color/profile_picture_tint_color" />
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
@@ -57,6 +60,7 @@
                 android:layout_centerInParent="true"
                 android:textAlignment="textEnd"
                 android:textSize="12sp"
+                android:visibility="gone"
                 tools:text="Yesterday" />
         </RelativeLayout>
 
@@ -76,13 +80,13 @@
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/message_status_tick_text"
                 android:rotationY="10"
-                android:src="@drawable/blue_tick" />
+                android:src="@drawable/blue_tick"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/chatMessagePreview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_toEndOf="@id/messageStatusTick"
                 android:ellipsize="end"
                 android:maxLines="1"

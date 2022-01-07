@@ -18,15 +18,18 @@
             android:id="@+id/contactProfilePictureContainer"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:backgroundTint="@color/profile_picture_bg_tint"
             app:cardCornerRadius="20dp">
 
             <ImageView
                 android:id="@+id/contactProfilePicture"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:contentDescription="@string/contact_profile_picture_txt"
                 android:scaleType="centerCrop"
-                android:src="@drawable/user" />
+                android:src="@drawable/user"
+                app:tint="@color/profile_picture_tint_color" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout

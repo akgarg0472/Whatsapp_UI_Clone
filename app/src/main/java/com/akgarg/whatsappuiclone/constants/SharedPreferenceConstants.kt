@@ -5,6 +5,7 @@ class SharedPreferenceConstants {
 
     companion object {
         const val SHARED_PREFERENCE_NAME = "com.akgarg.whatsappuiclone.SHARED_PREFERENCE_FILE_KEY"
+        const val PROFILE_INFO_SETUP_COMPLETED = "PROFILE_INFO_SETUP_COMPLETED"
         const val APP_THEME = "APP_THEME"
         const val THEME_LIGHT = "THEME_LIGHT"
         const val THEME_DARK = "THEME_DARK"
@@ -28,6 +29,9 @@ class SharedPreferenceConstants {
         const val LANGUAGE_PUNJABI = "LANGUAGE_PUNJABI"
         const val PROFILE_STATUS = "PROFILE_STATUS"
         const val CONTACTS_COUNT = "CONTACTS_COUNT"
+        const val REGISTERED_USER_UID = "REGISTERED_USER_UID"
+        const val REGISTERED_USER_IS_READ_RECEIPT_ENABLED =
+            "REGISTERED_USER_IS_READ_RECEIPT_ENABLED"
     }
 
 }

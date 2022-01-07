@@ -83,7 +83,7 @@ class TimeUtils {
                 month
             }
 
-            return "$h:$m $amPm, $d/$mo/$year"
+            return "$d/$mo/$year, $h:$m $amPm"
         }
 
     }

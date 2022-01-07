@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.google.firebase.auth.FirebaseAuth
+import java.io.File
 
 class AccountSettingActivity : AppCompatActivity() {
 
@@ -45,6 +46,7 @@ class AccountSettingActivity : AppCompatActivity() {
             .setTitle("Please Confirm")
             .setMessage("Are you sure want to logout?")
             .setPositiveButton("Yes") { _, _ ->
+                clearAppCache()
                 auth.signOut()
                 ActivityCompat.finishAffinity(this)
                 SharedPreferenceUtil.clearAllSharedPreferences(this)
@@ -64,6 +66,34 @@ class AccountSettingActivity : AppCompatActivity() {
                 .setTextColor(Color.parseColor("#4DAC9C"))
         }
         alertDialog.show()
+    }
+
+
+    private fun clearAppCache() {
+        try {
+            val dir: File = applicationContext.cacheDir
+            deleteDir(dir)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun deleteDir(dir: File?): Boolean {
+        return if (dir != null && dir.isDirectory) {
+            val children = dir.list()
+
+            children?.indices?.forEach { i ->
+                val success = deleteDir(File(dir, children[i]))
+                if (!success) {
+                    return false
+                }
+            }
+            dir.delete()
+        } else if (dir != null && dir.isFile) {
+            dir.delete()
+        } else {
+            false
+        }
     }
 
 

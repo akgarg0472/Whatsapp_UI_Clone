@@ -49,6 +49,8 @@
     <color name="message_time_color">#87c3b9</color>
     <color name="chat_message_received_text_bg">#DCF2F5</color>
     <color name="chat_message_received_bg_color">#1f2c34</color>
-    <color name="profile_picture_tint_color">#DCF2F5</color>
+    <color name="profile_picture_tint_color">#ced8de</color>
     <color name="select_contact_text_bg">#ffffff</color>
+    <color name="chat_message_time_color">#87c3b9</color>
+    <color name="profile_picture_bg_tint">#627884</color>
 </resources>

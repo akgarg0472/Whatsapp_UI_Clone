@@ -38,15 +38,18 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:backgroundTint="@color/profile_picture_bg_tint"
                 app:cardCornerRadius="20dp">
 
                 <ImageView
                     android:id="@+id/chatProfilePicture"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:contentDescription="@string/chat_profile_picture"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/me" />
+                    android:src="@drawable/user"
+                    app:tint="@color/profile_picture_tint_color" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 

@@ -122,36 +122,40 @@ class SettingsActivity : AppCompatActivity() {
 
 
     private fun updateSettingPageProfilePicture() {
-        profilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        profilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-        profilePicture.imageTintMode = null
-        val layoutParams = FrameLayout.LayoutParams(profilePicture.layoutParams)
-        layoutParams.setMargins(0)
-        profilePicture.layoutParams = layoutParams
+        val userProfilePicture = auth.currentUser?.photoUrl.toString()
 
-        Glide.with(this)
-            .load(auth.currentUser?.photoUrl)
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return true
-                }
+        if (userProfilePicture != "null") {
+            profilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            profilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            profilePicture.imageTintMode = null
+            val layoutParams = FrameLayout.LayoutParams(profilePicture.layoutParams)
+            layoutParams.setMargins(0)
+            profilePicture.layoutParams = layoutParams
 
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-            })
-            .into(profilePicture)
+            Glide.with(this)
+                .load(userProfilePicture)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return true
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+                })
+                .into(profilePicture)
+        }
     }
 
 

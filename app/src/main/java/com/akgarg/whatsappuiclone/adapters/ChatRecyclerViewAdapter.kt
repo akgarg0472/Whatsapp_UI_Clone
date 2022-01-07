@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.akgarg.whatsappuiclone.R
 import com.akgarg.whatsappuiclone.interfaces.IChatClick
@@ -39,8 +40,16 @@ class ChatRecyclerViewAdapter(
         val user = chatUsersData[position]
         holder.chatTitle.text = user.getName()
         holder.chatMessage.text = "+${user.getCountryCode()} ${user.getMobileNumber()} "
-        holder.lastMessageTime.text = "Yesterday"
-        Glide.with(holder.itemView).load(user.getProfilePictureUrl()).into(holder.profilePicture)
+        holder.lastMessageTime.text = "Tap to start chatting"
+
+        if (user.getProfilePictureUrl() != "null" && user.getProfilePictureUrl() != null) {
+            holder.profilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            holder.profilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            holder.profilePicture.scaleType = ImageView.ScaleType.CENTER_CROP
+            holder.profilePicture.imageTintMode = null
+            Glide.with(holder.itemView).load(user.getProfilePictureUrl())
+                .into(holder.profilePicture)
+        }
     }
 
 

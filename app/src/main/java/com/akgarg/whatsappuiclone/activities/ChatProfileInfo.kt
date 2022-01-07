@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.akgarg.whatsappuiclone.R
@@ -61,8 +63,14 @@ class ChatProfileInfo : AppCompatActivity() {
         profilePicture = userDataBundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE)
         chatProfileName.text = name
 
-        Glide.with(this).load(profilePicture)
-            .into(chatProfileProfileImage)
+        if (profilePicture != null && profilePicture != "null") {
+            chatProfileProfileImage.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            chatProfileProfileImage.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            chatProfileProfileImage.scaleType = ImageView.ScaleType.FIT_XY
+            chatProfileProfileImage.imageTintMode = null
+            Glide.with(this).load(profilePicture)
+                .into(chatProfileProfileImage)
+        }
 
         chatProfileRegisteredNumber.text =
             getString(
@@ -83,16 +91,22 @@ class ChatProfileInfo : AppCompatActivity() {
 
 
     private fun chatProfileProfileImageClickHandler() {
-        val fullScreenProfilePictureIntent = Intent(this, FullScreenProfilePicture::class.java)
-        fullScreenProfilePictureIntent.putExtra(
-            ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_TITLE,
-            name
-        )
-        fullScreenProfilePictureIntent.putExtra(
-            ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_URL,
-            profilePicture
-        )
-        startActivity(fullScreenProfilePictureIntent)
+        val userProfilePicture = userDataBundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE)
+
+        if (userProfilePicture != null && userProfilePicture != "null") {
+            val fullScreenProfilePictureIntent = Intent(this, FullScreenProfilePicture::class.java)
+            fullScreenProfilePictureIntent.putExtra(
+                ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_TITLE,
+                name
+            )
+            fullScreenProfilePictureIntent.putExtra(
+                ApplicationConstants.FULL_SCREEN_PROFILE_PICTURE_URL,
+                profilePicture
+            )
+            startActivity(fullScreenProfilePictureIntent)
+        } else {
+            Toast.makeText(this, "No profile picture", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

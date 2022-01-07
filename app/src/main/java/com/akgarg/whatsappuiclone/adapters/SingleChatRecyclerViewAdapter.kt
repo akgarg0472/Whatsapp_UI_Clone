@@ -71,7 +71,11 @@ class SingleChatRecyclerViewAdapter(
             }
         } else if (holder.itemViewType == ApplicationConstants.MESSAGE_RECEIVED) {
             val receivedMessageViewHolder = holder as ChatMessageReceivedRvViewHolder
-            receivedMessageViewHolder.chatMessageReceived.text = chatMessage.getMessage()
+            receivedMessageViewHolder.chatMessageReceived.text = SecurityUtils.decryptMessage(
+                chatMessage.getMessage(),
+                chatMessage.getSenderUid(),
+                chatMessage.getReceiverUid()
+            )
             receivedMessageViewHolder.chatMessageReceivedTime.text =
                 chatMessage.getChatMessageTime().toString()
         }

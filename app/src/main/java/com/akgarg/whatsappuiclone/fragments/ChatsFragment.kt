@@ -123,19 +123,23 @@ class ChatsFragment : Fragment(), IChatClick, EventListener<QuerySnapshot> {
 
 
     private fun setMessagesStateToDelivered() {
-        messageCollectionRef.get().addOnSuccessListener {
-            val docs = it.documents
+        val currentUserUid = currentUser?.uid
+        if (currentUserUid != null) {
+            messageCollectionRef.whereEqualTo("receiverUid", currentUserUid).get()
+                .addOnSuccessListener {
+                    val docs = it.documents
 
-            docs.forEach { documentSnapshot ->
-                val message = documentSnapshot.toObject<ChatMessage>()
+                    docs.forEach { documentSnapshot ->
+                        val message = documentSnapshot.toObject<ChatMessage>()
 
-                if (message != null) {
-                    if (message.getReceiverUid() == currentUser?.uid && !message.getIsMessageDelivered()) {
-                        messageCollectionRef.document(documentSnapshot.id)
-                            .update("isMessageDelivered", true)
+                        if (message != null) {
+                            if (!message.getIsMessageDelivered()) {
+                                messageCollectionRef.document(documentSnapshot.id)
+                                    .update("isMessageDelivered", true)
+                            }
+                        }
                     }
                 }
-            }
         }
     }
 

@@ -11,6 +11,7 @@ import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -25,8 +26,10 @@ import com.akgarg.whatsappuiclone.adapters.SingleChatRecyclerViewAdapter
 import com.akgarg.whatsappuiclone.constants.ApplicationLoggingConstants
 import com.akgarg.whatsappuiclone.constants.ChatConstants
 import com.akgarg.whatsappuiclone.constants.FirebaseConstants
+import com.akgarg.whatsappuiclone.constants.SharedPreferenceConstants
 import com.akgarg.whatsappuiclone.models.firebase.ChatMessage
 import com.akgarg.whatsappuiclone.utils.SecurityUtils
+import com.akgarg.whatsappuiclone.utils.SharedPreferenceUtil
 import com.akgarg.whatsappuiclone.utils.TimeUtils
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -116,8 +119,15 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
         chatRecyclerView.adapter = chatRecyclerViewAdapter
 
-        Glide.with(this).load(bundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE))
-            .into(chatProfilePicture)
+        val profilePicture = bundle?.getString(ChatConstants.CHAT_PROFILE_PICTURE)
+        if (profilePicture != null && profilePicture != "null") {
+            chatProfilePicture.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            chatProfilePicture.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            chatProfilePicture.scaleType = ImageView.ScaleType.FIT_XY
+            chatProfilePicture.imageTintMode = null
+            Glide.with(this).load(profilePicture)
+                .into(chatProfilePicture)
+        }
 
         fetAndUpdateChatDataForCurrentChat()
     }
@@ -268,24 +278,55 @@ class SingleChatActivity : AppCompatActivity(), TextWatcher {
         val sender = senderUid
         val receiver = receiverUid
 
-        messageCollectionRef.orderBy("time", Query.Direction.DESCENDING).get()
+        messageCollectionRef
+            .orderBy("time", Query.Direction.DESCENDING)
+            .get()
             .addOnSuccessListener {
                 val docs = it.documents
                 val chats = arrayListOf<ChatMessage>()
+                val chatIds = arrayListOf<String>()
 
                 docs.forEach { documentSnapshot ->
                     val message = documentSnapshot.toObject<ChatMessage>()
 
                     if (message != null) {
-                        if ((message.getSenderUid() == receiver && message.getReceiverUid() == sender) || (message.getSenderUid() == sender && message.getReceiverUid() == receiver)) {
+                        if ((message.getSenderUid() == receiver && message.getReceiverUid() == sender)
+                            || (message.getSenderUid() == sender && message.getReceiverUid() == receiver)
+                        ) {
                             chats.add(message)
+                            chatIds.add(documentSnapshot.id)
                         }
                     }
                 }
 
                 chatRecyclerViewAdapter.updateChatMessageDataset(chats)
                 chatRecyclerViewAdapter.notifyDataSetChanged()
+                updateMessagesReadStatus(chats, chatIds)
             }
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun updateMessagesReadStatus(
+        chats: ArrayList<ChatMessage>,
+        chatIds: ArrayList<String>
+    ) {
+        val isReadReceiptEnabled = SharedPreferenceUtil.getBooleanPreference(
+            this,
+            SharedPreferenceConstants.REGISTERED_USER_IS_READ_RECEIPT_ENABLED
+        )
+        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (currentUserUid != null && isReadReceiptEnabled) {
+            chats.forEachIndexed { index, message ->
+                if (message.getReceiverUid() == currentUserUid && !message.getIsMessageSeen()) {
+                    val messageId = chatIds[index]
+                    messageCollectionRef.document(messageId).update("isMessageSeen", true)
+                }
+            }
+
+            chatRecyclerViewAdapter.notifyDataSetChanged()
+        }
     }
 
 }

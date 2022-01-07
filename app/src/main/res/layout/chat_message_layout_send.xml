@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11:57 am"
-                android:textColor="#87c3b9"
+                android:textColor="@color/chat_message_time_color"
                 android:textSize="11sp"
                 tools:ignore="HardcodedText" />
 
@@ -60,7 +60,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/send_message_delivery_status"
-                android:src="@drawable/blue_tick" />
+                android:src="@drawable/single_tick" />
         </LinearLayout>
 
     </LinearLayout>

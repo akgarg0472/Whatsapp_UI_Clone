@@ -49,8 +49,8 @@
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/optional_profile_photo"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_add_a_photo_24"
             app:tint="@color/profile_info_camera_icon_color" />
 
@@ -58,8 +58,8 @@
             android:id="@+id/addPhotoProfileInfoSetupProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:visibility="gone" />
     </androidx.cardview.widget.CardView>
 
     <EditText
@@ -91,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#99000000"
+        android:clickable="true"
         android:visibility="gone">
 
         <ProgressBar
